@@ -157,8 +157,7 @@ function experimentInit() {
   {name: ("Stimuli/H5sim0.png"), path:("Stimuli/H5sim0.png")},
   {name: ("Stimuli/H6sim0.png"), path:("Stimuli/H6sim0.png")},
   {name: ("Stimuli/H7sim0.png"), path:("Stimuli/H7sim0.png")},
-  {name: ("Stimuli/H8sim0.png"), path:("Stimuli/H8sim0.png")},
-  {name: ("Designs/design1.csv"), path:("Designs/design1.csv")}]);
+  {name: ("Stimuli/H8sim0.png"), path:("Stimuli/H8sim0.png")}]);
   
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
