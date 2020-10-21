@@ -1,0 +1,33 @@
+0.4266 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+7.7020 	INFO 	Loaded monitor calibration from ['2020_09_20 15:42']
+9.9205 	WARNING 	Couldn't measure a consistent frame rate.
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+9.9210 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0., 0., 0.]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x156306978>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x157055240>, multiSample=False, name='window1', numSamples=2, pos=[448.0, 280.0], screen=0, size=array([3584, 2240]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.9212 	EXP 	window1: mouseVisible = True
+9.9213 	EXP 	window1: recordFrameIntervals = False
+10.0870 	EXP 	window1: recordFrameIntervals = True
+11.7557 	WARNING 	Couldn't measure a consistent frame rate.
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+12.2502 	EXP 	Created text_top = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='black', colorSpace='named', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='text_top', opacity=1.0, ori=0, pos=array([0. , 0.3]), rgb=array([0., 0., 0.]), text=str(...), units='height', win=Window(...), wrapWidth=1)
+12.2563 	EXP 	Created text_bottom = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='black', colorSpace='named', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='text_bottom', opacity=1.0, ori=0, pos=array([ 0. , -0.3]), rgb=array([0., 0., 0.]), text='Press Space when you’re finished', units='height', win=Window(...), wrapWidth=1)
+12.2881 	EXP 	Created ccimage = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, image='bankcard.png', interpolate=True, mask=None, maskParams=None, name='ccimage', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.428 , 0.2699]), texRes=512, units='height', win=Window(...))
+12.3287 	WARNING 	t of last frame was 573.21ms (=1/1)
+12.3287 	EXP 	text_top: autoDraw = True
+12.3287 	EXP 	text_bottom: autoDraw = True
+12.3287 	EXP 	ccimage: autoDraw = True
+12.3511 	WARNING 	t of last frame was 22.40ms (=1/44)
+12.3722 	WARNING 	t of last frame was 21.01ms (=1/47)
+13.8781 	DATA 	Keypress: space
+13.8847 	DEBUG 	Read csv file with pandas: Designs/bad_design/design1.csv
+13.8871 	DEBUG 	Clearing unnamed columns from Designs/bad_design/design1.csv
+13.8874 	EXP 	Imported Designs/bad_design/design1.csv as conditions, 4 conditions, 2 params
+13.8877 	EXP 	Created sequence: sequential, trialTypes=4, nReps=1, seed=None
+13.8880 	EXP 	New trial (rep=0, index=0): OrderedDict([('Block_type', 'conf_face'), ('instruction_text', 'Press S for same or D for different faces. Press <SPACE> to continue.')])
+14.1622 	EXP 	window1: mouseVisible = True
+14.1628 	DEBUG 	Saving data for configural_featural ExperimentHandler
+14.1635 	INFO 	saved data to /Users/sophia/Documents/PycharmProjects/Configural_Featural_Study/data/SR_configural_featural_2020_Oct_21_1631.psydat
+14.1639 	INFO 	saved data to '/Users/sophia/Documents/PycharmProjects/Configural_Featural_Study/data/SR_configural_featural_2020_Oct_21_1631.csv'

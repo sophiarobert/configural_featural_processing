@@ -1,0 +1,15 @@
+imgID,stimLabel,imFile,corr,side
+1,1,smallHcongr,Stimuli/HofH2.bmp,f,left
+1,3,smallHincon,Stimuli/SofH2.bmp,f,left
+1,5,smallScongr,Stimuli/SofS2.bmp,j,left
+1,7,smallSincon,Stimuli/HofS2.bmp,j,left
+1,2,smallHcongr,Stimuli/HofH2.bmp,f,right
+1,4,smallHincon,Stimuli/SofH2.bmp,f,right
+1,6,smallScongr,Stimuli/SofS2.bmp,j,right
+1,8,smallSincon,Stimuli/HofS2.bmp,j,right
+
+trialID,condition,probeID,targetID,probeFile,targetFile,
+1,face,config,Stimuli/edmd.png,Stimuli/edmd.png,same
+2,face,config,Stimuli/eimd.png,Stimuli/eimd.png,same
+3,face,config,Stimuli/eomu.png,Stimuli/eomu.png,same
+4,face,config,Stimuli/eumu.png,Stimuli/eumu.png,same
