@@ -51,8 +51,8 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'bankcard.png', 'path': 'bankcard.png'},
-    {'name': 'Designs/bad_design/design1.csv', 'path': 'Designs/bad_design/design1.csv'}
+    {'name': 'Designs/design1.csv', 'path': 'Designs/design1.csv'},
+    {'name': 'bankcard.png', 'path': 'bankcard.png'}
   ]
 });
 
@@ -148,14 +148,7 @@ function experimentInit() {
   {name: ("Stimuli/H6sim0.png"), path:("Stimuli/H6sim0.png")},
   {name: ("Stimuli/H7sim0.png"), path:("Stimuli/H7sim0.png")},
   {name: ("Stimuli/H8sim0.png"), path:("Stimuli/H8sim0.png")},
-  {name: ("Designs/design1.png"), path:("Designs/design1.png")},
-  {name: ("Designs/design2.png"), path:("Designs/design2.png")},
-  {name: ("Designs/design3.png"), path:("Designs/design3.png")},
-  {name: ("Designs/design4.png"), path:("Designs/design4.png")},
-  {name: ("Designs/design1.csv"), path:("Designs/design1.csv")},
-  {name: ("Designs/design2.csv"), path:("Designs/design2.csv")},
-  {name: ("Designs/design3.csv"), path:("Designs/design3.csv")},
-  {name: ("Designs/design4.csv"), path:("Designs/design4.csv")}]);
+  {name: ("Designs/design1.csv"), path:("Designs/design1.csv")}]);
   
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
@@ -497,7 +490,7 @@ function blocksLoopBegin(blocksLoopScheduler) {
     psychoJS: psychoJS,
     nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
-    trialList: 'Designs/bad_design/design1.csv',
+    trialList: 'Designs/design1.csv',
     seed: undefined, name: 'blocks'
   });
   psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
