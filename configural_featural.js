@@ -538,7 +538,6 @@ var trialDiff;
 var diffTrial;
 var sameTrialid;
 var diffTrialid;
-var instruction_text;
 var instrBlock1Components;
 function instrBlock1RoutineBegin(snapshot) {
   return function () {
@@ -558,16 +557,16 @@ function instrBlock1RoutineBegin(snapshot) {
                     return s;
             }
     
-            if ((thisBlock["Block_type"] === "conf_face")) {
+            if ((Block_type === "conf_face")) {
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
     } else {
-        if ((thisBlock["Block_type"] === "conf_haus")) {
+        if ((Block_type === "conf_haus")) {
             paths = ["Stimuli/H-8sim0.png", "Stimuli/H-8sim1.png", "Stimuli/H-8sim2.png", "Stimuli/H-8sim3.png"];
         } else {
-            if ((thisBlock["Block_type"] === "feat_face")) {
+            if ((Block_type === "feat_face")) {
                 paths = ["Stimuli/f15.png", "Stimuli/f24.png", "Stimuli/f131.png", "Stimuli/f142.png"];
             } else {
-                if ((thisBlock["Block_type"] === "feat_haus")) {
+                if ((Block_type === "feat_haus")) {
                     paths = ["Stimuli/H5sim0.png", "Stimuli/H6sim0.png", "Stimuli/H7sim0.png", "Stimuli/H8sim0.png"];
                 }
             }
@@ -581,7 +580,6 @@ function instrBlock1RoutineBegin(snapshot) {
     shuffle(diffTrial);
     sameTrialid = 0;
     diffTrialid = 0;
-    instruction_text = thisBlock["instruction_text"];
     
     // keep track of which components have finished
     instrBlock1Components = [];
