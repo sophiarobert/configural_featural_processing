@@ -145,9 +145,9 @@ function experimentInit() {
       return Math.floor(Math.random() * (maxplusone - min) ) + min;
   }
   
-  //function round(num, n=0) {    
-  //    return +(Math.round(num + ("e+" + n))  + ("e-" + n));
-  //}
+  function round(num, n=0) {    
+      return +(Math.round(num + ("e+" + n))  + ("e-" + n));
+  }
   
   function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
