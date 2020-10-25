@@ -109,10 +109,12 @@ var instrBlock1Clock;
 var text_3;
 var key_resp_2;
 var target_imgClock;
+var text_4;
 var target_image;
 var ISI_fixClock;
 var text;
 var probe_imgClock;
+var text_5;
 var probe_image;
 var trial_respClock;
 var text_2;
@@ -269,6 +271,17 @@ function experimentInit() {
   
   // Initialize components for Routine "target_img"
   target_imgClock = new util.Clock();
+  text_4 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_4',
+    text: '+',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -1.0 
+  });
+  
   target_image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'target_image', units : undefined, 
@@ -276,7 +289,7 @@ function experimentInit() {
     ori : 0, pos : [0, 0], size : 1.0,
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -1.0 
+    texRes : 512, interpolate : true, depth : -2.0 
   });
   // Initialize components for Routine "ISI_fix"
   ISI_fixClock = new util.Clock();
@@ -293,6 +306,17 @@ function experimentInit() {
   
   // Initialize components for Routine "probe_img"
   probe_imgClock = new util.Clock();
+  text_5 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_5',
+    text: '+',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -1.0 
+  });
+  
   probe_image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'probe_image', units : undefined, 
@@ -300,7 +324,7 @@ function experimentInit() {
     ori : 0, pos : [0, 0], size : 1.0,
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -1.0 
+    texRes : 512, interpolate : true, depth : -2.0 
   });
   // Initialize components for Routine "trial_resp"
   trial_respClock = new util.Clock();
@@ -656,6 +680,7 @@ var trialID;
 var rand_start;
 var fix_color;
 var fix_switch;
+var side;
 var _key_resp_2_allKeys;
 var instrBlock1Components;
 function instrBlock1RoutineBegin(snapshot) {
@@ -703,6 +728,9 @@ function instrBlock1RoutineBegin(snapshot) {
     rand_start = shuffle([0,1]);
     fix_color = fix_color_options[rand_start[0]];
     fix_switch = [0,0,shuffle([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
+    
+    side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+    shuffle(side)
     
     
     text_3.setText(instruction_text);
@@ -811,6 +839,8 @@ function instrBlock1RoutineEnd(snapshot) {
 
 var target;
 var probe;
+var corr;
+var xPosition;
 var target_imgComponents;
 function target_imgRoutineBegin(snapshot) {
   return function () {
@@ -824,12 +854,14 @@ function target_imgRoutineBegin(snapshot) {
     if ((trial_order[trialID] === 1)) {
         target = paths[trialSame[sameTrialid]];
         probe = paths[trialSame[sameTrialid]];
+        corr = 's';
         sameTrialid += 1;
     } else {
         if ((trial_order[trialID] === 0)) {
             img_pair = trialDiff[diffTrial[diffTrialid]];
             target = paths[img_pair[0]];
             probe = paths[img_pair[1]];
+            corr = 'd'
             diffTrialid += 1;
         }
     }
@@ -844,10 +876,31 @@ function target_imgRoutineBegin(snapshot) {
         }
     } 
     
+    if ((expInfo["position"] === "0")) {
+        xPosition = 0;
+    } else {
+        if ((expInfo["position"] === "1")) {
+            if ((side[trialID] === 1)) {
+                xPosition = (- (width * x_scale));
+            } else {
+                if ((side[trialID] === 0)) {
+                    xPosition = (width * x_scale);
+                }
+            }
+        }
+    }
+    
+    thisExp.addData('fix_switches', fix_switch[trialID])
+    thisExp.addData('side', side[trialID])
+    thisExp.addData('target',target)
+    thisExp.addData('probe',probe)
+    text_4.setColor(new util.Color(fix_color));
+    target_image.setPos([xPosition, 0]);
     target_image.setSize([(width * x_scale), (height * y_scale)]);
     target_image.setImage(target);
     // keep track of which components have finished
     target_imgComponents = [];
+    target_imgComponents.push(text_4);
     target_imgComponents.push(target_image);
     
     target_imgComponents.forEach( function(thisComponent) {
@@ -869,6 +922,20 @@ function target_imgRoutineEachFrame(snapshot) {
     t = target_imgClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+    
+    // *text_4* updates
+    if (t >= 0.0 && text_4.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_4.tStart = t;  // (not accounting for frame time here)
+      text_4.frameNStart = frameN;  // exact frame index
+      
+      text_4.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (text_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      text_4.setAutoDraw(false);
+    }
     
     // *target_image* updates
     if (t >= 0.0 && target_image.status === PsychoJS.Status.NOT_STARTED) {
@@ -930,7 +997,7 @@ function ISI_fixRoutineBegin(snapshot) {
     t = 0;
     ISI_fixClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(0.200000);
+    routineTimer.add(0.300000);
     // update component parameters for each repeat
     text.setColor(new util.Color(fix_color));
     // keep track of which components have finished
@@ -965,7 +1032,7 @@ function ISI_fixRoutineEachFrame(snapshot) {
       text.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 0.3 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (text.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text.setAutoDraw(false);
     }
@@ -1018,10 +1085,13 @@ function probe_imgRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.200000);
     // update component parameters for each repeat
+    text_5.setColor(new util.Color(fix_color));
+    probe_image.setPos([xPosition, 0]);
     probe_image.setSize([(width * x_scale), (height * y_scale)]);
     probe_image.setImage(probe);
     // keep track of which components have finished
     probe_imgComponents = [];
+    probe_imgComponents.push(text_5);
     probe_imgComponents.push(probe_image);
     
     probe_imgComponents.forEach( function(thisComponent) {
@@ -1042,6 +1112,20 @@ function probe_imgRoutineEachFrame(snapshot) {
     t = probe_imgClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+    
+    // *text_5* updates
+    if (t >= 0.0 && text_5.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_5.tStart = t;  // (not accounting for frame time here)
+      text_5.frameNStart = frameN;  // exact frame index
+      
+      text_5.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (text_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      text_5.setAutoDraw(false);
+    }
     
     // *probe_image* updates
     if (t >= 0 && probe_image.status === PsychoJS.Status.NOT_STARTED) {
@@ -1156,11 +1240,17 @@ function trial_respRoutineEachFrame(snapshot) {
     }
 
     if (key_resp.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp.getKeys({keyList: ['y', 'n', 'left', 'right', 'space'], waitRelease: false});
+      let theseKeys = key_resp.getKeys({keyList: ['s', 'd'], waitRelease: false});
       _key_resp_allKeys = _key_resp_allKeys.concat(theseKeys);
       if (_key_resp_allKeys.length > 0) {
         key_resp.keys = _key_resp_allKeys[_key_resp_allKeys.length - 1].name;  // just the last key pressed
         key_resp.rt = _key_resp_allKeys[_key_resp_allKeys.length - 1].rt;
+        // was this correct?
+        if (key_resp.keys == corr) {
+            key_resp.corr = 1;
+        } else {
+            key_resp.corr = 0;
+        }
         // a response ends the routine
         continueRoutine = false;
       }
@@ -1201,7 +1291,17 @@ function trial_respRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    // was no response the correct answer?!
+    if (key_resp.keys === undefined) {
+      if (['None','none',undefined].includes(corr)) {
+         key_resp.corr = 1;  // correct non-response
+      } else {
+         key_resp.corr = 0;  // failed to respond (incorrectly)
+      }
+    }
+    // store data for thisExp (ExperimentHandler)
     psychoJS.experiment.addData('key_resp.keys', key_resp.keys);
+    psychoJS.experiment.addData('key_resp.corr', key_resp.corr);
     if (typeof key_resp.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp.rt', key_resp.rt);
         routineTimer.reset();

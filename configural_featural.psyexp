@@ -7,7 +7,7 @@
     <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
-    <Param name="Experiment info" updates="None" val="{'participant': 'SR', 'design': '1'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{'participant': 'SR', 'design': '1', 'position': '1'}" valType="code"/>
     <Param name="Force stereo" updates="None" val="True" valType="bool"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="HTML path" updates="None" val="" valType="str"/>
@@ -98,7 +98,7 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0.3)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -122,7 +122,7 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, -0.3)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -147,7 +147,7 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="size" updates="constant" val="$(x_size*x_scale, y_size*y_scale)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -165,8 +165,8 @@
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="trialID = trialID + 1&amp;#10;if ((trial_order[trialID] === 1)) {&amp;#10;    target = paths[trialSame[sameTrialid]];&amp;#10;    probe = paths[trialSame[sameTrialid]];&amp;#10;    sameTrialid += 1;&amp;#10;} else {&amp;#10;    if ((trial_order[trialID] === 0)) {&amp;#10;        img_pair = trialDiff[diffTrial[diffTrialid]];&amp;#10;        target = paths[img_pair[0]];&amp;#10;        probe = paths[img_pair[1]];&amp;#10;        diffTrialid += 1;&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;if ((fix_switch[trialID] === 1)) {&amp;#10;    if ((fix_color[2] === -0.2)) {&amp;#10;        fix_color = fix_color_options[1];&amp;#10;        console.log(&quot;switch&quot;)&amp;#10;    } else {&amp;#10;        fix_color = fix_color_options[0];&amp;#10;        console.log(&quot;switch&quot;)&amp;#10;    }&amp;#10;} &amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="trialID = trialID + 1&amp;#10;if trial_order[trialID]==1:&amp;#10;    target = paths[trialSame[sameTrialid]]&amp;#10;    probe = paths[trialSame[sameTrialid]]&amp;#10;    sameTrialid += 1&amp;#10;elif trial_order[trialID]==0:&amp;#10;    img_pair = trialDiff[diffTrial[diffTrialid]]&amp;#10;    target = paths[img_pair[0]]&amp;#10;    probe = paths[img_pair[1]]&amp;#10;    diffTrialid += 1&amp;#10;&amp;#10;if fix_switch[trialID] == 1:&amp;#10;    if fix_switch[2] == -1:&amp;#10;        fix_color = fix_color_options[1]&amp;#10;    else:&amp;#10;        fix_color = fix_color_options[0]&amp;#10;&amp;#10;if expInfo['position'] == '0':&amp;#10;    xPosition = 0&amp;#10;elif expInfo['position'] == '1':&amp;#10;    if side[trialID] == 'left':&amp;#10;        xPosition = -(width*x_scale)&amp;#10;    elif side[trialID] == 'right':&amp;#10;        xPosition = width*x_scale" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="trialID = trialID + 1&amp;#10;if ((trial_order[trialID] === 1)) {&amp;#10;    target = paths[trialSame[sameTrialid]];&amp;#10;    probe = paths[trialSame[sameTrialid]];&amp;#10;    corr = 's';&amp;#10;    sameTrialid += 1;&amp;#10;} else {&amp;#10;    if ((trial_order[trialID] === 0)) {&amp;#10;        img_pair = trialDiff[diffTrial[diffTrialid]];&amp;#10;        target = paths[img_pair[0]];&amp;#10;        probe = paths[img_pair[1]];&amp;#10;        corr = 'd'&amp;#10;        diffTrialid += 1;&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;if ((fix_switch[trialID] === 1)) {&amp;#10;    if ((fix_color[2] === -0.2)) {&amp;#10;        fix_color = fix_color_options[1];&amp;#10;        console.log(&quot;switch&quot;)&amp;#10;    } else {&amp;#10;        fix_color = fix_color_options[0];&amp;#10;        console.log(&quot;switch&quot;)&amp;#10;    }&amp;#10;} &amp;#10;&amp;#10;if ((expInfo[&quot;position&quot;] === &quot;0&quot;)) {&amp;#10;    xPosition = 0;&amp;#10;} else {&amp;#10;    if ((expInfo[&quot;position&quot;] === &quot;1&quot;)) {&amp;#10;        if ((side[trialID] === 1)) {&amp;#10;            xPosition = (- (width * x_scale));&amp;#10;        } else {&amp;#10;            if ((side[trialID] === 0)) {&amp;#10;                xPosition = (width * x_scale);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;thisExp.addData('fix_switches', fix_switch[trialID])&amp;#10;thisExp.addData('side', side[trialID])&amp;#10;thisExp.addData('target',target)&amp;#10;thisExp.addData('probe',probe)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="trialID = trialID + 1&amp;#10;if trial_order[trialID]==1:&amp;#10;    target = paths[trialSame[sameTrialid]]&amp;#10;    probe = paths[trialSame[sameTrialid]]&amp;#10;    corr = 's'&amp;#10;    sameTrialid += 1&amp;#10;elif trial_order[trialID]==0:&amp;#10;    img_pair = trialDiff[diffTrial[diffTrialid]]&amp;#10;    target = paths[img_pair[0]]&amp;#10;    probe = paths[img_pair[1]]&amp;#10;    corr = 'd'&amp;#10;    diffTrialid += 1&amp;#10;&amp;#10;if fix_switch[trialID] == 1:&amp;#10;    if fix_switch[2] == -1:&amp;#10;        fix_color = fix_color_options[1]&amp;#10;    else:&amp;#10;        fix_color = fix_color_options[0]&amp;#10;&amp;#10;if expInfo['position'] == '0':&amp;#10;    xPosition = 0&amp;#10;elif expInfo['position'] == '1':&amp;#10;    if side[trialID] == 1: #left&amp;#10;        xPosition = -(width*x_scale)&amp;#10;    elif side[trialID] == 0: #right&amp;#10;        xPosition = width*x_scale&amp;#10;&amp;#10;thisExp.addData('fix_switches', fix_switch[trialID])&amp;#10;thisExp.addData('side', side[trialID])&amp;#10;thisExp.addData('target',target)&amp;#10;thisExp.addData('probe',probe)" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Both" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -177,6 +177,30 @@
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="code_4" valType="code"/>
       </CodeComponent>
+      <TextComponent name="text_4">
+        <Param name="color" updates="set every repeat" val="$fix_color" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="code"/>
+        <Param name="name" updates="None" val="text_4" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.2" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="+" valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
       <ImageComponent name="target_image">
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -190,8 +214,8 @@
         <Param name="name" updates="None" val="target_image" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="pos" updates="set every repeat" val="$(xPosition, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="size" updates="set every repeat" val="$(width*x_scale,height*y_scale)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -221,6 +245,30 @@
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="code_5" valType="code"/>
       </CodeComponent>
+      <TextComponent name="text_5">
+        <Param name="color" updates="set every repeat" val="$fix_color" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="code"/>
+        <Param name="name" updates="None" val="text_5" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.2" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="+" valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
       <ImageComponent name="probe_image">
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -234,8 +282,8 @@
         <Param name="name" updates="None" val="probe_image" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="pos" updates="set every repeat" val="$(xPosition, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="size" updates="set every repeat" val="$(width*x_scale,height*y_scale)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -253,8 +301,8 @@
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="&amp;#10;        // add-on: list(s: string): string[]&amp;#10;        function list(s) {&amp;#10;            // if s is a string, we return a list of its characters&amp;#10;            if (typeof s === 'string')&amp;#10;                return s.split('');&amp;#10;            else&amp;#10;                // otherwise we return s:&amp;#10;                return s;&amp;#10;        }&amp;#10;&amp;#10;        if ((Block_type === &quot;conf_face&quot;)) {&amp;#10;    paths = [&quot;Stimuli/edmd.png&quot;, &quot;Stimuli/eimd.png&quot;, &quot;Stimuli/eomu.png&quot;, &quot;Stimuli/eumu.png&quot;];&amp;#10;} else {&amp;#10;    if ((Block_type === &quot;conf_haus&quot;)) {&amp;#10;        paths = [&quot;Stimuli/H-8sim0.png&quot;, &quot;Stimuli/H-8sim1.png&quot;, &quot;Stimuli/H-8sim2.png&quot;, &quot;Stimuli/H-8sim3.png&quot;];&amp;#10;    } else {&amp;#10;        if ((Block_type === &quot;feat_face&quot;)) {&amp;#10;            paths = [&quot;Stimuli/f15.png&quot;, &quot;Stimuli/f24.png&quot;, &quot;Stimuli/f131.png&quot;, &quot;Stimuli/f142.png&quot;];&amp;#10;        } else {&amp;#10;            if ((Block_type === &quot;feat_haus&quot;)) {&amp;#10;                paths = [&quot;Stimuli/H5sim0.png&quot;, &quot;Stimuli/H6sim0.png&quot;, &quot;Stimuli/H7sim0.png&quot;, &quot;Stimuli/H8sim0.png&quot;];&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;trial_order = [shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6])].flat();&amp;#10;trial_order = round(divide_subPoint1(trial_order,6))&amp;#10;trialSame = [shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3])].flat();&amp;#10;trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];&amp;#10;diffTrial = list([...Array(12).keys()]);&amp;#10;shuffle(diffTrial);&amp;#10;sameTrialid = 0;&amp;#10;diffTrialid = 0;&amp;#10;trialID = -1;&amp;#10;rand_start = shuffle([0,1]);&amp;#10;fix_color = fix_color_options[rand_start[0]];&amp;#10;fix_switch = [0,0,shuffle([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();&amp;#10;&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if Block_type == 'conf_face':&amp;#10;    paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']&amp;#10;elif Block_type == 'conf_haus':&amp;#10;    paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']&amp;#10;elif Block_type == 'feat_face':&amp;#10;    paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']&amp;#10;elif Block_type == 'feat_haus':&amp;#10;    paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']&amp;#10;&amp;#10;trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]), permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))&amp;#10;trial_order = np.round(trial_order / 6 - 0.1)&amp;#10;trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))&amp;#10;trialDiff = np.array([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (1, 0), (2, 3), (2, 0), (2, 1),(3, 0), (3, 1), (3, 2)])&amp;#10;diffTrial = list(range(12))&amp;#10;shuffle(diffTrial)&amp;#10;&amp;#10;sameTrialid = 0&amp;#10;diffTrialid = 0&amp;#10;trialID = -1;&amp;#10;rand_start = [0,1]&amp;#10;shuffle(rand_start)&amp;#10;fix_color = fix_color_options[rand_start[0]]&amp;#10;fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]&amp;#10;shuffle(fixs_shuffled)&amp;#10;fix_switch = [0,0]+fixs_shuffled+[0,0]&amp;#10;&amp;#10;thisExp.addData('fix_switches', fix_switch)" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="&amp;#10;        // add-on: list(s: string): string[]&amp;#10;        function list(s) {&amp;#10;            // if s is a string, we return a list of its characters&amp;#10;            if (typeof s === 'string')&amp;#10;                return s.split('');&amp;#10;            else&amp;#10;                // otherwise we return s:&amp;#10;                return s;&amp;#10;        }&amp;#10;&amp;#10;        if ((Block_type === &quot;conf_face&quot;)) {&amp;#10;    paths = [&quot;Stimuli/edmd.png&quot;, &quot;Stimuli/eimd.png&quot;, &quot;Stimuli/eomu.png&quot;, &quot;Stimuli/eumu.png&quot;];&amp;#10;} else {&amp;#10;    if ((Block_type === &quot;conf_haus&quot;)) {&amp;#10;        paths = [&quot;Stimuli/H-8sim0.png&quot;, &quot;Stimuli/H-8sim1.png&quot;, &quot;Stimuli/H-8sim2.png&quot;, &quot;Stimuli/H-8sim3.png&quot;];&amp;#10;    } else {&amp;#10;        if ((Block_type === &quot;feat_face&quot;)) {&amp;#10;            paths = [&quot;Stimuli/f15.png&quot;, &quot;Stimuli/f24.png&quot;, &quot;Stimuli/f131.png&quot;, &quot;Stimuli/f142.png&quot;];&amp;#10;        } else {&amp;#10;            if ((Block_type === &quot;feat_haus&quot;)) {&amp;#10;                paths = [&quot;Stimuli/H5sim0.png&quot;, &quot;Stimuli/H6sim0.png&quot;, &quot;Stimuli/H7sim0.png&quot;, &quot;Stimuli/H8sim0.png&quot;];&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;trial_order = [shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6])].flat();&amp;#10;trial_order = round(divide_subPoint1(trial_order,6))&amp;#10;trialSame = [shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3])].flat();&amp;#10;trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];&amp;#10;diffTrial = list([...Array(12).keys()]);&amp;#10;shuffle(diffTrial);&amp;#10;sameTrialid = 0;&amp;#10;diffTrialid = 0;&amp;#10;trialID = -1;&amp;#10;rand_start = shuffle([0,1]);&amp;#10;fix_color = fix_color_options[rand_start[0]];&amp;#10;fix_switch = [0,0,shuffle([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();&amp;#10;&amp;#10;side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]&amp;#10;shuffle(side)&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if Block_type == 'conf_face':&amp;#10;    paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']&amp;#10;elif Block_type == 'conf_haus':&amp;#10;    paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']&amp;#10;elif Block_type == 'feat_face':&amp;#10;    paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']&amp;#10;elif Block_type == 'feat_haus':&amp;#10;    paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']&amp;#10;&amp;#10;trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]), permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))&amp;#10;trial_order = np.round(trial_order / 6 - 0.1)&amp;#10;trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))&amp;#10;trialDiff = np.array([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (1, 0), (2, 3), (2, 0), (2, 1),(3, 0), (3, 1), (3, 2)])&amp;#10;diffTrial = list(range(12))&amp;#10;shuffle(diffTrial)&amp;#10;&amp;#10;sameTrialid = 0&amp;#10;diffTrialid = 0&amp;#10;trialID = -1;&amp;#10;rand_start = [0,1]&amp;#10;shuffle(rand_start)&amp;#10;fix_color = fix_color_options[rand_start[0]]&amp;#10;fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]&amp;#10;shuffle(fixs_shuffled)&amp;#10;fix_switch = [0,0]+fixs_shuffled+[0,0]&amp;#10;&amp;#10;side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]&amp;#10;shuffle(side)&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Both" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -278,7 +326,7 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -290,14 +338,14 @@
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="key_resp_2">
-        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="key_resp_2" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="1" valType="code"/>
@@ -341,7 +389,7 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -353,21 +401,21 @@
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="key_resp">
-        <Param name="allowedKeys" updates="constant" val="'y','n','left','right','space'" valType="code"/>
-        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="'s','d'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="$corr" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="key_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
-        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
     </Routine>
@@ -385,12 +433,12 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="0.2" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.3" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
         <Param name="text" updates="constant" val="+" valType="extendedStr"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>

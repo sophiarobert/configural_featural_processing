@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sat Oct 24 19:48:03 2020
+    on Sat Oct 24 20:45:07 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -37,7 +37,7 @@ os.chdir(_thisDir)
 # Store info about the experiment session
 psychopyVersion = '2020.2.4'
 expName = 'configural_featural'  # from the Builder filename that created this script
-expInfo = {'participant': 'SR', 'design': '1'}
+expInfo = {'participant': 'SR', 'design': '1', 'position': '1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -150,14 +150,21 @@ key_resp_2 = keyboard.Keyboard()
 
 # Initialize components for Routine "target_img"
 target_imgClock = core.Clock()
+text_4 = visual.TextStim(win=win, name='text_4',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
 target_image = visual.ImageStim(
     win=win,
     name='target_image', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=1.0,
+    ori=0, pos=[0,0], size=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
-    texRes=512, interpolate=True, depth=-1.0)
+    texRes=512, interpolate=True, depth=-2.0)
 
 # Initialize components for Routine "ISI_fix"
 ISI_fixClock = core.Clock()
@@ -171,14 +178,21 @@ text = visual.TextStim(win=win, name='text',
 
 # Initialize components for Routine "probe_img"
 probe_imgClock = core.Clock()
+text_5 = visual.TextStim(win=win, name='text_5',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
 probe_image = visual.ImageStim(
     win=win,
     name='probe_image', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=1.0,
+    ori=0, pos=[0,0], size=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
-    texRes=512, interpolate=True, depth=-1.0)
+    texRes=512, interpolate=True, depth=-2.0)
 
 # Initialize components for Routine "trial_resp"
 trial_respClock = core.Clock()
@@ -295,12 +309,6 @@ for thisComponent in screen_scaleComponents:
 thisExp.addData('X Scale',x_scale)
 thisExp.addData('Y Scale',y_scale)
 
-thisExp.addData('text_top.started', text_top.tStartRefresh)
-thisExp.addData('text_top.stopped', text_top.tStopRefresh)
-thisExp.addData('text_bottom.started', text_bottom.tStartRefresh)
-thisExp.addData('text_bottom.stopped', text_bottom.tStopRefresh)
-thisExp.addData('ccimage.started', ccimage.tStartRefresh)
-thisExp.addData('ccimage.stopped', ccimage.tStopRefresh)
 # the Routine "screen_scale" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -403,7 +411,10 @@ for thisBlock in blocks:
     shuffle(fixs_shuffled)
     fix_switch = [0,0]+fixs_shuffled+[0,0]
     
-    thisExp.addData('fix_switches', fix_switch)
+    side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+    shuffle(side)
+    
+    
     text_3.setText(instruction_text)
     key_resp_2.keys = []
     key_resp_2.rt = []
@@ -484,8 +495,6 @@ for thisBlock in blocks:
     for thisComponent in instrBlock1Components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    blocks.addData('text_3.started', text_3.tStartRefresh)
-    blocks.addData('text_3.stopped', text_3.tStopRefresh)
     # the Routine "instrBlock1" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -516,11 +525,13 @@ for thisBlock in blocks:
         if trial_order[trialID]==1:
             target = paths[trialSame[sameTrialid]]
             probe = paths[trialSame[sameTrialid]]
+            corr = 's'
             sameTrialid += 1
         elif trial_order[trialID]==0:
             img_pair = trialDiff[diffTrial[diffTrialid]]
             target = paths[img_pair[0]]
             probe = paths[img_pair[1]]
+            corr = 'd'
             diffTrialid += 1
         
         if fix_switch[trialID] == 1:
@@ -532,14 +543,21 @@ for thisBlock in blocks:
         if expInfo['position'] == '0':
             xPosition = 0
         elif expInfo['position'] == '1':
-            if side[trialID] == 'left':
+            if side[trialID] == 1: #left
                 xPosition = -(width*x_scale)
-            elif side[trialID] == 'right':
+            elif side[trialID] == 0: #right
                 xPosition = width*x_scale
+        
+        thisExp.addData('fix_switches', fix_switch[trialID])
+        thisExp.addData('side', side[trialID])
+        thisExp.addData('target',target)
+        thisExp.addData('probe',probe)
+        text_4.setColor(fix_color, colorSpace='rgb')
+        target_image.setPos((xPosition, 0))
         target_image.setSize((width*x_scale,height*y_scale))
         target_image.setImage(target)
         # keep track of which components have finished
-        target_imgComponents = [target_image]
+        target_imgComponents = [text_4, target_image]
         for thisComponent in target_imgComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -561,6 +579,23 @@ for thisBlock in blocks:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            
+            # *text_4* updates
+            if text_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                text_4.frameNStart = frameN  # exact frame index
+                text_4.tStart = t  # local t and not account for scr refresh
+                text_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(text_4, 'tStartRefresh')  # time at next scr refresh
+                text_4.setAutoDraw(True)
+            if text_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > text_4.tStartRefresh + 0.2-frameTolerance:
+                    # keep track of stop time/frame for later
+                    text_4.tStop = t  # not accounting for scr refresh
+                    text_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(text_4, 'tStopRefresh')  # time at next scr refresh
+                    text_4.setAutoDraw(False)
             
             # *target_image* updates
             if target_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -600,12 +635,10 @@ for thisBlock in blocks:
         for thisComponent in target_imgComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('target_image.started', target_image.tStartRefresh)
-        trials.addData('target_image.stopped', target_image.tStopRefresh)
         
         # ------Prepare to start Routine "ISI_fix"-------
         continueRoutine = True
-        routineTimer.add(0.200000)
+        routineTimer.add(0.300000)
         # update component parameters for each repeat
         text.setColor(fix_color, colorSpace='rgb')
         # keep track of which components have finished
@@ -642,7 +675,7 @@ for thisBlock in blocks:
                 text.setAutoDraw(True)
             if text.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text.tStartRefresh + 0.2-frameTolerance:
+                if tThisFlipGlobal > text.tStartRefresh + 0.3-frameTolerance:
                     # keep track of stop time/frame for later
                     text.tStop = t  # not accounting for scr refresh
                     text.frameNStop = frameN  # exact frame index
@@ -670,17 +703,17 @@ for thisBlock in blocks:
         for thisComponent in ISI_fixComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text.started', text.tStartRefresh)
-        trials.addData('text.stopped', text.tStopRefresh)
         
         # ------Prepare to start Routine "probe_img"-------
         continueRoutine = True
         routineTimer.add(0.200000)
         # update component parameters for each repeat
+        text_5.setColor(fix_color, colorSpace='rgb')
+        probe_image.setPos((xPosition, 0))
         probe_image.setSize((width*x_scale,height*y_scale))
         probe_image.setImage(probe)
         # keep track of which components have finished
-        probe_imgComponents = [probe_image]
+        probe_imgComponents = [text_5, probe_image]
         for thisComponent in probe_imgComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -702,6 +735,23 @@ for thisBlock in blocks:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            
+            # *text_5* updates
+            if text_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                text_5.frameNStart = frameN  # exact frame index
+                text_5.tStart = t  # local t and not account for scr refresh
+                text_5.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(text_5, 'tStartRefresh')  # time at next scr refresh
+                text_5.setAutoDraw(True)
+            if text_5.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > text_5.tStartRefresh + 0.2-frameTolerance:
+                    # keep track of stop time/frame for later
+                    text_5.tStop = t  # not accounting for scr refresh
+                    text_5.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(text_5, 'tStopRefresh')  # time at next scr refresh
+                    text_5.setAutoDraw(False)
             
             # *probe_image* updates
             if probe_image.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -741,8 +791,6 @@ for thisBlock in blocks:
         for thisComponent in probe_imgComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('probe_image.started', probe_image.tStartRefresh)
-        trials.addData('probe_image.stopped', probe_image.tStopRefresh)
         
         # ------Prepare to start Routine "trial_resp"-------
         continueRoutine = True
@@ -798,11 +846,16 @@ for thisBlock in blocks:
                 win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp.getKeys(keyList=['y', 'n', 'left', 'right', 'space'], waitRelease=False)
+                theseKeys = key_resp.getKeys(keyList=['s', 'd'], waitRelease=False)
                 _key_resp_allKeys.extend(theseKeys)
                 if len(_key_resp_allKeys):
                     key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
                     key_resp.rt = _key_resp_allKeys[-1].rt
+                    # was this correct?
+                    if (key_resp.keys == str(corr)) or (key_resp.keys == corr):
+                        key_resp.corr = 1
+                    else:
+                        key_resp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
             
@@ -827,16 +880,19 @@ for thisBlock in blocks:
         for thisComponent in trial_respComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text_2.started', text_2.tStartRefresh)
-        trials.addData('text_2.stopped', text_2.tStopRefresh)
         # check responses
         if key_resp.keys in ['', [], None]:  # No response was made
             key_resp.keys = None
+            # was no response the correct answer?!
+            if str(corr).lower() == 'none':
+               key_resp.corr = 1;  # correct non-response
+            else:
+               key_resp.corr = 0;  # failed to respond (incorrectly)
+        # store data for trials (TrialHandler)
         trials.addData('key_resp.keys',key_resp.keys)
+        trials.addData('key_resp.corr', key_resp.corr)
         if key_resp.keys != None:  # we had a response
             trials.addData('key_resp.rt', key_resp.rt)
-        trials.addData('key_resp.started', key_resp.tStartRefresh)
-        trials.addData('key_resp.stopped', key_resp.tStopRefresh)
         # the Routine "trial_resp" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
