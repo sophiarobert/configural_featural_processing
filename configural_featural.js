@@ -201,6 +201,7 @@ function experimentInit() {
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
+  var img_pair;
   oldt = 0;
   x_size = 8.56;
   y_size = 5.398;
