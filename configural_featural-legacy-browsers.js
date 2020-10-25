@@ -937,6 +937,8 @@ function instrBlockRoutineEnd(snapshot) {
 
 
 var img_pair;
+var target;
+var probe;
 var xPosition;
 var _key_resp_3_allKeys;
 var target_imgComponents;
@@ -949,6 +951,8 @@ function target_imgRoutineBegin(snapshot) {
     routineTimer.add(0.200000);
     // update component parameters for each repeat
     img_pair = 0;
+    target = 0;
+    probe = 0;
     trialID = (trialID + 1);
     if ((fix_switch[trialID] === 1)) {
         if ((fix_switch === "pink")) {
