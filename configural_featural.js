@@ -64,7 +64,6 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'Designs/design1.csv', 'path': 'Designs/design1.csv'},
     {'name': 'bankcard.png', 'path': 'bankcard.png'}
   ]
 });
@@ -118,6 +117,7 @@ var text_bottom;
 var ccimage;
 var startInstructClock;
 var fix_color_options;
+var design_file;
 var instrBlockClock;
 var text_3;
 var key_resp_2;
@@ -273,6 +273,37 @@ function experimentInit() {
   // Initialize components for Routine "startInstruct"
   startInstructClock = new util.Clock();
   fix_color_options = ["pink", "orange"];
+  if ((expInfo["design"] === "1")) {
+      design_file = "Designs/design1.csv";
+  } else {
+      if ((expInfo["design"] === "2")) {
+          design_file = "Designs/design2.csv";
+      } else {
+          if ((expInfo["design"] === "3")) {
+              design_file = "Designs/design3.csv";
+          } else {
+              if ((expInfo["design"] === "4")) {
+                  design_file = "Designs/design4.csv";
+              } else {
+                  if ((expInfo["design"] === "5")) {
+                      design_file = "Designs/design5.csv";
+                  } else {
+                      if ((expInfo["design"] === "6")) {
+                          design_file = "Designs/design6.csv";
+                      } else {
+                          if ((expInfo["design"] === "7")) {
+                              design_file = "Designs/design7.csv";
+                          } else {
+                              if ((expInfo["design"] === "8")) {
+                                  design_file = "Designs/design8.csv";
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
   
   // Initialize components for Routine "instrBlock"
   instrBlockClock = new util.Clock();
@@ -282,7 +313,7 @@ function experimentInit() {
     text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -1.0 
   });
@@ -632,7 +663,7 @@ function blocksLoopBegin(blocksLoopScheduler) {
     psychoJS: psychoJS,
     nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
-    trialList: 'Designs/design1.csv',
+    trialList: design_file,
     seed: undefined, name: 'blocks'
   });
   psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
@@ -982,7 +1013,11 @@ function target_imgRoutineBegin(snapshot) {
                     console.log(("left same ID: " + sameTrial_left_id.toString()));
                     target = paths[trialSame_left[sameTrial_left_id]];
                     probe = paths[trialSame_left[sameTrial_left_id]];
-                    corr = "s";
+                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        corr = "f";
+                    } else {
+                        corr = "j";
+                    }
                 } else {
                     if ((side_same[sameTrialid] === 0)) {
                         xPosition = (width * x_scale);
@@ -990,7 +1025,11 @@ function target_imgRoutineBegin(snapshot) {
                         console.log(("right same ID: " + sameTrial_right_id.toString()));
                         target = paths[trialSame_right[sameTrial_right_id]];
                         probe = paths[trialSame_right[sameTrial_right_id]];
-                        corr = "s";
+                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            corr = "f";
+                        } else {
+                            corr = "j";
+                        }
                     }
                 }
             } else {
@@ -1003,7 +1042,11 @@ function target_imgRoutineBegin(snapshot) {
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
-                        corr = "d";
+                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            corr = "j";
+                        } else {
+                            corr = "f";
+                        }
                     } else {
                         if ((side_diff[diffTrialid] === 0)) {
                             xPosition = (width * x_scale);
@@ -1012,7 +1055,11 @@ function target_imgRoutineBegin(snapshot) {
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
-                            corr = "d";
+                            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                                corr = "j";
+                            } else {
+                                corr = "f";
+                            }
                         }
                     }
                 }
@@ -1024,14 +1071,22 @@ function target_imgRoutineBegin(snapshot) {
                     sameTrialid += 1;
                     target = paths[trialSame[sameTrialid]];
                     probe = paths[trialSame[sameTrialid]];
-                    corr = "s";
+                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        corr = "f";
+                    } else {
+                        corr = "j";
+                    }
                 } else {
                     if ((trial_order[trialID] === 0)) {
                         diffTrialid += 1;
                         img_pair = trialDiff[diffTrial[diffTrialid]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
-                        corr = "d";
+                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            corr = "j";
+                        } else {
+                            corr = "f";
+                        }
                     }
                 }
             } else {
@@ -1041,14 +1096,22 @@ function target_imgRoutineBegin(snapshot) {
                         sameTrialid += 1;
                         target = paths[trialSame[sameTrialid]];
                         probe = paths[trialSame[sameTrialid]];
-                        corr = "s";
+                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            corr = "f";
+                        } else {
+                            corr = "j";
+                        }
                     } else {
                         if ((trial_order[trialID] === 0)) {
                             diffTrialid += 1;
                             img_pair = trialDiff[diffTrial[diffTrialid]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
-                            corr = "d";
+                            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                                corr = "j";
+                            } else {
+                                corr = "f";
+                            }
                         }
                     }
                 }
@@ -1524,7 +1587,7 @@ function trial_respRoutineEachFrame(snapshot) {
     }
 
     if (key_resp.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp.getKeys({keyList: ['s', 'd'], waitRelease: false});
+      let theseKeys = key_resp.getKeys({keyList: ['f', 'j'], waitRelease: false});
       _key_resp_allKeys = _key_resp_allKeys.concat(theseKeys);
       if (_key_resp_allKeys.length > 0) {
         key_resp.keys = _key_resp_allKeys[_key_resp_allKeys.length - 1].name;  // just the last key pressed

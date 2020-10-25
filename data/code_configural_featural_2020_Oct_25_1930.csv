@@ -1,0 +1,94 @@
+﻿Block_type,instruction_text,blocks.thisRepN,blocks.thisTrialN,blocks.thisN,blocks.thisIndex,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,X Scale,Y Scale,fix_switches,side,trial_type1S0D,target,probe,key_resp_3.keys,key_resp_4.keys,key_resp_5.keys,key_resp.keys,key_resp.corr,key_resp.rt,key_resp_6.keys,key_resp_6.started,key_resp_6.stopped,participant,design,position,date,expName,psychopyVersion,frameRate,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,0,0,0,0,0.05,0.05,0,-0.17295000000000002,1.0,Stimuli/f15.png,Stimuli/f15.png,None,None,None,j,1,1.6960285870009102,None,57.340323356038425,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,1,0,1,0,,,0,-0.17295000000000002,0.0,Stimuli/f142.png,Stimuli/f24.png,None,None,None,f,1,0.12218205496901646,None,59.77363662904827,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,2,0,2,0,,,0,-0.17295000000000002,0.0,Stimuli/f131.png,Stimuli/f15.png,None,None,None,f,1,0.08629316696897149,None,60.62370880402159,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,3,0,3,0,,,0,-0.17295000000000002,0.0,Stimuli/f142.png,Stimuli/f15.png,None,None,None,f,1,0.04226048500277102,None,61.44047896203119,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,4,0,4,0,,,0,-0.17295000000000002,1.0,Stimuli/f24.png,Stimuli/f24.png,None,None,None,f,0,0.04536401596851647,None,62.22363509301795,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,5,0,5,0,,,0,0.17295000000000002,1.0,Stimuli/f15.png,Stimuli/f15.png,None,None,None,f,0,0.027069127012509853,None,62.99294967803871,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,6,0,6,0,,,1,-0.17295000000000002,0.0,Stimuli/f15.png,Stimuli/f131.png,None,None,None,j,0,0.6615137149929069,None,63.74033808405511,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,7,0,7,0,,,0,0.17295000000000002,1.0,Stimuli/f142.png,Stimuli/f142.png,None,None,None,j,1,0.0461259150179103,None,65.12368768500164,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,8,0,8,0,,,0,-0.17295000000000002,0.0,Stimuli/f15.png,Stimuli/f24.png,None,None,None,f,1,0.0818757739616558,None,65.8905102450517,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,9,0,9,0,,,1,-0.17295000000000002,1.0,Stimuli/f131.png,Stimuli/f131.png,None,None,None,j,1,0.015537395956926048,None,66.69036652200157,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,10,0,10,0,,,0,-0.17295000000000002,1.0,Stimuli/f142.png,Stimuli/f142.png,None,None,None,j,1,0.10101370699703693,None,67.42378455604194,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,11,0,11,0,,,0,0.17295000000000002,0.0,Stimuli/f142.png,Stimuli/f15.png,None,None,None,j,0,0.1006470819702372,None,68.25951632700162,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,12,0,12,0,,,0,-0.17295000000000002,0.0,Stimuli/f24.png,Stimuli/f142.png,None,None,None,j,0,0.09652394999284297,None,69.09258457703982,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,13,0,13,0,,,0,-0.17295000000000002,1.0,Stimuli/f131.png,Stimuli/f131.png,None,None,None,j,1,0.11031836998881772,None,69.9072178400238,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,14,0,14,0,,,1,0.17295000000000002,0.0,Stimuli/f15.png,Stimuli/f142.png,None,None,None,j,0,0.06926771602593362,None,70.75725196802523,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,15,0,15,0,,,0,0.17295000000000002,1.0,Stimuli/f131.png,Stimuli/f131.png,None,None,None,f,0,0.20874070696299896,None,71.55683391500497,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,16,0,16,0,,,0,-0.17295000000000002,0.0,Stimuli/f15.png,Stimuli/f142.png,None,None,None,f,1,0.055942234001122415,None,72.49050151801202,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,17,0,17,0,,,0,0.17295000000000002,1.0,Stimuli/f24.png,Stimuli/f24.png,None,None,None,j,1,0.08010364603251219,None,73.27374554000562,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,18,0,18,0,,,0,0.17295000000000002,1.0,Stimuli/f24.png,Stimuli/f24.png,None,None,None,f,0,0.13100123399635777,None,74.07619343604892,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,19,0,19,0,,,1,0.17295000000000002,0.0,Stimuli/f15.png,Stimuli/f24.png,None,None,None,j,0,2.309432932001073,None,74.92617821705062,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,20,0,20,0,,,0,-0.17295000000000002,0.0,Stimuli/f131.png,Stimuli/f142.png,None,None,None,f,1,0.020157440972980112,None,77.95722369500436,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,21,0,21,0,,,0,0.17295000000000002,0.0,Stimuli/f131.png,Stimuli/f142.png,None,None,None,f,1,32.78078747401014,None,78.70719089801423,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+feat_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,22,0,22,0,,,0,-0.17295000000000002,1.0,Stimuli/f15.png,Stimuli/f15.png,None,None,None,f,0,0.03780093300156295,None,112.20747494202806,None,code,6,2,2020_Oct_25_1930,configural_featural,2020.2.4,None,
+,,,,,,,,,,,,0,-0.17295000000000002,1.0,Stimuli/f142.png,Stimuli/f142.png,None,None,None,,,,,,,,,,,,,,

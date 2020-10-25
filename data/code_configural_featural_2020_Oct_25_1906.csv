@@ -1,0 +1,42 @@
+﻿Block_type,instruction_text,blocks.thisRepN,blocks.thisTrialN,blocks.thisN,blocks.thisIndex,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,X Scale,Y Scale,fix_switches,side,trial_type1S0D,target,probe,key_resp_3.keys,key_resp_4.keys,key_resp_5.keys,key_resp.keys,key_resp.corr,key_resp.rt,key_resp_6.keys,key_resp_6.started,key_resp_6.stopped,participant,design,position,date,expName,psychopyVersion,frameRate,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,0,0,0,0,0.05,0.05,0,0.17295000000000002,1.0,Stimuli/edmd.png,Stimuli/edmd.png,None,None,None,f,0,2.1607644730247557,None,31.816296986013185,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,1,0,1,0,,,0,-0.17295000000000002,1.0,Stimuli/eumu.png,Stimuli/eumu.png,None,None,None,f,0,0.3911990160122514,None,34.69970918801846,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,2,0,2,0,,,0,-0.17295000000000002,0.0,Stimuli/eomu.png,Stimuli/edmd.png,None,None,None,f,1,0.34001828997861594,None,35.83302627899684,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,3,0,3,0,,,0,-0.17295000000000002,0.0,Stimuli/eumu.png,Stimuli/eomu.png,None,None,None,f,1,2.8324312340118922,None,36.91657977103023,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,4,0,4,0,,,0,0.17295000000000002,0.0,Stimuli/edmd.png,Stimuli/eomu.png,None,None,None,f,1,0.6335986540070735,None,40.466525894997176,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,5,0,5,0,,,0,0.17295000000000002,1.0,Stimuli/eomu.png,Stimuli/eomu.png,None,None,None,f,0,1.0652016599779017,None,41.84993637702428,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,6,0,6,0,,,0,-0.17295000000000002,1.0,Stimuli/eomu.png,Stimuli/eomu.png,None,None,None,f,0,0.24241140397498384,None,43.63299679901684,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,7,0,7,0,,,0,0.17295000000000002,0.0,Stimuli/eumu.png,Stimuli/eimd.png,None,None,None,f,1,1.035898775968235,None,44.599629496980924,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,8,0,8,0,,,0,-0.17295000000000002,1.0,Stimuli/edmd.png,Stimuli/edmd.png,None,None,None,f,0,0.5857175239943899,None,46.366426940017845,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+conf_face,"Press J for same or F for different faces. 
+If you see the + change colors press <SPACE>. 
+
+Press <SPACE> to start!",0,0,0,0,9,0,9,0,,,0,0.17295000000000002,0.0,Stimuli/eimd.png,Stimuli/eomu.png,None,None,None,f,1,0.11604969698237255,None,47.68308215099387,None,code,5,2,2020_Oct_25_1906,configural_featural,2020.2.4,None,
+,,,,,,,,,,,,1,0.17295000000000002,1.0,Stimuli/eimd.png,Stimuli/eimd.png,None,None,None,,,,,,,,,,,,,,
