@@ -714,6 +714,13 @@ function instrBlock1RoutineBegin(snapshot) {
         return array
     }
     
+    function divide_subPoint1(array, divisor) {
+        let array_divided = array.map(function(element) {
+    	       return element/divisor - 0.1;
+        });
+        return array_divided
+    }
+    
     function round_array(array) {
         array = array.map(function(each_element){
             return Math.round(each_element);
