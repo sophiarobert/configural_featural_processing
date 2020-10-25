@@ -264,7 +264,7 @@ function experimentInit() {
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
-    color: new util.Color('white'),  opacity: 1,
+    color: new util.Color('black'),  opacity: 1,
     depth: -1.0 
   });
   
