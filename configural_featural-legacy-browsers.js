@@ -140,7 +140,7 @@ function experimentInit() {
       return +(Math.round(num + ("e+" + n))  + ("e-" + n));
   }
   
-  function shuffle(array) {
+  function shuffle_array(array) {
       for (let i = array.length - 1; i > 0; i--) {
           let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
   
@@ -700,7 +700,7 @@ function instrBlock1RoutineBegin(snapshot) {
                     return s;
             }
     
-            if ((Block_type === "conf_face")) {
+    if ((Block_type === "conf_face")) {
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
     } else {
         if ((Block_type === "conf_haus")) {
@@ -715,21 +715,21 @@ function instrBlock1RoutineBegin(snapshot) {
             }
         }
     }
-    trial_order = [shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6])].flat();
+    trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
     trial_order = round_array(divide_subPoint1(trial_order,6))
-    trialSame = [shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3])].flat();
+    trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
     trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
     diffTrial = list([...Array(12).keys()]);
-    shuffle(diffTrial);
+    diffTrial = shuffle_array(diffTrial);
     sameTrialid = 0;
     diffTrialid = 0;
     trialID = -1;
-    rand_start = shuffle([0,1]);
+    rand_start = shuffle_array([0,1]);
     fix_color = fix_color_options[rand_start[0]];
-    fix_switch = [0,0,shuffle([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
+    fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
     
     side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-    shuffle(side)
+    shuffle_array(side)
     
     
     text_3.setText(instruction_text);
