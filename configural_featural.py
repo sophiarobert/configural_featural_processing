@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 16:51:08 2020
+    on Sun Oct 25 17:07:13 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -209,6 +209,16 @@ text_2 = visual.TextStim(win=win, name='text_2',
 key_resp = keyboard.Keyboard()
 key_resp_6 = keyboard.Keyboard()
 
+# Initialize components for Routine "EndScreen"
+EndScreenClock = core.Clock()
+allDone = visual.TextStim(win=win, name='allDone',
+    text='You are all done. Thank you!',
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0);
+
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
@@ -400,10 +410,10 @@ for thisBlock in blocks:
     
     sameTrialid = 0
     diffTrialid = 0
-    sameTrial_left_id = 0
-    diffTrial_left_id = 0
-    sameTrial_right_id = 0
-    diffTrial_right_id = 0
+    sameTrial_left_id = -1
+    diffTrial_left_id = -1
+    sameTrial_right_id = -1
+    diffTrial_right_id = -1
     trialID = -1;
     rand_start = [0,1]
     shuffle(rand_start)
@@ -573,29 +583,29 @@ for thisBlock in blocks:
             if side[trialID] == 1: #left
                 xPosition = -(width*x_scale)
                 if trial_order[trialID]==1:
+                    sameTrial_left_id += 1
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
                     corr = 's'
-                    sameTrial_left_id += 1
                 elif trial_order[trialID]==0:
+                    diffTrial_left_id += 1
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
                     corr = 'd'
-                    diffTrial_left_id += 1
             elif side[trialID] == 0: #right
                 xPosition = width*x_scale
                 if trial_order[trialID]==1:
+                    sameTrial_right_id += 1
                     target = paths[trialSame_right[sameTrial_right_id]]
                     probe = paths[trialSame_right[sameTrial_right_id]]
                     corr = 's'
-                    sameTrial_right_id += 1
                 elif trial_order[trialID]==0:
+                    diffTrial_right_id += 1
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
                     corr = 'd'
-                    diffTrial_right_id += 1
         elif expInfo['position'] == '1':
             xPosition = -(width*x_scale)
             if trial_order[trialID]==1:
@@ -1121,6 +1131,75 @@ for thisBlock in blocks:
     
 # completed 1 repeats of 'blocks'
 
+
+# ------Prepare to start Routine "EndScreen"-------
+continueRoutine = True
+routineTimer.add(1.000000)
+# update component parameters for each repeat
+# keep track of which components have finished
+EndScreenComponents = [allDone]
+for thisComponent in EndScreenComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+EndScreenClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "EndScreen"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = EndScreenClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=EndScreenClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *allDone* updates
+    if allDone.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        allDone.frameNStart = frameN  # exact frame index
+        allDone.tStart = t  # local t and not account for scr refresh
+        allDone.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(allDone, 'tStartRefresh')  # time at next scr refresh
+        allDone.setAutoDraw(True)
+    if allDone.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > allDone.tStartRefresh + 1.0-frameTolerance:
+            # keep track of stop time/frame for later
+            allDone.tStop = t  # not accounting for scr refresh
+            allDone.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(allDone, 'tStopRefresh')  # time at next scr refresh
+            allDone.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in EndScreenComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "EndScreen"-------
+for thisComponent in EndScreenComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('allDone.started', allDone.tStartRefresh)
+thisExp.addData('allDone.stopped', allDone.tStopRefresh)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
