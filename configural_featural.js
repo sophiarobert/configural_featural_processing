@@ -982,9 +982,9 @@ function target_imgRoutineBegin(snapshot) {
                 } else {
                     if ((trial_order[trialID] === 0)) {
                         diffTrial_left_id += 1;
-                        console.log(diffTrial_left_id);
-                        console.log(diffTrial_left[diffTrial_left_id]);
-                        console.log(trialDiff_left[diffTrial_left[diffTrial_left_id]]);
+                        console.log(("left ID: " + diffTrial_left_id));
+                        console.log(("left: " + diffTrial_left[diffTrial_left_id]));
+                        console.log(("left: " + trialDiff_left[diffTrial_left[diffTrial_left_id]]));
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
@@ -1002,9 +1002,9 @@ function target_imgRoutineBegin(snapshot) {
                     } else {
                         if ((trial_order[trialID] === 0)) {
                             diffTrial_right_id += 1;
-                            console.log(diffTrial_right_id);
-                            console.log(diffTrial_right[diffTrial_right_id]);
-                            console.log(trialDiff_right[diffTrial_right[diffTrial_right_id]]);
+                            console.log(("right ID: " + diffTrial_right_id));
+                            console.log(("right: " + diffTrial_right[diffTrial_right_id]));
+                            console.log(("right: " + trialDiff_right[diffTrial_right[diffTrial_right_id]]));
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
