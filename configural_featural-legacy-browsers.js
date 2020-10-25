@@ -191,7 +191,7 @@ function experimentInit() {
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
-  var img_pair;
+  
   oldt = 0;
   x_size = 8.56;
   y_size = 5.398;
@@ -691,7 +691,7 @@ function instrBlock1RoutineBegin(snapshot) {
     instrBlock1Clock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    
+    var img_pair;
             // add-on: list(s: string): string[]
             function list(s) {
                 // if s is a string, we return a list of its characters
