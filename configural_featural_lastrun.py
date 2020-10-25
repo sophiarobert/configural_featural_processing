@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 16:58:32 2020
+    on Sun Oct 25 18:09:03 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -209,6 +209,16 @@ text_2 = visual.TextStim(win=win, name='text_2',
 key_resp = keyboard.Keyboard()
 key_resp_6 = keyboard.Keyboard()
 
+# Initialize components for Routine "EndScreen"
+EndScreenClock = core.Clock()
+allDone = visual.TextStim(win=win, name='allDone',
+    text='You are all done. Thank you!',
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0);
+
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
@@ -398,8 +408,8 @@ for thisBlock in blocks:
     elif Block_type == 'feat_haus':
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
     
-    sameTrialid = 0
-    diffTrialid = 0
+    sameTrialid = -1
+    diffTrialid = -1
     sameTrial_left_id = -1
     diffTrial_left_id = -1
     sameTrial_right_id = -1
@@ -424,8 +434,10 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-        shuffle(side)
+        side_same = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+        side_diff = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+        shuffle(side_same)
+        shuffle(side_diff)
     elif expInfo['position'] == '1':
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
@@ -437,7 +449,7 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    #    side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     elif expInfo['position'] == '3':
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
@@ -449,7 +461,7 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    #    side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     
     text_3.setText(instruction_text)
@@ -559,6 +571,9 @@ for thisBlock in blocks:
         routineTimer.add(0.200000)
         # update component parameters for each repeat
         img_pair = 0
+        target = 0
+        probe = 0
+        corr = 0
         trialID = trialID + 1
         
         if fix_switch[trialID] == 1:
@@ -570,28 +585,36 @@ for thisBlock in blocks:
         if expInfo['position'] == '0':
             xPosition = 0
         elif expInfo['position'] == '2':
-            if side[trialID] == 1: #left
-                xPosition = -(width*x_scale)
-                if trial_order[trialID]==1:
+            if trial_order[trialID]==1:
+                sameTrialid += 1
+                if side_same[sameTrialid] == 1: #left
+                    xPosition = -(width*x_scale)
                     sameTrial_left_id += 1
+                    print('left same ID: ' + str(sameTrial_left_id))
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
                     corr = 's'
-                elif trial_order[trialID]==0:
+                elif side_same[sameTrialid] == 0: #right
+                    xPosition = width*x_scale
+                    sameTrial_right_id += 1
+                    print('right same ID: ' + str(sameTrial_right_id))
+                    target = paths[trialSame_right[sameTrial_right_id]]
+                    probe = paths[trialSame_right[sameTrial_right_id]]
+                    corr = 's'
+            elif trial_order[trialID]==0:
+                diffTrialid += 1
+                if side_diff[diffTrialid] == 1: #left
+                    xPosition = -(width*x_scale)
                     diffTrial_left_id += 1
+                    print('left diff ID: ' + str(diffTrial_left_id))
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
                     corr = 'd'
-            elif side[trialID] == 0: #right
-                xPosition = width*x_scale
-                if trial_order[trialID]==1:
-                    sameTrial_right_id += 1
-                    target = paths[trialSame_right[sameTrial_right_id]]
-                    probe = paths[trialSame_right[sameTrial_right_id]]
-                    corr = 's'
-                elif trial_order[trialID]==0:
+                elif side_diff[diffTrialid] == 0: #right
+                    xPosition = width*x_scale
                     diffTrial_right_id += 1
+                    print('right diff ID: ' + str(diffTrial_right_id))
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -599,32 +622,32 @@ for thisBlock in blocks:
         elif expInfo['position'] == '1':
             xPosition = -(width*x_scale)
             if trial_order[trialID]==1:
+                sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
                 corr = 's'
-                sameTrialid += 1
             elif trial_order[trialID]==0:
+                diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
                 corr = 'd'
-                diffTrialid += 1
         elif expInfo['position'] == '3':
             xPosition = width*x_scale
             if trial_order[trialID]==1:
+                sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
                 corr = 's'
-                sameTrialid += 1
             elif trial_order[trialID]==0:
+                diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
                 corr = 'd'
-                diffTrialid += 1
         
         thisExp.addData('fix_switches', fix_switch[trialID])
-        thisExp.addData('side1L0R', side[trialID])
+        thisExp.addData('side', xPosition)
         thisExp.addData('trial_type1S0D',trial_order[trialID])
         thisExp.addData('target',target)
         thisExp.addData('probe',probe)
@@ -1121,6 +1144,75 @@ for thisBlock in blocks:
     
 # completed 1 repeats of 'blocks'
 
+
+# ------Prepare to start Routine "EndScreen"-------
+continueRoutine = True
+routineTimer.add(1.000000)
+# update component parameters for each repeat
+# keep track of which components have finished
+EndScreenComponents = [allDone]
+for thisComponent in EndScreenComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+EndScreenClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "EndScreen"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = EndScreenClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=EndScreenClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *allDone* updates
+    if allDone.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        allDone.frameNStart = frameN  # exact frame index
+        allDone.tStart = t  # local t and not account for scr refresh
+        allDone.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(allDone, 'tStartRefresh')  # time at next scr refresh
+        allDone.setAutoDraw(True)
+    if allDone.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > allDone.tStartRefresh + 1.0-frameTolerance:
+            # keep track of stop time/frame for later
+            allDone.tStop = t  # not accounting for scr refresh
+            allDone.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(allDone, 'tStopRefresh')  # time at next scr refresh
+            allDone.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in EndScreenComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "EndScreen"-------
+for thisComponent in EndScreenComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('allDone.started', allDone.tStartRefresh)
+thisExp.addData('allDone.stopped', allDone.tStopRefresh)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

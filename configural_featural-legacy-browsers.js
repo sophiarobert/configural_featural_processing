@@ -719,7 +719,8 @@ var trialSame_right;
 var trialDiff_right;
 var diffTrial_right;
 var fix_switch;
-var side;
+var side_same;
+var side_diff;
 var trialSame;
 var trialDiff;
 var diffTrial;
@@ -785,12 +786,12 @@ function instrBlockRoutineBegin(snapshot) {
         }
     }
     
-    sameTrialid = 0;
-    diffTrialid = 0;
-    sameTrial_left_id = 0;
-    diffTrial_left_id = 0;
-    sameTrial_right_id = 0;
-    diffTrial_right_id = 0;
+    sameTrialid = -1;
+    diffTrialid = -1;
+    sameTrial_left_id = -1;
+    diffTrial_left_id = -1;
+    sameTrial_right_id = -1;
+    diffTrial_right_id = -1;
     trialID = -1;
     rand_start = shuffle_array([0,1]);
     fix_color = fix_color_options[rand_start[0]];
@@ -806,7 +807,8 @@ function instrBlockRoutineBegin(snapshot) {
         trialDiff_right = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
         diffTrial_right = shuffle_array(list([...Array(12).keys()]));
         fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]),0,0].flat();
-        side = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
+        side_same = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
+        side_diff = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
         if ((expInfo["position"] === "1")) {
             numTrials = 24;
             trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
@@ -815,7 +817,7 @@ function instrBlockRoutineBegin(snapshot) {
             trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
             diffTrial = shuffle_array(list([...Array(12).keys()]));
             fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
-            side = shuffle_array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+    //        side = shuffle_array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
         } else {
             if ((expInfo["position"] === "3")) {
                 numTrials = 24;
@@ -825,7 +827,7 @@ function instrBlockRoutineBegin(snapshot) {
                 trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
                 diffTrial = shuffle_array(list([...Array(12).keys()]));
                 fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
-                side = shuffle_array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+    //            side = shuffle_array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
             } 
         }
     }
@@ -967,43 +969,45 @@ function target_imgRoutineBegin(snapshot) {
         xPosition = 0;
     } else {
         if ((expInfo["position"] === "2")) {
-            if ((side[trialID] === 1)) {
-                xPosition = (- (width * x_scale));
-                if ((trial_order[trialID] === 1)) {
+            if ((trial_order[trialID] === 1)) {
+                sameTrialid += 1;
+                if ((side_same[sameTrialid] === 1)) {
+                    xPosition = (- (width * x_scale));
                     sameTrial_left_id += 1;
+                    console.log(("left same ID: " + sameTrial_left_id.toString()));
                     target = paths[trialSame_left[sameTrial_left_id]];
                     probe = paths[trialSame_left[sameTrial_left_id]];
                     corr = "s";
                 } else {
-                    if ((trial_order[trialID] === 0)) {
-                        console.log(("left ID: " + diffTrial_left_id));
-                        console.log(("left: " + diffTrial_left[diffTrial_left_id]));
-                        console.log(("left: " + trialDiff_left[diffTrial_left[diffTrial_left_id]]));
+                    if ((side_same[sameTrialid] === 0)) {
+                        xPosition = (width * x_scale);
+                        sameTrial_right_id += 1;
+                        console.log(("right same ID: " + sameTrial_right_id.toString()));
+                        target = paths[trialSame_right[sameTrial_right_id]];
+                        probe = paths[trialSame_right[sameTrial_right_id]];
+                        corr = "s";
+                    }
+                }
+            } else {
+                if ((trial_order[trialID] === 0)) {
+                    diffTrialid += 1;
+                    if ((side_diff[diffTrialid] === 1)) {
+                        xPosition = (- (width * x_scale));
+                        diffTrial_left_id += 1;
+                        console.log(("left diff ID: " + diffTrial_left_id.toString()));
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
                         corr = "d";
-                        diffTrial_left_id += 1;
-                    }
-                }
-            } else {
-                if ((side[trialID] === 0)) {
-                    xPosition = (width * x_scale);
-                    if ((trial_order[trialID] === 1)) {
-                        sameTrial_right_id += 1;
-                        target = paths[trialSame_right[sameTrial_right_id]];
-                        probe = paths[trialSame_right[sameTrial_right_id]];
-                        corr = "s";
                     } else {
-                        if ((trial_order[trialID] === 0)) {
-                            console.log(("right ID: " + diffTrial_right_id));
-                            console.log(("right: " + diffTrial_right[diffTrial_right_id]));
-                            console.log(("right: " + trialDiff_right[diffTrial_right[diffTrial_right_id]]));
+                        if ((side_diff[diffTrialid] === 0)) {
+                            xPosition = (width * x_scale);
+                            diffTrial_right_id += 1;
+                            console.log(("right diff ID: " + diffTrial_right_id.toString()));
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
                             corr = "d";
-                            diffTrial_right_id += 1;
                         }
                     }
                 }
@@ -1012,34 +1016,34 @@ function target_imgRoutineBegin(snapshot) {
             if ((expInfo["position"] === "1")) {
                 xPosition = (- (width * x_scale));
                 if ((trial_order[trialID] === 1)) {
+                    sameTrialid += 1;
                     target = paths[trialSame[sameTrialid]];
                     probe = paths[trialSame[sameTrialid]];
                     corr = "s";
-                    sameTrialid += 1;
                 } else {
                     if ((trial_order[trialID] === 0)) {
+                        diffTrialid += 1;
                         img_pair = trialDiff[diffTrial[diffTrialid]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
                         corr = "d";
-                        diffTrialid += 1;
                     }
                 }
             } else {
                 if ((expInfo["position"] === "3")) {
                     xPosition = (width * x_scale);
                     if ((trial_order[trialID] === 1)) {
+                        sameTrialid += 1;
                         target = paths[trialSame[sameTrialid]];
                         probe = paths[trialSame[sameTrialid]];
                         corr = "s";
-                        sameTrialid += 1;
                     } else {
                         if ((trial_order[trialID] === 0)) {
+                            diffTrialid += 1;
                             img_pair = trialDiff[diffTrial[diffTrialid]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
                             corr = "d";
-                            diffTrialid += 1;
                         }
                     }
                 }
@@ -1047,7 +1051,7 @@ function target_imgRoutineBegin(snapshot) {
         }
     }
     thisExp.addData("fix_switches", fix_switch[trialID]);
-    thisExp.addData("side1L0R", side[trialID]);
+    thisExp.addData("side", xPosition);
     thisExp.addData("trial_type1S0D", trial_order[trialID]);
     thisExp.addData("target", target);
     thisExp.addData("probe", probe);
