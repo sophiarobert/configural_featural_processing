@@ -171,13 +171,12 @@ function experimentInit() {
       return array_divided
   }
   
-  function round(array) {
-      let array_rounded = array.map(function(each_element){
+  function round_array(array) {
+      array = array.map(function(each_element){
           return Math.round(each_element);
       }); 
-      return array_rounded
+      return array
   }
-  
   
   psychoJS.downloadResources([{name: ("Stimuli/greenCheck.png"), path:("Stimuli/greenCheck.png")},
   {name: ("Stimuli/redWrong.png"), path:("Stimuli/redWrong.png")},
@@ -723,7 +722,7 @@ function instrBlock1RoutineBegin(snapshot) {
         }
     }
     trial_order = [shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6]), shuffle([1, 2, 3, 4, 5, 6])].flat();
-    trial_order = round(divide_subPoint1(trial_order,6))
+    trial_order = round_array(divide_subPoint1(trial_order,6))
     trialSame = [shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3]), shuffle([0, 1, 2, 3])].flat();
     trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
     diffTrial = list([...Array(12).keys()]);
