@@ -881,32 +881,28 @@ function target_imgRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.200000);
     // update component parameters for each repeat
-    trialID = trialID + 1
+    trialID = (trialID + 1);
     if ((trial_order[trialID] === 1)) {
         target = paths[trialSame[sameTrialid]];
         probe = paths[trialSame[sameTrialid]];
-        corr = 's';
+        corr = "s";
         sameTrialid += 1;
     } else {
         if ((trial_order[trialID] === 0)) {
             img_pair = trialDiff[diffTrial[diffTrialid]];
             target = paths[img_pair[0]];
             probe = paths[img_pair[1]];
-            corr = 'd'
+            corr = "d";
             diffTrialid += 1;
         }
     }
-    
     if ((fix_switch[trialID] === 1)) {
-        if ((fix_color[2] === -0.2)) {
+        if ((fix_switch === "pink")) {
             fix_color = fix_color_options[1];
-            console.log("switch")
         } else {
             fix_color = fix_color_options[0];
-            console.log("switch")
         }
-    } 
-    
+    }
     if ((expInfo["position"] === "0")) {
         xPosition = 0;
     } else {
@@ -920,11 +916,11 @@ function target_imgRoutineBegin(snapshot) {
             }
         }
     }
+    thisExp.addData("fix_switches", fix_switch[trialID]);
+    thisExp.addData("side", side[trialID]);
+    thisExp.addData("target", target);
+    thisExp.addData("probe", probe);
     
-    thisExp.addData('fix_switches', fix_switch[trialID])
-    thisExp.addData('side', side[trialID])
-    thisExp.addData('target',target)
-    thisExp.addData('probe',probe)
     text_4.setColor(new util.Color(fix_color));
     target_image.setPos([xPosition, 0]);
     target_image.setSize([(width * x_scale), (height * y_scale)]);
