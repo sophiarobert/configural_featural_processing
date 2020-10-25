@@ -697,7 +697,6 @@ function instrBlock1RoutineBegin(snapshot) {
     instrBlock1Clock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    var img_pair;
             // add-on: list(s: string): string[]
             function list(s) {
                 // if s is a string, we return a list of its characters
@@ -869,6 +868,7 @@ function instrBlock1RoutineEnd(snapshot) {
 }
 
 
+var img_pair;
 var target;
 var probe;
 var corr;
@@ -882,6 +882,7 @@ function target_imgRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.200000);
     // update component parameters for each repeat
+    img_pair = 0;
     trialID = (trialID + 1);
     if ((trial_order[trialID] === 1)) {
         target = paths[trialSame[sameTrialid]];
