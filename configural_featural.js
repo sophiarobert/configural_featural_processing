@@ -981,7 +981,6 @@ function target_imgRoutineBegin(snapshot) {
                     corr = "s";
                 } else {
                     if ((trial_order[trialID] === 0)) {
-                        diffTrial_left_id += 1;
                         console.log(("left ID: " + diffTrial_left_id));
                         console.log(("left: " + diffTrial_left[diffTrial_left_id]));
                         console.log(("left: " + trialDiff_left[diffTrial_left[diffTrial_left_id]]));
@@ -989,6 +988,7 @@ function target_imgRoutineBegin(snapshot) {
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
                         corr = "d";
+                        diffTrial_left_id += 1;
                     }
                 }
             } else {
@@ -1001,7 +1001,6 @@ function target_imgRoutineBegin(snapshot) {
                         corr = "s";
                     } else {
                         if ((trial_order[trialID] === 0)) {
-                            diffTrial_right_id += 1;
                             console.log(("right ID: " + diffTrial_right_id));
                             console.log(("right: " + diffTrial_right[diffTrial_right_id]));
                             console.log(("right: " + trialDiff_right[diffTrial_right[diffTrial_right_id]]));
@@ -1009,6 +1008,7 @@ function target_imgRoutineBegin(snapshot) {
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
                             corr = "d";
+                            diffTrial_right_id += 1;
                         }
                     }
                 }
