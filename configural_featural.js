@@ -163,6 +163,7 @@ function experimentInit() {
       }
       return array
   }
+  console.log(shuffle_array([1,2,3,3]))
   
   function divide_subPoint1(array, divisor) {
       let array_divided = array.map(function(element) {
@@ -725,8 +726,8 @@ function instrBlock1RoutineBegin(snapshot) {
     trial_order = round_array(divide_subPoint1(trial_order,6))
     trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
     trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
-    diffTrial = list([...Array(12).keys()]);
-    diffTrial = shuffle_array(diffTrial);
+    diffTrial = shuffle_array(list([...Array(12).keys()]));
+    
     sameTrialid = 0;
     diffTrialid = 0;
     trialID = -1;
@@ -734,8 +735,7 @@ function instrBlock1RoutineBegin(snapshot) {
     fix_color = fix_color_options[rand_start[0]];
     fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
     
-    side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-    shuffle_array(side)
+    side = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
     
     
     text_3.setText(instruction_text);
