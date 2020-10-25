@@ -98,6 +98,7 @@ var shuffle;
 var webbrowser;
 var random;
 var randint;
+var round;
 var oldt;
 var x_size;
 var y_size;
@@ -145,7 +146,7 @@ function experimentInit() {
       return Math.floor(Math.random() * (maxplusone - min) ) + min;
   }
   
-  function round(num, n=0) {    
+  round = function(num, n=0) {    
       return +(Math.round(num + ("e+" + n))  + ("e-" + n));
   }
   
