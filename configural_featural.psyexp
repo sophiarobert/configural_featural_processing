@@ -38,7 +38,7 @@
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="thisExp=psychoJS.experiment;&amp;#10;win=psychoJS.window;&amp;#10;event=psychoJS.eventManager;&amp;#10;Array.prototype.append = [].push;&amp;#10;shuffle = util.shuffle;&amp;#10;webbrowser=window;&amp;#10;&amp;#10;random=Math.random;&amp;#10;randint=function(min, maxplusone) {&amp;#10;    return Math.floor(Math.random() * (maxplusone - min) ) + min;&amp;#10;}&amp;#10;&amp;#10;round = function(num, n=0) {    &amp;#10;    return +(Math.round(num + (&quot;e+&quot; + n))  + (&quot;e-&quot; + n));&amp;#10;}&amp;#10;&amp;#10;function shuffle_array(array) {&amp;#10;    for (let i = array.length - 1; i &gt; 0; i--) {&amp;#10;        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i&amp;#10;&amp;#10;            // swap elements array[i] and array[j]&amp;#10;            // we use &quot;destructuring assignment&quot; syntax to achieve that&amp;#10;            // you'll find more details about that syntax in later chapters&amp;#10;            // same can be written as:&amp;#10;            // let t = array[i]; array[i] = array[j]; array[j] = t&amp;#10;        [array[i], array[j]] = [array[j], array[i]];&amp;#10;    }&amp;#10;    return array&amp;#10;}&amp;#10;console.log(shuffle_array([1,2,3,3]))&amp;#10;&amp;#10;function divide_subPoint1(array, divisor) {&amp;#10;    let array_divided = array.map(function(element) {&amp;#10;	       return element/divisor - 0.1;&amp;#10;    });&amp;#10;    return array_divided&amp;#10;}&amp;#10;&amp;#10;function round_array(array) {&amp;#10;    array = array.map(function(each_element){&amp;#10;        return Math.round(each_element);&amp;#10;    }); &amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;psychoJS.downloadResources([{name: (&quot;Stimuli/greenCheck.png&quot;), path:(&quot;Stimuli/greenCheck.png&quot;)},&amp;#10;{name: (&quot;Stimuli/redWrong.png&quot;), path:(&quot;Stimuli/redWrong.png&quot;)},&amp;#10;{name: (&quot;Stimuli/edmd.png&quot;), path:(&quot;Stimuli/edmd.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eimd.png&quot;), path:(&quot;Stimuli/eimd.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eomu.png&quot;), path:(&quot;Stimuli/eomu.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eumu.png&quot;), path:(&quot;Stimuli/eumu.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f15.png&quot;), path:(&quot;Stimuli/f15.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f24.png&quot;), path:(&quot;Stimuli/f24.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f131.png&quot;), path:(&quot;Stimuli/f131.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f142.png&quot;), path:(&quot;Stimuli/f142.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim0.png&quot;), path:(&quot;Stimuli/H-8sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim1.png&quot;), path:(&quot;Stimuli/H-8sim1.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim2.png&quot;), path:(&quot;Stimuli/H-8sim2.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim3.png&quot;), path:(&quot;Stimuli/H-8sim3.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H5sim0.png&quot;), path:(&quot;Stimuli/H5sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H6sim0.png&quot;), path:(&quot;Stimuli/H6sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H7sim0.png&quot;), path:(&quot;Stimuli/H7sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H8sim0.png&quot;), path:(&quot;Stimuli/H8sim0.png&quot;)}]);&amp;#10;&amp;#10;expInfo['OS'] = window.navigator.platform;&amp;#10;expInfo['xResolution'] = screen.width;&amp;#10;expInfo['yResolution'] = screen.height;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="thisExp=psychoJS.experiment;&amp;#10;win=psychoJS.window;&amp;#10;event=psychoJS.eventManager;&amp;#10;Array.prototype.append = [].push;&amp;#10;shuffle = util.shuffle;&amp;#10;webbrowser=window;&amp;#10;&amp;#10;random=Math.random;&amp;#10;randint=function(min, maxplusone) {&amp;#10;    return Math.floor(Math.random() * (maxplusone - min) ) + min;&amp;#10;}&amp;#10;&amp;#10;round = function(num, n=0) {    &amp;#10;    return +(Math.round(num + (&quot;e+&quot; + n))  + (&quot;e-&quot; + n));&amp;#10;}&amp;#10;&amp;#10;function shuffle_array(array) {&amp;#10;    for (let i = array.length - 1; i &gt; 0; i--) {&amp;#10;        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i&amp;#10;&amp;#10;            // swap elements array[i] and array[j]&amp;#10;            // we use &quot;destructuring assignment&quot; syntax to achieve that&amp;#10;            // you'll find more details about that syntax in later chapters&amp;#10;            // same can be written as:&amp;#10;            // let t = array[i]; array[i] = array[j]; array[j] = t&amp;#10;        [array[i], array[j]] = [array[j], array[i]];&amp;#10;    }&amp;#10;    return array&amp;#10;}&amp;#10;console.log(shuffle_array([1,2,3,3]))&amp;#10;&amp;#10;function divide_subPoint1(array, divisor) {&amp;#10;    let array_divided = array.map(function(element) {&amp;#10;        return element/divisor - 0.1;&amp;#10;    });&amp;#10;    return array_divided&amp;#10;}&amp;#10;&amp;#10;function round_array(array) {&amp;#10;    array = array.map(function(each_element){&amp;#10;        return Math.round(each_element);&amp;#10;    }); &amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;psychoJS.downloadResources([{name: (&quot;Stimuli/greenCheck.png&quot;), path:(&quot;Stimuli/greenCheck.png&quot;)},&amp;#10;{name: (&quot;Stimuli/redWrong.png&quot;), path:(&quot;Stimuli/redWrong.png&quot;)},&amp;#10;{name: (&quot;Stimuli/edmd.png&quot;), path:(&quot;Stimuli/edmd.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eimd.png&quot;), path:(&quot;Stimuli/eimd.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eomu.png&quot;), path:(&quot;Stimuli/eomu.png&quot;)},&amp;#10;{name: (&quot;Stimuli/eumu.png&quot;), path:(&quot;Stimuli/eumu.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f15.png&quot;), path:(&quot;Stimuli/f15.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f24.png&quot;), path:(&quot;Stimuli/f24.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f131.png&quot;), path:(&quot;Stimuli/f131.png&quot;)},&amp;#10;{name: (&quot;Stimuli/f142.png&quot;), path:(&quot;Stimuli/f142.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim0.png&quot;), path:(&quot;Stimuli/H-8sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim1.png&quot;), path:(&quot;Stimuli/H-8sim1.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim2.png&quot;), path:(&quot;Stimuli/H-8sim2.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H-8sim3.png&quot;), path:(&quot;Stimuli/H-8sim3.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H5sim0.png&quot;), path:(&quot;Stimuli/H5sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H6sim0.png&quot;), path:(&quot;Stimuli/H6sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H7sim0.png&quot;), path:(&quot;Stimuli/H7sim0.png&quot;)},&amp;#10;{name: (&quot;Stimuli/H8sim0.png&quot;), path:(&quot;Stimuli/H8sim0.png&quot;)}]);&amp;#10;&amp;#10;expInfo['OS'] = window.navigator.platform;&amp;#10;expInfo['xResolution'] = screen.width;&amp;#10;expInfo['yResolution'] = screen.height;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="JS" valType="str"/>
@@ -226,6 +226,24 @@
         <Param name="texture resolution" updates="constant" val="512" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </ImageComponent>
+      <KeyboardComponent name="key_resp_3">
+        <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp_3" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.2" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="probe_img">
       <CodeComponent name="code_5">
@@ -294,6 +312,24 @@
         <Param name="texture resolution" updates="constant" val="512" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </ImageComponent>
+      <KeyboardComponent name="key_resp_5">
+        <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp_5" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.2" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="instrBlock1">
       <CodeComponent name="code_3">
@@ -301,7 +337,7 @@
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="        // add-on: list(s: string): string[]&amp;#10;        function list(s) {&amp;#10;            // if s is a string, we return a list of its characters&amp;#10;            if (typeof s === 'string')&amp;#10;                return s.split('');&amp;#10;            else&amp;#10;                // otherwise we return s:&amp;#10;                return s;&amp;#10;        }&amp;#10;function shuffle_array(array) {&amp;#10;    for (let i = array.length - 1; i &gt; 0; i--) {&amp;#10;        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i&amp;#10;&amp;#10;            // swap elements array[i] and array[j]&amp;#10;            // we use &quot;destructuring assignment&quot; syntax to achieve that&amp;#10;            // you'll find more details about that syntax in later chapters&amp;#10;            // same can be written as:&amp;#10;            // let t = array[i]; array[i] = array[j]; array[j] = t&amp;#10;        [array[i], array[j]] = [array[j], array[i]];&amp;#10;    }&amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;function divide_subPoint1(array, divisor) {&amp;#10;    let array_divided = array.map(function(element) {&amp;#10;	       return element/divisor - 0.1;&amp;#10;    });&amp;#10;    return array_divided&amp;#10;}&amp;#10;&amp;#10;function round_array(array) {&amp;#10;    array = array.map(function(each_element){&amp;#10;        return Math.round(each_element);&amp;#10;    }); &amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;if ((Block_type === &quot;conf_face&quot;)) {&amp;#10;    paths = [&quot;Stimuli/edmd.png&quot;, &quot;Stimuli/eimd.png&quot;, &quot;Stimuli/eomu.png&quot;, &quot;Stimuli/eumu.png&quot;];&amp;#10;} else {&amp;#10;    if ((Block_type === &quot;conf_haus&quot;)) {&amp;#10;        paths = [&quot;Stimuli/H-8sim0.png&quot;, &quot;Stimuli/H-8sim1.png&quot;, &quot;Stimuli/H-8sim2.png&quot;, &quot;Stimuli/H-8sim3.png&quot;];&amp;#10;    } else {&amp;#10;        if ((Block_type === &quot;feat_face&quot;)) {&amp;#10;            paths = [&quot;Stimuli/f15.png&quot;, &quot;Stimuli/f24.png&quot;, &quot;Stimuli/f131.png&quot;, &quot;Stimuli/f142.png&quot;];&amp;#10;        } else {&amp;#10;            if ((Block_type === &quot;feat_haus&quot;)) {&amp;#10;                paths = [&quot;Stimuli/H5sim0.png&quot;, &quot;Stimuli/H6sim0.png&quot;, &quot;Stimuli/H7sim0.png&quot;, &quot;Stimuli/H8sim0.png&quot;];&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();&amp;#10;trial_order = round_array(divide_subPoint1(trial_order,6))&amp;#10;trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();&amp;#10;trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];&amp;#10;diffTrial = shuffle_array(list([...Array(12).keys()]));&amp;#10;&amp;#10;sameTrialid = 0;&amp;#10;diffTrialid = 0;&amp;#10;trialID = -1;&amp;#10;rand_start = shuffle_array([0,1]);&amp;#10;fix_color = fix_color_options[rand_start[0]];&amp;#10;fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();&amp;#10;&amp;#10;side = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="        // add-on: list(s: string): string[]&amp;#10;        function list(s) {&amp;#10;            // if s is a string, we return a list of its characters&amp;#10;            if (typeof s === 'string')&amp;#10;                return s.split('');&amp;#10;            else&amp;#10;                // otherwise we return s:&amp;#10;                return s;&amp;#10;        }&amp;#10;function shuffle_array(array) {&amp;#10;    for (let i = array.length - 1; i &gt; 0; i--) {&amp;#10;        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i&amp;#10;&amp;#10;            // swap elements array[i] and array[j]&amp;#10;            // we use &quot;destructuring assignment&quot; syntax to achieve that&amp;#10;            // you'll find more details about that syntax in later chapters&amp;#10;            // same can be written as:&amp;#10;            // let t = array[i]; array[i] = array[j]; array[j] = t&amp;#10;        [array[i], array[j]] = [array[j], array[i]];&amp;#10;    }&amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;function divide_subPoint1(array, divisor) {&amp;#10;    let array_divided = array.map(function(element) {&amp;#10;        return element/divisor - 0.1;&amp;#10;    });&amp;#10;    return array_divided&amp;#10;}&amp;#10;&amp;#10;function round_array(array) {&amp;#10;    array = array.map(function(each_element){&amp;#10;        return Math.round(each_element);&amp;#10;    }); &amp;#10;    return array&amp;#10;}&amp;#10;&amp;#10;if ((Block_type === &quot;conf_face&quot;)) {&amp;#10;    paths = [&quot;Stimuli/edmd.png&quot;, &quot;Stimuli/eimd.png&quot;, &quot;Stimuli/eomu.png&quot;, &quot;Stimuli/eumu.png&quot;];&amp;#10;} else {&amp;#10;    if ((Block_type === &quot;conf_haus&quot;)) {&amp;#10;        paths = [&quot;Stimuli/H-8sim0.png&quot;, &quot;Stimuli/H-8sim1.png&quot;, &quot;Stimuli/H-8sim2.png&quot;, &quot;Stimuli/H-8sim3.png&quot;];&amp;#10;    } else {&amp;#10;        if ((Block_type === &quot;feat_face&quot;)) {&amp;#10;            paths = [&quot;Stimuli/f15.png&quot;, &quot;Stimuli/f24.png&quot;, &quot;Stimuli/f131.png&quot;, &quot;Stimuli/f142.png&quot;];&amp;#10;        } else {&amp;#10;            if ((Block_type === &quot;feat_haus&quot;)) {&amp;#10;                paths = [&quot;Stimuli/H5sim0.png&quot;, &quot;Stimuli/H6sim0.png&quot;, &quot;Stimuli/H7sim0.png&quot;, &quot;Stimuli/H8sim0.png&quot;];&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();&amp;#10;trial_order = round_array(divide_subPoint1(trial_order,6))&amp;#10;trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();&amp;#10;trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];&amp;#10;diffTrial = shuffle_array(list([...Array(12).keys()]));&amp;#10;&amp;#10;sameTrialid = 0;&amp;#10;diffTrialid = 0;&amp;#10;trialID = -1;&amp;#10;rand_start = shuffle_array([0,1]);&amp;#10;fix_color = fix_color_options[rand_start[0]];&amp;#10;fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();&amp;#10;&amp;#10;side = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="if Block_type == 'conf_face':&amp;#10;    paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']&amp;#10;elif Block_type == 'conf_haus':&amp;#10;    paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']&amp;#10;elif Block_type == 'feat_face':&amp;#10;    paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']&amp;#10;elif Block_type == 'feat_haus':&amp;#10;    paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']&amp;#10;&amp;#10;trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]), permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))&amp;#10;trial_order = np.round(trial_order / 6 - 0.1)&amp;#10;trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))&amp;#10;trialDiff = np.array([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (1, 0), (2, 3), (2, 0), (2, 1),(3, 0), (3, 1), (3, 2)])&amp;#10;diffTrial = list(range(12))&amp;#10;shuffle(diffTrial)&amp;#10;&amp;#10;sameTrialid = 0&amp;#10;diffTrialid = 0&amp;#10;trialID = -1;&amp;#10;rand_start = [0,1]&amp;#10;shuffle(rand_start)&amp;#10;fix_color = fix_color_options[rand_start[0]]&amp;#10;fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]&amp;#10;shuffle(fixs_shuffled)&amp;#10;fix_switch = [0,0]+fixs_shuffled+[0,0]&amp;#10;&amp;#10;side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]&amp;#10;shuffle(side)" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Both" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
@@ -418,6 +454,24 @@
         <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
+      <KeyboardComponent name="key_resp_6">
+        <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp_6" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="ISI_fix">
       <TextComponent name="text">
@@ -444,6 +498,24 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
+      <KeyboardComponent name="key_resp_4">
+        <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp_4" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.3" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
   </Routines>
   <Flow>

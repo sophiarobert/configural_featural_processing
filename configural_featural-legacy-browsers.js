@@ -111,14 +111,18 @@ var key_resp_2;
 var target_imgClock;
 var text_4;
 var target_image;
+var key_resp_3;
 var ISI_fixClock;
 var text;
+var key_resp_4;
 var probe_imgClock;
 var text_5;
 var probe_image;
+var key_resp_5;
 var trial_respClock;
 var text_2;
 var key_resp;
+var key_resp_6;
 var globalClock;
 var routineTimer;
 function experimentInit() {
@@ -157,7 +161,7 @@ function experimentInit() {
   
   function divide_subPoint1(array, divisor) {
       let array_divided = array.map(function(element) {
-  	       return element/divisor - 0.1;
+          return element/divisor - 0.1;
       });
       return array_divided
   }
@@ -292,6 +296,8 @@ function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 512, interpolate : true, depth : -2.0 
   });
+  key_resp_3 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
   // Initialize components for Routine "ISI_fix"
   ISI_fixClock = new util.Clock();
   text = new visual.TextStim({
@@ -304,6 +310,8 @@ function experimentInit() {
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
   });
+  
+  key_resp_4 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "probe_img"
   probe_imgClock = new util.Clock();
@@ -327,6 +335,8 @@ function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 512, interpolate : true, depth : -2.0 
   });
+  key_resp_5 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
   // Initialize components for Routine "trial_resp"
   trial_respClock = new util.Clock();
   text_2 = new visual.TextStim({
@@ -341,6 +351,8 @@ function experimentInit() {
   });
   
   key_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  key_resp_6 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
@@ -716,7 +728,7 @@ function instrBlock1RoutineBegin(snapshot) {
     
     function divide_subPoint1(array, divisor) {
         let array_divided = array.map(function(element) {
-    	       return element/divisor - 0.1;
+            return element/divisor - 0.1;
         });
         return array_divided
     }
@@ -868,6 +880,7 @@ var target;
 var probe;
 var corr;
 var xPosition;
+var _key_resp_3_allKeys;
 var target_imgComponents;
 function target_imgRoutineBegin(snapshot) {
   return function () {
@@ -923,10 +936,14 @@ function target_imgRoutineBegin(snapshot) {
     target_image.setPos([xPosition, 0]);
     target_image.setSize([(width * x_scale), (height * y_scale)]);
     target_image.setImage(target);
+    key_resp_3.keys = undefined;
+    key_resp_3.rt = undefined;
+    _key_resp_3_allKeys = [];
     // keep track of which components have finished
     target_imgComponents = [];
     target_imgComponents.push(text_4);
     target_imgComponents.push(target_image);
+    target_imgComponents.push(key_resp_3);
     
     target_imgComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -975,6 +992,33 @@ function target_imgRoutineEachFrame(snapshot) {
     if (target_image.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       target_image.setAutoDraw(false);
     }
+    
+    // *key_resp_3* updates
+    if (t >= 0.0 && key_resp_3.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_3.tStart = t;  // (not accounting for frame time here)
+      key_resp_3.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_3.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_3.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_3.clearEvents(); });
+    }
+
+    frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (key_resp_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      key_resp_3.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (key_resp_3.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_3.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_3_allKeys = _key_resp_3_allKeys.concat(theseKeys);
+      if (_key_resp_3_allKeys.length > 0) {
+        key_resp_3.keys = _key_resp_3_allKeys[_key_resp_3_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_3.rt = _key_resp_3_allKeys[_key_resp_3_allKeys.length - 1].rt;
+      }
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1010,11 +1054,18 @@ function target_imgRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    psychoJS.experiment.addData('key_resp_3.keys', key_resp_3.keys);
+    if (typeof key_resp_3.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_3.rt', key_resp_3.rt);
+        }
+    
+    key_resp_3.stop();
     return Scheduler.Event.NEXT;
   };
 }
 
 
+var _key_resp_4_allKeys;
 var ISI_fixComponents;
 function ISI_fixRoutineBegin(snapshot) {
   return function () {
@@ -1025,9 +1076,13 @@ function ISI_fixRoutineBegin(snapshot) {
     routineTimer.add(0.300000);
     // update component parameters for each repeat
     text.setColor(new util.Color(fix_color));
+    key_resp_4.keys = undefined;
+    key_resp_4.rt = undefined;
+    _key_resp_4_allKeys = [];
     // keep track of which components have finished
     ISI_fixComponents = [];
     ISI_fixComponents.push(text);
+    ISI_fixComponents.push(key_resp_4);
     
     ISI_fixComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1061,6 +1116,33 @@ function ISI_fixRoutineEachFrame(snapshot) {
     if (text.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text.setAutoDraw(false);
     }
+    
+    // *key_resp_4* updates
+    if (t >= 0.0 && key_resp_4.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_4.tStart = t;  // (not accounting for frame time here)
+      key_resp_4.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_4.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_4.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_4.clearEvents(); });
+    }
+
+    frameRemains = 0.0 + 0.3 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (key_resp_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      key_resp_4.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (key_resp_4.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_4.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_4_allKeys = _key_resp_4_allKeys.concat(theseKeys);
+      if (_key_resp_4_allKeys.length > 0) {
+        key_resp_4.keys = _key_resp_4_allKeys[_key_resp_4_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_4.rt = _key_resp_4_allKeys[_key_resp_4_allKeys.length - 1].rt;
+      }
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1096,11 +1178,18 @@ function ISI_fixRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    psychoJS.experiment.addData('key_resp_4.keys', key_resp_4.keys);
+    if (typeof key_resp_4.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_4.rt', key_resp_4.rt);
+        }
+    
+    key_resp_4.stop();
     return Scheduler.Event.NEXT;
   };
 }
 
 
+var _key_resp_5_allKeys;
 var probe_imgComponents;
 function probe_imgRoutineBegin(snapshot) {
   return function () {
@@ -1114,10 +1203,14 @@ function probe_imgRoutineBegin(snapshot) {
     probe_image.setPos([xPosition, 0]);
     probe_image.setSize([(width * x_scale), (height * y_scale)]);
     probe_image.setImage(probe);
+    key_resp_5.keys = undefined;
+    key_resp_5.rt = undefined;
+    _key_resp_5_allKeys = [];
     // keep track of which components have finished
     probe_imgComponents = [];
     probe_imgComponents.push(text_5);
     probe_imgComponents.push(probe_image);
+    probe_imgComponents.push(key_resp_5);
     
     probe_imgComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1165,6 +1258,35 @@ function probe_imgRoutineEachFrame(snapshot) {
     if (probe_image.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       probe_image.setAutoDraw(false);
     }
+    
+    // *key_resp_5* updates
+    if (t >= 0.0 && key_resp_5.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_5.tStart = t;  // (not accounting for frame time here)
+      key_resp_5.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_5.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_5.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_5.clearEvents(); });
+    }
+
+    frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (key_resp_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      key_resp_5.status = PsychoJS.Status.FINISHED;
+  }
+
+    if (key_resp_5.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_5.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_5_allKeys = _key_resp_5_allKeys.concat(theseKeys);
+      if (_key_resp_5_allKeys.length > 0) {
+        key_resp_5.keys = _key_resp_5_allKeys[_key_resp_5_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_5.rt = _key_resp_5_allKeys[_key_resp_5_allKeys.length - 1].rt;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1200,12 +1322,20 @@ function probe_imgRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    psychoJS.experiment.addData('key_resp_5.keys', key_resp_5.keys);
+    if (typeof key_resp_5.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_5.rt', key_resp_5.rt);
+        routineTimer.reset();
+        }
+    
+    key_resp_5.stop();
     return Scheduler.Event.NEXT;
   };
 }
 
 
 var _key_resp_allKeys;
+var _key_resp_6_allKeys;
 var trial_respComponents;
 function trial_respRoutineBegin(snapshot) {
   return function () {
@@ -1218,10 +1348,14 @@ function trial_respRoutineBegin(snapshot) {
     key_resp.keys = undefined;
     key_resp.rt = undefined;
     _key_resp_allKeys = [];
+    key_resp_6.keys = undefined;
+    key_resp_6.rt = undefined;
+    _key_resp_6_allKeys = [];
     // keep track of which components have finished
     trial_respComponents = [];
     trial_respComponents.push(text_2);
     trial_respComponents.push(key_resp);
+    trial_respComponents.push(key_resp_6);
     
     trial_respComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1281,6 +1415,28 @@ function trial_respRoutineEachFrame(snapshot) {
       }
     }
     
+    
+    // *key_resp_6* updates
+    if (t >= 0.0 && key_resp_6.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_6.tStart = t;  // (not accounting for frame time here)
+      key_resp_6.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_6.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_6.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_6.clearEvents(); });
+    }
+
+    if (key_resp_6.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_6.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_6_allKeys = _key_resp_6_allKeys.concat(theseKeys);
+      if (_key_resp_6_allKeys.length > 0) {
+        key_resp_6.keys = _key_resp_6_allKeys[_key_resp_6_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_6.rt = _key_resp_6_allKeys[_key_resp_6_allKeys.length - 1].rt;
+      }
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1333,6 +1489,12 @@ function trial_respRoutineEnd(snapshot) {
         }
     
     key_resp.stop();
+    psychoJS.experiment.addData('key_resp_6.keys', key_resp_6.keys);
+    if (typeof key_resp_6.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_6.rt', key_resp_6.rt);
+        }
+    
+    key_resp_6.stop();
     // the Routine "trial_resp" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
