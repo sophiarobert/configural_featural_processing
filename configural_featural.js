@@ -919,7 +919,8 @@ function target_imgRoutineBegin(snapshot) {
         }
     }
     thisExp.addData("fix_switches", fix_switch[trialID]);
-    thisExp.addData("side", side[trialID]);
+    thisExp.addData("side1L0R", side[trialID]);
+    thisExp.addData("trial_type1S0D", trial_order[trialID]);
     thisExp.addData("target", target);
     thisExp.addData("probe", probe);
     
