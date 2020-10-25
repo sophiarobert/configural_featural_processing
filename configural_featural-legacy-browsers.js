@@ -714,6 +714,13 @@ function instrBlock1RoutineBegin(snapshot) {
         return array
     }
     
+    function round_array(array) {
+        array = array.map(function(each_element){
+            return Math.round(each_element);
+        }); 
+        return array
+    }
+    
     if ((Block_type === "conf_face")) {
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
     } else {
