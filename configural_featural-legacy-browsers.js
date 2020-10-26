@@ -874,6 +874,7 @@ function instrBlockRoutineBegin(snapshot) {
         side_diff = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
         if ((expInfo["position"] === "1")) {
             numTrials = 24;
+            console.log(numTrials)
             trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
             trial_order = round_array(divide_subPoint1(trial_order,6))
             trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();

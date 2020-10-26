@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 21:25:53 2020
+    on Mon Oct 26 11:39:19 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1031,8 +1031,6 @@ for thisBlock in blocks:
                 if len(_key_resp_5_allKeys):
                     key_resp_5.keys = _key_resp_5_allKeys[-1].name  # just the last key pressed
                     key_resp_5.rt = _key_resp_5_allKeys[-1].rt
-                    # a response ends the routine
-                    continueRoutine = False
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
