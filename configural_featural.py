@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 17:07:13 2020
+    on Sun Oct 25 20:22:57 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -137,12 +137,29 @@ ccimage = visual.ImageStim(
 startInstructClock = core.Clock()
 fix_color_options = ["pink","orange"];
 
+if expInfo['design'] == '1':
+    design_file = 'Designs/design1.csv'
+elif expInfo['design'] == '2':
+    design_file = 'Designs/design2.csv'
+elif expInfo['design'] == '3':
+    design_file = 'Designs/design3.csv'
+elif expInfo['design'] == '4':
+    design_file = 'Designs/design4.csv'
+elif expInfo['design'] == '5':
+    design_file = 'Designs/design5.csv'
+elif expInfo['design'] == '6':
+    design_file = 'Designs/design6.csv'
+elif expInfo['design'] == '7':
+    design_file = 'Designs/design7.csv'
+elif expInfo['design'] == '8':
+    design_file = 'Designs/design8.csv'
+
 # Initialize components for Routine "instrBlock"
 instrBlockClock = core.Clock()
 text_3 = visual.TextStim(win=win, name='text_3',
     text='default text',
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='black', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-1.0);
@@ -380,7 +397,7 @@ routineTimer.reset()
 # set up handler to look after randomisation of conditions etc
 blocks = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('Designs/design1.csv'),
+    trialList=data.importConditions(design_file),
     seed=None, name='blocks')
 thisExp.addLoop(blocks)  # add the loop to the experiment
 thisBlock = blocks.trialList[0]  # so we can initialise stimuli with some values
@@ -408,8 +425,8 @@ for thisBlock in blocks:
     elif Block_type == 'feat_haus':
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
     
-    sameTrialid = 0
-    diffTrialid = 0
+    sameTrialid = -1
+    diffTrialid = -1
     sameTrial_left_id = -1
     diffTrial_left_id = -1
     sameTrial_right_id = -1
@@ -434,8 +451,10 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-        shuffle(side)
+        side_same = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+        side_diff = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+        shuffle(side_same)
+        shuffle(side_diff)
     elif expInfo['position'] == '1':
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
@@ -447,7 +466,7 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    #    side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     elif expInfo['position'] == '3':
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
@@ -459,7 +478,7 @@ for thisBlock in blocks:
         fixs_shuffled = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
-        side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    #    side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     
     text_3.setText(instruction_text)
@@ -569,6 +588,9 @@ for thisBlock in blocks:
         routineTimer.add(0.200000)
         # update component parameters for each repeat
         img_pair = 0
+        target = 0
+        probe = 0
+        corr = 0
         trialID = trialID + 1
         
         if fix_switch[trialID] == 1:
@@ -580,61 +602,93 @@ for thisBlock in blocks:
         if expInfo['position'] == '0':
             xPosition = 0
         elif expInfo['position'] == '2':
-            if side[trialID] == 1: #left
-                xPosition = -(width*x_scale)
-                if trial_order[trialID]==1:
+            if trial_order[trialID]==1:
+                sameTrialid += 1
+                if side_same[sameTrialid] == 1: #left
+                    xPosition = -(width*x_scale)
                     sameTrial_left_id += 1
+                    print('left same ID: ' + str(sameTrial_left_id))
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
-                    corr = 's'
-                elif trial_order[trialID]==0:
+                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                        corr = 'f'
+                    else:
+                        corr = 'j'
+                elif side_same[sameTrialid] == 0: #right
+                    xPosition = width*x_scale
+                    sameTrial_right_id += 1
+                    print('right same ID: ' + str(sameTrial_right_id))
+                    target = paths[trialSame_right[sameTrial_right_id]]
+                    probe = paths[trialSame_right[sameTrial_right_id]]
+                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                        corr = 'f'
+                    else:
+                        corr = 'j'
+            elif trial_order[trialID]==0:
+                diffTrialid += 1
+                if side_diff[diffTrialid] == 1: #left
+                    xPosition = -(width*x_scale)
                     diffTrial_left_id += 1
+                    print('left diff ID: ' + str(diffTrial_left_id))
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
-                    corr = 'd'
-            elif side[trialID] == 0: #right
-                xPosition = width*x_scale
-                if trial_order[trialID]==1:
-                    sameTrial_right_id += 1
-                    target = paths[trialSame_right[sameTrial_right_id]]
-                    probe = paths[trialSame_right[sameTrial_right_id]]
-                    corr = 's'
-                elif trial_order[trialID]==0:
+                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                        corr = 'j'
+                    else:
+                        corr = 'f'
+                elif side_diff[diffTrialid] == 0: #right
+                    xPosition = width*x_scale
                     diffTrial_right_id += 1
+                    print('right diff ID: ' + str(diffTrial_right_id))
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
-                    corr = 'd'
+                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                        corr = 'j'
+                    else:
+                        corr = 'f'
         elif expInfo['position'] == '1':
             xPosition = -(width*x_scale)
             if trial_order[trialID]==1:
+                sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
-                corr = 's'
-                sameTrialid += 1
+                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    corr = 'f'
+                else:
+                    corr = 'j'
             elif trial_order[trialID]==0:
+                diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
-                corr = 'd'
-                diffTrialid += 1
+                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    corr = 'j'
+                else:
+                    corr = 'f'
         elif expInfo['position'] == '3':
             xPosition = width*x_scale
             if trial_order[trialID]==1:
+                sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
-                corr = 's'
-                sameTrialid += 1
+                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    corr = 'f'
+                else:
+                    corr = 'j'
             elif trial_order[trialID]==0:
+                diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
-                corr = 'd'
-                diffTrialid += 1
+                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    corr = 'j'
+                else:
+                    corr = 'f'
         
         thisExp.addData('fix_switches', fix_switch[trialID])
-        thisExp.addData('side1L0R', side[trialID])
+        thisExp.addData('side', xPosition)
         thisExp.addData('trial_type1S0D',trial_order[trialID])
         thisExp.addData('target',target)
         thisExp.addData('probe',probe)
@@ -1048,7 +1102,7 @@ for thisBlock in blocks:
                 win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp.getKeys(keyList=['s', 'd'], waitRelease=False)
+                theseKeys = key_resp.getKeys(keyList=['f', 'j'], waitRelease=False)
                 _key_resp_allKeys.extend(theseKeys)
                 if len(_key_resp_allKeys):
                     key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
