@@ -119,7 +119,7 @@ var startInstructClock;
 var fix_color_options;
 var design_file;
 var instrBlockClock;
-var text_3;
+var instructions_image;
 var key_resp_2;
 var target_imgClock;
 var text_4;
@@ -213,7 +213,11 @@ function experimentInit() {
   {name: ("Designs/design5.csv"), path:("Designs/design5.csv")},
   {name: ("Designs/design6.csv"), path:("Designs/design6.csv")},
   {name: ("Designs/design7.csv"), path:("Designs/design7.csv")},
-  {name: ("Designs/design8.csv"), path:("Designs/design8.csv")}]);
+  {name: ("Designs/design8.csv"), path:("Designs/design8.csv")},
+  {name: ("Designs/instructions_face_1234.png"), path:("Designs/instructions_face_1234.png")},
+  {name: ("Designs/instructions_face_5678.png"), path:("Designs/instructions_face_5678.png")},
+  {name: ("Designs/instructions_haus_1234.png"), path:("Designs/instructions_haus_1234.png")},
+  {name: ("Designs/instructions_haus_5678.png"), path:("Designs/instructions_haus_5678.png")}]);
   
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
@@ -315,17 +319,15 @@ function experimentInit() {
   
   // Initialize components for Routine "instrBlock"
   instrBlockClock = new util.Clock();
-  text_3 = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'text_3',
-    text: 'default text',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
-    color: new util.Color('black'),  opacity: 1,
-    depth: -1.0 
+  instructions_image = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'instructions_image', units : undefined, 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : [0.5, 0.5],
+    color : new util.Color([1, 1, 1]), opacity : 1,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -1.0 
   });
-  
   key_resp_2 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "target_img"
@@ -879,13 +881,13 @@ function instrBlockRoutineBegin(snapshot) {
     
     
     
-    text_3.setText(instruction_text);
+    instructions_image.setImage(instruction_text);
     key_resp_2.keys = undefined;
     key_resp_2.rt = undefined;
     _key_resp_2_allKeys = [];
     // keep track of which components have finished
     instrBlockComponents = [];
-    instrBlockComponents.push(text_3);
+    instrBlockComponents.push(instructions_image);
     instrBlockComponents.push(key_resp_2);
     
     for (const thisComponent of instrBlockComponents)
@@ -906,13 +908,13 @@ function instrBlockRoutineEachFrame(snapshot) {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *text_3* updates
-    if (t >= 0.0 && text_3.status === PsychoJS.Status.NOT_STARTED) {
+    // *instructions_image* updates
+    if (t >= 0.0 && instructions_image.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      text_3.tStart = t;  // (not accounting for frame time here)
-      text_3.frameNStart = frameN;  // exact frame index
+      instructions_image.tStart = t;  // (not accounting for frame time here)
+      instructions_image.frameNStart = frameN;  // exact frame index
       
-      text_3.setAutoDraw(true);
+      instructions_image.setAutoDraw(true);
     }
 
     

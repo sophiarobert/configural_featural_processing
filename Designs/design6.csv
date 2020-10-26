@@ -1,5 +1,5 @@
 Block_type,instruction_text
-feat_face,Press J for same or F for different faces. \n\nTry your best to keep your eyes on the + \n\nIf you see the + change colors \npress <SPACE>. \n\nPress <SPACE> to start!
-feat_haus,Press J for same or F for different houses. \n\nTry your best to keep your eyes on the + \n\nIf you see the + change colors \npress <SPACE>. \n\nPress <SPACE> to start!
-conf_face,Press J for same or F for different faces. \n\nTry your best to keep your eyes on the + \n\nIf you see the + change colors \npress <SPACE>. \n\nPress <SPACE> to start!
-conf_haus,Press J for same or F for different houses. \n\nTry your best to keep your eyes on the + \n\nIf you see the + change colors \npress <SPACE>. \n\nPress <SPACE> to start!
+feat_face,Designs/instructions_face_5678.png
+feat_haus,Designs/instructions_haus_5678.png
+conf_face,Designs/instructions_face_5678.png
+conf_haus,Designs/instructions_haus_5678.png
