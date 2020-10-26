@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 21:08:30 2020
+    on Sun Oct 25 21:25:53 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -419,12 +419,28 @@ for thisBlock in blocks:
     # update component parameters for each repeat
     if Block_type == 'conf_face':
         paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_face_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'conf_haus':
         paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_haus_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_haus_5678.png'
     elif Block_type == 'feat_face':
         paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_face_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'feat_haus':
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_haus_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_haus_5678.png'
     
     sameTrialid = -1
     diffTrialid = -1
@@ -482,7 +498,7 @@ for thisBlock in blocks:
     #    side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     
-    instructions_image.setImage(instruction_text)
+    instructions_image.setImage(instruction_img)
     key_resp_2.keys = []
     key_resp_2.rt = []
     _key_resp_2_allKeys = []
@@ -562,8 +578,6 @@ for thisBlock in blocks:
     for thisComponent in instrBlockComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    blocks.addData('instructions_image.started', instructions_image.tStartRefresh)
-    blocks.addData('instructions_image.stopped', instructions_image.tStopRefresh)
     # the Routine "instrBlock" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     

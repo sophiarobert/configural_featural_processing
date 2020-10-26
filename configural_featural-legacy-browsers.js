@@ -742,6 +742,7 @@ function blocksLoopEnd() {
 
 
 var paths;
+var instruction_img;
 var sameTrialid;
 var diffTrialid;
 var sameTrial_left_id;
@@ -813,19 +814,40 @@ function instrBlockRoutineBegin(snapshot) {
     
     if ((Block_type === "conf_face")) {
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
+        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+            instruction_img = "Designs/instructions_face_1234.png";
+        } else {
+            instruction_img = "Designs/instructions_face_5678.png";
+        }
     } else {
         if ((Block_type === "conf_haus")) {
             paths = ["Stimuli/H-8sim0.png", "Stimuli/H-8sim1.png", "Stimuli/H-8sim2.png", "Stimuli/H-8sim3.png"];
+            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                instruction_img = "Designs/instructions_haus_1234.png";
+            } else {
+                instruction_img = "Designs/instructions_haus_5678.png";
+            }
         } else {
             if ((Block_type === "feat_face")) {
                 paths = ["Stimuli/f15.png", "Stimuli/f24.png", "Stimuli/f131.png", "Stimuli/f142.png"];
+                if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                    instruction_img = "Designs/instructions_face_1234.png";
+                } else {
+                    instruction_img = "Designs/instructions_face_5678.png";
+                }
             } else {
                 if ((Block_type === "feat_haus")) {
                     paths = ["Stimuli/H5sim0.png", "Stimuli/H6sim0.png", "Stimuli/H7sim0.png", "Stimuli/H8sim0.png"];
+                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        instruction_img = "Designs/instructions_haus_1234.png";
+                    } else {
+                        instruction_img = "Designs/instructions_haus_5678.png";
+                    }
                 }
             }
         }
     }
+    
     
     sameTrialid = -1;
     diffTrialid = -1;
@@ -875,7 +897,7 @@ function instrBlockRoutineBegin(snapshot) {
     
     
     
-    instructions_image.setImage(instruction_text);
+    instructions_image.setImage(instruction_img);
     key_resp_2.keys = undefined;
     key_resp_2.rt = undefined;
     _key_resp_2_allKeys = [];
@@ -1479,8 +1501,6 @@ function probe_imgRoutineEachFrame(snapshot) {
       if (_key_resp_5_allKeys.length > 0) {
         key_resp_5.keys = _key_resp_5_allKeys[_key_resp_5_allKeys.length - 1].name;  // just the last key pressed
         key_resp_5.rt = _key_resp_5_allKeys[_key_resp_5_allKeys.length - 1].rt;
-        // a response ends the routine
-        continueRoutine = false;
       }
     }
     
@@ -1522,7 +1542,6 @@ function probe_imgRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_5.keys', key_resp_5.keys);
     if (typeof key_resp_5.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_5.rt', key_resp_5.rt);
-        routineTimer.reset();
         }
     
     key_resp_5.stop();
