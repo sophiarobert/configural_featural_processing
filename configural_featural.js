@@ -781,15 +781,16 @@ function instrBlockRoutineBegin(snapshot) {
     instrBlockClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-            // add-on: list(s: string): string[]
-            function list(s) {
-                // if s is a string, we return a list of its characters
-                if (typeof s === 'string')
-                    return s.split('');
-                else
-                    // otherwise we return s:
-                    return s;
-            }
+    // add-on: list(s: string): string[]
+    function list(s) {
+        // if s is a string, we return a list of its characters
+        if (typeof s === 'string')
+            return s.split('');
+        else
+            // otherwise we return s:
+            return s;
+    }
+    
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
