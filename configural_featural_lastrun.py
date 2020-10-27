@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Oct 27 01:04:40 2020
+    on Tue Oct 27 01:38:32 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -138,9 +138,7 @@ startInstructClock = core.Clock()
 fix_color_options = ["pink","orange"];
 
 if int(expInfo['design']) == 1:
-    print(expInfo['design'])
     design_file = 'Designs/design1.csv'
-    print(design_file)
 elif int(expInfo['design']) == 2:
     design_file = 'Designs/design2.csv'
 elif int(expInfo['design']) == 3:
@@ -155,6 +153,14 @@ elif int(expInfo['design']) == 7:
     design_file = 'Designs/design7.csv'
 elif int(expInfo['design']) == 8:
     design_file = 'Designs/design8.csv'
+text_3 = visual.TextStim(win=win, name='text_3',
+    text='This game is about faces and houses. \n\nAre you ready to play?\nPress <SPACE> to see the instructions!',
+    font='Arial',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
+key_resp_7 = keyboard.Keyboard()
 
 # Initialize components for Routine "instrBlock"
 instrBlockClock = core.Clock()
@@ -349,8 +355,11 @@ routineTimer.reset()
 # ------Prepare to start Routine "startInstruct"-------
 continueRoutine = True
 # update component parameters for each repeat
+key_resp_7.keys = []
+key_resp_7.rt = []
+_key_resp_7_allKeys = []
 # keep track of which components have finished
-startInstructComponents = []
+startInstructComponents = [text_3, key_resp_7]
 for thisComponent in startInstructComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -372,6 +381,37 @@ while continueRoutine:
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
+    
+    # *text_3* updates
+    if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_3.frameNStart = frameN  # exact frame index
+        text_3.tStart = t  # local t and not account for scr refresh
+        text_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
+        text_3.setAutoDraw(True)
+    
+    # *key_resp_7* updates
+    waitOnFlip = False
+    if key_resp_7.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_7.frameNStart = frameN  # exact frame index
+        key_resp_7.tStart = t  # local t and not account for scr refresh
+        key_resp_7.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_7, 'tStartRefresh')  # time at next scr refresh
+        key_resp_7.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_7.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_7.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_7.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_7.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_7_allKeys.extend(theseKeys)
+        if len(_key_resp_7_allKeys):
+            key_resp_7.keys = _key_resp_7_allKeys[-1].name  # just the last key pressed
+            key_resp_7.rt = _key_resp_7_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -584,7 +624,7 @@ for thisBlock in blocks:
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
-    trials = data.TrialHandler(nReps=48, method='sequential', 
+    trials = data.TrialHandler(nReps=numTrials, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='trials')
@@ -1198,7 +1238,7 @@ for thisBlock in blocks:
         routineTimer.reset()
         thisExp.nextEntry()
         
-    # completed 48 repeats of 'trials'
+    # completed numTrials repeats of 'trials'
     
 # completed 1 repeats of 'blocks'
 

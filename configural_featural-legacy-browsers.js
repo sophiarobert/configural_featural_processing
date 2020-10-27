@@ -108,6 +108,8 @@ var ccimage;
 var startInstructClock;
 var fix_color_options;
 var design_file;
+var text_3;
+var key_resp_7;
 var instrBlockClock;
 var instructions_image;
 var key_resp_2;
@@ -306,6 +308,19 @@ function experimentInit() {
           }
       }
   }
+  
+  text_3 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_3',
+    text: 'This game is about faces and houses. \n\nAre you ready to play?\nPress <SPACE> to see the instructions!',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('black'),  opacity: 1,
+    depth: -1.0 
+  });
+  
+  key_resp_7 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "instrBlock"
   instrBlockClock = new util.Clock();
@@ -585,6 +600,7 @@ function screen_scaleRoutineEnd(snapshot) {
 }
 
 
+var _key_resp_7_allKeys;
 var startInstructComponents;
 function startInstructRoutineBegin(snapshot) {
   return function () {
@@ -593,8 +609,13 @@ function startInstructRoutineBegin(snapshot) {
     startInstructClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    key_resp_7.keys = undefined;
+    key_resp_7.rt = undefined;
+    _key_resp_7_allKeys = [];
     // keep track of which components have finished
     startInstructComponents = [];
+    startInstructComponents.push(text_3);
+    startInstructComponents.push(key_resp_7);
     
     startInstructComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -614,6 +635,40 @@ function startInstructRoutineEachFrame(snapshot) {
     t = startInstructClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+    
+    // *text_3* updates
+    if (t >= 0.0 && text_3.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_3.tStart = t;  // (not accounting for frame time here)
+      text_3.frameNStart = frameN;  // exact frame index
+      
+      text_3.setAutoDraw(true);
+    }
+
+    
+    // *key_resp_7* updates
+    if (t >= 0.0 && key_resp_7.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_7.tStart = t;  // (not accounting for frame time here)
+      key_resp_7.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_7.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_7.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_7.clearEvents(); });
+    }
+
+    if (key_resp_7.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_7.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_7_allKeys = _key_resp_7_allKeys.concat(theseKeys);
+      if (_key_resp_7_allKeys.length > 0) {
+        key_resp_7.keys = _key_resp_7_allKeys[_key_resp_7_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_7.rt = _key_resp_7_allKeys[_key_resp_7_allKeys.length - 1].rt;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
