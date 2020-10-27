@@ -745,6 +745,7 @@ var paths;
 var instruction_img;
 var trialSame;
 var trialDiff;
+var diffTrial;
 var sameTrialid;
 var diffTrialid;
 var sameTrial_left_id;
@@ -850,6 +851,7 @@ function instrBlockRoutineBegin(snapshot) {
     
     trialSame = 0;
     trialDiff = 0;
+    diffTrial = 0;
     sameTrialid = -1;
     diffTrialid = -1;
     sameTrial_left_id = -1;
