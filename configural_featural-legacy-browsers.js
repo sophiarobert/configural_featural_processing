@@ -697,7 +697,7 @@ function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 48, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: numTrials, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'trials'
@@ -765,9 +765,6 @@ var diffTrial_right;
 var fix_switch;
 var side_same;
 var side_diff;
-var trialSame;
-var trialDiff;
-var diffTrial;
 var _key_resp_2_allKeys;
 var instrBlockComponents;
 function instrBlockRoutineBegin(snapshot) {
@@ -877,6 +874,7 @@ function instrBlockRoutineBegin(snapshot) {
         fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]),0,0].flat();
         side_same = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
         side_diff = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
+    } else {
         if ((expInfo["position"] === 1)) {
             numTrials = 24;
             console.log(numTrials)
@@ -886,7 +884,7 @@ function instrBlockRoutineBegin(snapshot) {
             trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
             diffTrial = shuffle_array(list([...Array(12).keys()]));
             fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
-    //        side = shuffle_array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+            //        side = shuffle_array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
         } else {
             if ((expInfo["position"] === 3)) {
                 numTrials = 24;
@@ -896,11 +894,10 @@ function instrBlockRoutineBegin(snapshot) {
                 trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
                 diffTrial = shuffle_array(list([...Array(12).keys()]));
                 fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
-    //            side = shuffle_array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-            } 
+                //            side = shuffle_array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+            }
         }
     }
-    
     
     
     instructions_image.setImage(instruction_img);
