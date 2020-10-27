@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Oct 27 00:14:25 2020
+    on Tue Oct 27 00:16:50 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -137,21 +137,21 @@ ccimage = visual.ImageStim(
 startInstructClock = core.Clock()
 fix_color_options = ["pink","orange"];
 
-if expInfo['design'] == '1':
+if int(expInfo['design']) == 1:
     design_file = 'Designs/design1.csv'
-elif expInfo['design'] == '2':
+elif int(expInfo['design']) == 2:
     design_file = 'Designs/design2.csv'
-elif expInfo['design'] == '3':
+elif int(expInfo['design']) == 3:
     design_file = 'Designs/design3.csv'
-elif expInfo['design'] == '4':
+elif int(expInfo['design']) == 4:
     design_file = 'Designs/design4.csv'
-elif expInfo['design'] == '5':
+elif int(expInfo['design']) == 5:
     design_file = 'Designs/design5.csv'
-elif expInfo['design'] == '6':
+elif int(expInfo['design']) == 6:
     design_file = 'Designs/design6.csv'
-elif expInfo['design'] == '7':
+elif int(expInfo['design']) == 7:
     design_file = 'Designs/design7.csv'
-elif expInfo['design'] == '8':
+elif int(expInfo['design']) == 8:
     design_file = 'Designs/design8.csv'
 
 # Initialize components for Routine "instrBlock"
