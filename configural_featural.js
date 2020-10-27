@@ -1,4 +1,4 @@
-/**************************** 
+﻿/**************************** 
  * Configural_Featural Test *
  ****************************/
 
@@ -702,15 +702,13 @@ function blocksLoopBegin(blocksLoopScheduler) {
 var trials;
 function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
-  console.log(trials)
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: numTrials, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 48, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'trials'
   });
-  console.log(trials)
   psychoJS.experiment.addLoop(trials); // add the loop to the experiment
   currentLoop = trials;  // we're now the current loop
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Oct 27 00:49:26 2020
+    on Tue Oct 27 01:04:40 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -584,7 +584,7 @@ for thisBlock in blocks:
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
-    trials = data.TrialHandler(nReps=numTrials, method='sequential', 
+    trials = data.TrialHandler(nReps=48, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='trials')
@@ -618,9 +618,9 @@ for thisBlock in blocks:
             else:
                 fix_color = fix_color_options[0]
         
-        if expInfo['position'] == '0':
+        if int(expInfo['position']) == 0:
             xPosition = 0
-        elif expInfo['position'] == '2':
+        elif int(expInfo['position']) == 2:
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 if side_same[sameTrialid] == 1: #left
@@ -667,7 +667,7 @@ for thisBlock in blocks:
                         corr = 'j'
                     else:
                         corr = 'f'
-        elif expInfo['position'] == '1':
+        elif int(expInfo['position']) == 1:
             xPosition = -(width*x_scale)
             if trial_order[trialID]==1:
                 sameTrialid += 1
@@ -1198,7 +1198,7 @@ for thisBlock in blocks:
         routineTimer.reset()
         thisExp.nextEntry()
         
-    # completed numTrials repeats of 'trials'
+    # completed 48 repeats of 'trials'
     
 # completed 1 repeats of 'blocks'
 
