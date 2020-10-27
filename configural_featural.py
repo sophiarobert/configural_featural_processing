@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Oct 27 00:16:50 2020
+    on Tue Oct 27 01:22:04 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -138,7 +138,9 @@ startInstructClock = core.Clock()
 fix_color_options = ["pink","orange"];
 
 if int(expInfo['design']) == 1:
+    print(expInfo['design'])
     design_file = 'Designs/design1.csv'
+    print(design_file)
 elif int(expInfo['design']) == 2:
     design_file = 'Designs/design2.csv'
 elif int(expInfo['design']) == 3:
@@ -453,7 +455,7 @@ for thisBlock in blocks:
     shuffle(rand_start)
     fix_color = fix_color_options[rand_start[0]]
     
-    if expInfo['position'] == '2':
+    if int(expInfo['position']) == 2:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame_left = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
@@ -472,7 +474,7 @@ for thisBlock in blocks:
         side_diff = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
         shuffle(side_same)
         shuffle(side_diff)
-    elif expInfo['position'] == '1':
+    elif int(expInfo['position']) == 1:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
@@ -484,7 +486,7 @@ for thisBlock in blocks:
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
     #    side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    elif expInfo['position'] == '3':
+    elif int(expInfo['position']) == 3:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
@@ -582,7 +584,7 @@ for thisBlock in blocks:
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
-    trials = data.TrialHandler(nReps=numTrials, method='sequential', 
+    trials = data.TrialHandler(nReps=48, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='trials')
@@ -616,9 +618,9 @@ for thisBlock in blocks:
             else:
                 fix_color = fix_color_options[0]
         
-        if expInfo['position'] == '0':
+        if int(expInfo['position']) == 0:
             xPosition = 0
-        elif expInfo['position'] == '2':
+        elif int(expInfo['position']) == 2:
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 if side_same[sameTrialid] == 1: #left
@@ -665,7 +667,7 @@ for thisBlock in blocks:
                         corr = 'j'
                     else:
                         corr = 'f'
-        elif expInfo['position'] == '1':
+        elif int(expInfo['position']) == 1:
             xPosition = -(width*x_scale)
             if trial_order[trialID]==1:
                 sameTrialid += 1
@@ -1196,7 +1198,7 @@ for thisBlock in blocks:
         routineTimer.reset()
         thisExp.nextEntry()
         
-    # completed numTrials repeats of 'trials'
+    # completed 48 repeats of 'trials'
     
 # completed 1 repeats of 'blocks'
 
