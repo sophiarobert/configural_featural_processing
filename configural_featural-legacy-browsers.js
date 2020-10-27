@@ -128,6 +128,9 @@ var trial_respClock;
 var text_2;
 var key_resp;
 var key_resp_6;
+var feedbackClock;
+var good_job;
+var key_resp_8;
 var EndScreenClock;
 var allDone;
 var globalClock;
@@ -414,6 +417,21 @@ function experimentInit() {
   key_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   key_resp_6 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  // Initialize components for Routine "feedback"
+  feedbackClock = new util.Clock();
+  good_job = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'good_job',
+    text: 'Great Job!\n\nPress <SPACE> to keep going!',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('black'),  opacity: 1,
+    depth: 0.0 
+  });
+  
+  key_resp_8 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "EndScreen"
   EndScreenClock = new util.Clock();
@@ -738,6 +756,9 @@ function blocksLoopBegin(blocksLoopScheduler) {
     blocksLoopScheduler.add(trialsLoopBegin, trialsLoopScheduler);
     blocksLoopScheduler.add(trialsLoopScheduler);
     blocksLoopScheduler.add(trialsLoopEnd);
+    blocksLoopScheduler.add(feedbackRoutineBegin(snapshot));
+    blocksLoopScheduler.add(feedbackRoutineEachFrame(snapshot));
+    blocksLoopScheduler.add(feedbackRoutineEnd(snapshot));
     blocksLoopScheduler.add(endLoopIteration(blocksLoopScheduler, snapshot));
   });
 
@@ -1772,6 +1793,118 @@ function trial_respRoutineEnd(snapshot) {
     
     key_resp_6.stop();
     // the Routine "trial_resp" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+var _key_resp_8_allKeys;
+var feedbackComponents;
+function feedbackRoutineBegin(snapshot) {
+  return function () {
+    //------Prepare to start Routine 'feedback'-------
+    t = 0;
+    feedbackClock.reset(); // clock
+    frameN = -1;
+    // update component parameters for each repeat
+    key_resp_8.keys = undefined;
+    key_resp_8.rt = undefined;
+    _key_resp_8_allKeys = [];
+    // keep track of which components have finished
+    feedbackComponents = [];
+    feedbackComponents.push(good_job);
+    feedbackComponents.push(key_resp_8);
+    
+    feedbackComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+function feedbackRoutineEachFrame(snapshot) {
+  return function () {
+    //------Loop for each frame of Routine 'feedback'-------
+    let continueRoutine = true; // until we're told otherwise
+    // get current time
+    t = feedbackClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *good_job* updates
+    if (t >= 0.0 && good_job.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      good_job.tStart = t;  // (not accounting for frame time here)
+      good_job.frameNStart = frameN;  // exact frame index
+      
+      good_job.setAutoDraw(true);
+    }
+
+    
+    // *key_resp_8* updates
+    if (t >= 0.0 && key_resp_8.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_8.tStart = t;  // (not accounting for frame time here)
+      key_resp_8.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_8.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_8.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_8.clearEvents(); });
+    }
+
+    if (key_resp_8.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_8.getKeys({keyList: ['space'], waitRelease: false});
+      _key_resp_8_allKeys = _key_resp_8_allKeys.concat(theseKeys);
+      if (_key_resp_8_allKeys.length > 0) {
+        key_resp_8.keys = _key_resp_8_allKeys[_key_resp_8_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_8.rt = _key_resp_8_allKeys[_key_resp_8_allKeys.length - 1].rt;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    feedbackComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function feedbackRoutineEnd(snapshot) {
+  return function () {
+    //------Ending Routine 'feedback'-------
+    feedbackComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    // the Routine "feedback" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     return Scheduler.Event.NEXT;
