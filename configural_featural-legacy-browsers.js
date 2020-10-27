@@ -743,6 +743,8 @@ function blocksLoopEnd() {
 
 var paths;
 var instruction_img;
+var trialSame;
+var trialDiff;
 var sameTrialid;
 var diffTrialid;
 var sameTrial_left_id;
@@ -846,7 +848,8 @@ function instrBlockRoutineBegin(snapshot) {
         }
     }
     
-    
+    trialSame = 0;
+    trialDiff = 0;
     sameTrialid = -1;
     diffTrialid = -1;
     sameTrial_left_id = -1;
@@ -875,8 +878,6 @@ function instrBlockRoutineBegin(snapshot) {
     } else {
         if ((Number.parseInt(expInfo["position"]) === 1)) {
             numTrials = 24;
-            trialSame = 0;
-            trialDiff = 0;
             trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
             trial_order = round_array(divide_subPoint1(trial_order,6))
             trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
@@ -887,8 +888,6 @@ function instrBlockRoutineBegin(snapshot) {
         } else {
             if ((Number.parseInt(expInfo["position"]) === 3)) {
                 numTrials = 24;
-                trialSame = 0;
-                trialDiff = 0;
                 trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
                 trial_order = round_array(divide_subPoint1(trial_order,6))
                 trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
