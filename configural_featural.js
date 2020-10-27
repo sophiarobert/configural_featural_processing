@@ -865,7 +865,7 @@ function instrBlockRoutineBegin(snapshot) {
     rand_start = shuffle_array([0,1]);
     fix_color = fix_color_options[rand_start[0]];
     
-    if ((expInfo["position"] === 2)) {
+    if ((Number.parseInt(expInfo["position"]) === 2)) {
         console.log(numTrials)
         numTrials = 48;
         console.log(numTrials)
@@ -881,7 +881,7 @@ function instrBlockRoutineBegin(snapshot) {
         side_same = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
         side_diff = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
     } else {
-        if ((expInfo["position"] === 1)) {
+        if ((Number.parseInt(expInfo["position"]) === 1)) {
             numTrials = 24;
             console.log(numTrials)
             trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
@@ -892,7 +892,7 @@ function instrBlockRoutineBegin(snapshot) {
             fix_switch = [0,0,shuffle_array([1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),0,0].flat();
             //        side = shuffle_array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
         } else {
-            if ((expInfo["position"] === 3)) {
+            if ((Number.parseInt(expInfo["position"]) === 3)) {
                 numTrials = 24;
                 trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
                 trial_order = round_array(divide_subPoint1(trial_order,6))
