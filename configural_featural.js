@@ -1,4 +1,4 @@
-﻿/**************************** 
+/**************************** 
  * Configural_Featural Test *
  ****************************/
 
@@ -708,6 +708,7 @@ function trialsLoopBegin(trialsLoopScheduler) {
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'trials'
+    console.log(trials)
   });
   psychoJS.experiment.addLoop(trials); // add the loop to the experiment
   currentLoop = trials;  // we're now the current loop
