@@ -863,7 +863,9 @@ function instrBlockRoutineBegin(snapshot) {
     fix_color = fix_color_options[rand_start[0]];
     
     if ((expInfo["position"] === 2)) {
+        console.log(numTrials)
         numTrials = 48;
+        console.log(numTrials)
         trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]),shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
         trial_order = round_array(divide_subPoint1(trial_order,6))
         trialSame_left = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
@@ -1032,10 +1034,10 @@ function target_imgRoutineBegin(snapshot) {
             fix_color = fix_color_options[0];
         }
     }
-    if ((expInfo["position"] === "0")) {
+    if ((Number.parseInt(expInfo["position"]) === 0)) {
         xPosition = 0;
     } else {
-        if ((expInfo["position"] === "2")) {
+        if ((Number.parseInt(expInfo["position"]) === 2)) {
             if ((trial_order[trialID] === 1)) {
                 sameTrialid += 1;
                 if ((side_same[sameTrialid] === 1)) {
@@ -1096,7 +1098,7 @@ function target_imgRoutineBegin(snapshot) {
                 }
             }
         } else {
-            if ((expInfo["position"] === "1")) {
+            if ((Number.parseInt(expInfo["position"]) === 1)) {
                 xPosition = (- (width * x_scale));
                 if ((trial_order[trialID] === 1)) {
                     sameTrialid += 1;

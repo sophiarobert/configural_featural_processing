@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Oct 27 00:01:28 2020
+    on Tue Oct 27 00:49:26 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -37,7 +37,7 @@ os.chdir(_thisDir)
 # Store info about the experiment session
 psychopyVersion = '2020.2.4'
 expName = 'configural_featural'  # from the Builder filename that created this script
-expInfo = {'participant': 'code', 'design': '1', 'position': '2'}
+expInfo = {'participant': '', 'design': '1', 'position': '2'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -137,21 +137,23 @@ ccimage = visual.ImageStim(
 startInstructClock = core.Clock()
 fix_color_options = ["pink","orange"];
 
-if expInfo['design'] == '1':
+if int(expInfo['design']) == 1:
+    print(expInfo['design'])
     design_file = 'Designs/design1.csv'
-elif expInfo['design'] == '2':
+    print(design_file)
+elif int(expInfo['design']) == 2:
     design_file = 'Designs/design2.csv'
-elif expInfo['design'] == '3':
+elif int(expInfo['design']) == 3:
     design_file = 'Designs/design3.csv'
-elif expInfo['design'] == '4':
+elif int(expInfo['design']) == 4:
     design_file = 'Designs/design4.csv'
-elif expInfo['design'] == '5':
+elif int(expInfo['design']) == 5:
     design_file = 'Designs/design5.csv'
-elif expInfo['design'] == '6':
+elif int(expInfo['design']) == 6:
     design_file = 'Designs/design6.csv'
-elif expInfo['design'] == '7':
+elif int(expInfo['design']) == 7:
     design_file = 'Designs/design7.csv'
-elif expInfo['design'] == '8':
+elif int(expInfo['design']) == 8:
     design_file = 'Designs/design8.csv'
 
 # Initialize components for Routine "instrBlock"
@@ -453,7 +455,7 @@ for thisBlock in blocks:
     shuffle(rand_start)
     fix_color = fix_color_options[rand_start[0]]
     
-    if expInfo['position'] == '2':
+    if int(expInfo['position']) == 2:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame_left = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
@@ -472,7 +474,7 @@ for thisBlock in blocks:
         side_diff = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
         shuffle(side_same)
         shuffle(side_diff)
-    elif expInfo['position'] == '1':
+    elif int(expInfo['position']) == 1:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
@@ -484,7 +486,7 @@ for thisBlock in blocks:
         shuffle(fixs_shuffled)
         fix_switch = [0,0]+fixs_shuffled+[0,0]
     #    side = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    elif expInfo['position'] == '3':
+    elif int(expInfo['position']) == 3:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
         trialSame = np.concatenate((permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3]),permutation([0, 1, 2, 3])))
