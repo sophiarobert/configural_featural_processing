@@ -286,7 +286,9 @@ function experimentInit() {
   startInstructClock = new util.Clock();
   fix_color_options = ["pink", "orange"];
   if ((Number.parseInt(expInfo["design"]) === 1)) {
+      console.log(expInfo["design"]);
       design_file = "Designs/design1.csv";
+      console.log(design_file);
   } else {
       if ((Number.parseInt(expInfo["design"]) === 2)) {
           design_file = "Designs/design2.csv";
