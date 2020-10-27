@@ -275,28 +275,28 @@ function experimentInit() {
   // Initialize components for Routine "startInstruct"
   startInstructClock = new util.Clock();
   fix_color_options = ["pink", "orange"];
-  if ((expInfo["design"] === "1")) {
+  if ((Number.parseInt(expInfo["design"]) === 1)) {
       design_file = "Designs/design1.csv";
   } else {
-      if ((expInfo["design"] === "2")) {
+      if ((Number.parseInt(expInfo["design"]) === 2)) {
           design_file = "Designs/design2.csv";
       } else {
-          if ((expInfo["design"] === "3")) {
+          if ((Number.parseInt(expInfo["design"]) === 3)) {
               design_file = "Designs/design3.csv";
           } else {
-              if ((expInfo["design"] === "4")) {
+              if ((Number.parseInt(expInfo["design"]) === 4)) {
                   design_file = "Designs/design4.csv";
               } else {
-                  if ((expInfo["design"] === "5")) {
+                  if ((Number.parseInt(expInfo["design"]) === 5)) {
                       design_file = "Designs/design5.csv";
                   } else {
-                      if ((expInfo["design"] === "6")) {
+                      if ((Number.parseInt(expInfo["design"]) === 6)) {
                           design_file = "Designs/design6.csv";
                       } else {
-                          if ((expInfo["design"] === "7")) {
+                          if ((Number.parseInt(expInfo["design"]) === 7)) {
                               design_file = "Designs/design7.csv";
                           } else {
-                              if ((expInfo["design"] === "8")) {
+                              if ((Number.parseInt(expInfo["design"]) === 8)) {
                                   design_file = "Designs/design8.csv";
                               }
                           }

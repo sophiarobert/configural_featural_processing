@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sun Oct 25 20:22:57 2020
+    on Tue Oct 27 00:14:25 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -37,7 +37,7 @@ os.chdir(_thisDir)
 # Store info about the experiment session
 psychopyVersion = '2020.2.4'
 expName = 'configural_featural'  # from the Builder filename that created this script
-expInfo = {'participant': 'code', 'design': '1', 'position': '2'}
+expInfo = {'participant': '', 'design': '1', 'position': '2'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -156,13 +156,14 @@ elif expInfo['design'] == '8':
 
 # Initialize components for Routine "instrBlock"
 instrBlockClock = core.Clock()
-text_3 = visual.TextStim(win=win, name='text_3',
-    text='default text',
-    font='Arial',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
-    color='black', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-1.0);
+instructions_image = visual.ImageStim(
+    win=win,
+    name='instructions_image', 
+    image='sin', mask=None,
+    ori=0, pos=(0, 0), size=(0.75*1.5, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=512, interpolate=True, depth=-1.0)
 key_resp_2 = keyboard.Keyboard()
 
 # Initialize components for Routine "target_img"
@@ -418,12 +419,28 @@ for thisBlock in blocks:
     # update component parameters for each repeat
     if Block_type == 'conf_face':
         paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_face_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'conf_haus':
         paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_haus_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_haus_5678.png'
     elif Block_type == 'feat_face':
         paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_face_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'feat_haus':
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            instruction_img = 'Designs/instructions_haus_1234.png'
+        else:
+            instruction_img = 'Designs/instructions_haus_5678.png'
     
     sameTrialid = -1
     diffTrialid = -1
@@ -481,12 +498,12 @@ for thisBlock in blocks:
     #    side = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     
-    text_3.setText(instruction_text)
+    instructions_image.setImage(instruction_img)
     key_resp_2.keys = []
     key_resp_2.rt = []
     _key_resp_2_allKeys = []
     # keep track of which components have finished
-    instrBlockComponents = [text_3, key_resp_2]
+    instrBlockComponents = [instructions_image, key_resp_2]
     for thisComponent in instrBlockComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -509,14 +526,14 @@ for thisBlock in blocks:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text_3* updates
-        if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # *instructions_image* updates
+        if instructions_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text_3.frameNStart = frameN  # exact frame index
-            text_3.tStart = t  # local t and not account for scr refresh
-            text_3.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
-            text_3.setAutoDraw(True)
+            instructions_image.frameNStart = frameN  # exact frame index
+            instructions_image.tStart = t  # local t and not account for scr refresh
+            instructions_image.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(instructions_image, 'tStartRefresh')  # time at next scr refresh
+            instructions_image.setAutoDraw(True)
         
         # *key_resp_2* updates
         waitOnFlip = False
@@ -1014,8 +1031,6 @@ for thisBlock in blocks:
                 if len(_key_resp_5_allKeys):
                     key_resp_5.keys = _key_resp_5_allKeys[-1].name  # just the last key pressed
                     key_resp_5.rt = _key_resp_5_allKeys[-1].rt
-                    # a response ends the routine
-                    continueRoutine = False
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
