@@ -135,6 +135,7 @@ var text_7;
 var prac_resp;
 var prac_fix_resp;
 var prac_feedbackClock;
+var feedback_msg;
 var image_3;
 var startInstructClock;
 var fix_color_options;
@@ -397,6 +398,17 @@ function experimentInit() {
   
   // Initialize components for Routine "prac_feedback"
   prac_feedbackClock = new util.Clock();
+  feedback_msg = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'feedback_msg',
+    text: 'default text',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, (- 1.5)], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('black'),  opacity: 1,
+    depth: -1.0 
+  });
+  
   image_3 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_3', units : undefined, 
@@ -404,7 +416,7 @@ function experimentInit() {
     ori : 0, pos : [0, 0], size : [0.5, 0.5],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -1.0 
+    texRes : 512, interpolate : true, depth : -2.0 
   });
   // Initialize components for Routine "startInstruct"
   startInstructClock = new util.Clock();
@@ -974,7 +986,7 @@ function prac_targetRoutineBegin(snapshot) {
         }
     } else {
         pfix_color = pfix_color;
-        corrPfix = "";
+        corrPfix = null;
     }
     console.log(pfix_switch[pTrial]);
     console.log(pfix_color);
@@ -1111,6 +1123,7 @@ function prac_probeRoutineBegin(snapshot) {
     t = 0;
     prac_probeClock.reset(); // clock
     frameN = -1;
+    routineTimer.add(5.200000);
     // update component parameters for each repeat
     image_2.setImage(prac_probe);
     text_7.setColor(new util.Color(pfix_color));
@@ -1169,6 +1182,10 @@ function prac_probeRoutineEachFrame(snapshot) {
       text_7.setAutoDraw(true);
     }
 
+    frameRemains = 0 + 5.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (text_7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      text_7.setAutoDraw(false);
+    }
     
     // *prac_resp* updates
     if (t >= 0.2 && prac_resp.status === PsychoJS.Status.NOT_STARTED) {
@@ -1182,6 +1199,11 @@ function prac_probeRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_resp.clearEvents(); });
     }
 
+    frameRemains = 0.2 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (prac_resp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      prac_resp.status = PsychoJS.Status.FINISHED;
+  }
+
     if (prac_resp.status === PsychoJS.Status.STARTED) {
       let theseKeys = prac_resp.getKeys({keyList: ['f', 'j'], waitRelease: false});
       _prac_resp_allKeys = _prac_resp_allKeys.concat(theseKeys);
@@ -1194,8 +1216,6 @@ function prac_probeRoutineEachFrame(snapshot) {
         } else {
             prac_resp.corr = 0;
         }
-        // a response ends the routine
-        continueRoutine = false;
       }
     }
     
@@ -1211,6 +1231,11 @@ function prac_probeRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_fix_resp.start(); }); // start on screen flip
       psychoJS.window.callOnFlip(function() { prac_fix_resp.clearEvents(); });
     }
+
+    frameRemains = 0.2 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (prac_fix_resp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      prac_fix_resp.status = PsychoJS.Status.FINISHED;
+  }
 
     if (prac_fix_resp.status === PsychoJS.Status.STARTED) {
       let theseKeys = prac_fix_resp.getKeys({keyList: ['space'], waitRelease: false});
@@ -1245,7 +1270,7 @@ function prac_probeRoutineEachFrame(snapshot) {
     });
     
     // refresh the screen if continuing
-    if (continueRoutine) {
+    if (continueRoutine && routineTimer.getTime() > 0) {
       return Scheduler.Event.FLIP_REPEAT;
     } else {
       return Scheduler.Event.NEXT;
@@ -1275,7 +1300,6 @@ function prac_probeRoutineEnd(snapshot) {
     psychoJS.experiment.addData('prac_resp.corr', prac_resp.corr);
     if (typeof prac_resp.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('prac_resp.rt', prac_resp.rt);
-        routineTimer.reset();
         }
     
     prac_resp.stop();
@@ -1295,15 +1319,13 @@ function prac_probeRoutineEnd(snapshot) {
         }
     
     prac_fix_resp.stop();
-    // the Routine "prac_probe" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset();
-    
     return Scheduler.Event.NEXT;
   };
 }
 
 
 var feedIM;
+var prac_msg;
 var prac_feedbackComponents;
 function prac_feedbackRoutineBegin(snapshot) {
   return function () {
@@ -1311,20 +1333,38 @@ function prac_feedbackRoutineBegin(snapshot) {
     t = 0;
     prac_feedbackClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(1.000000);
+    routineTimer.add(2.000000);
     // update component parameters for each repeat
     feedIM = "";
     if ((prac_resp.keys === pracCorr)) {
-        feedIM = "Stimuli/greenCheck.png";
+        if ((prac_fix_resp.keys === corrPfix)) {
+            feedIM = "Stimuli/greenCheck.png";
+            prac_msg = "Well done!";
+        } else {
+            if ((prac_fix_resp.keys !== corrPfix)) {
+                feedIM = "Stimuli/redWrong.png";
+                prac_msg = "Oops, your image response was right but the cross response was wrong.";
+            }
+        }
     } else {
         if ((prac_resp.keys !== pracCorr)) {
-            feedIM = "Stimuli/redWrong.png";
+            if ((prac_fix_resp.keys === corrPfix)) {
+                feedIM = "Stimuli/redWrong.png";
+                prac_msg = "Oops, your cross response was right but the image response was wrong.";
+            } else {
+                if ((prac_fix_resp.keys !== corrPfix)) {
+                    feedIM = "Stimuli/redWrong.png";
+                    prac_msg = "Oops, both responses were wrong.";
+                }
+            }
         }
     }
     
+    feedback_msg.setText(prac_msg);
     image_3.setImage(feedIM);
     // keep track of which components have finished
     prac_feedbackComponents = [];
+    prac_feedbackComponents.push(feedback_msg);
     prac_feedbackComponents.push(image_3);
     
     prac_feedbackComponents.forEach( function(thisComponent) {
@@ -1346,6 +1386,20 @@ function prac_feedbackRoutineEachFrame(snapshot) {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
+    // *feedback_msg* updates
+    if (t >= 0.0 && feedback_msg.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      feedback_msg.tStart = t;  // (not accounting for frame time here)
+      feedback_msg.frameNStart = frameN;  // exact frame index
+      
+      feedback_msg.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (feedback_msg.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      feedback_msg.setAutoDraw(false);
+    }
+    
     // *image_3* updates
     if (t >= 0.0 && image_3.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -1355,7 +1409,7 @@ function prac_feedbackRoutineEachFrame(snapshot) {
       image_3.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 1.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (image_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       image_3.setAutoDraw(false);
     }
