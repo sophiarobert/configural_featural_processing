@@ -423,7 +423,7 @@ function experimentInit() {
     text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, (- 1.5)], height: 0.05,  wrapWidth: undefined, ori: 0,
+    pos: [0, (- 0.5)], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -2.0 
   });
