@@ -950,10 +950,10 @@ function prac_targetRoutineBegin(snapshot) {
         prac_probe = paths[samepTrials[sameCount]];
         console.log(Number.parseInt(expInfo["design"]));
         console.log(pracCorr);
-        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+        if ((Number.parseInt(expInfo["design"]) < 5)) {
             pracCorr = "f";
         } else {
-            if (((((Number.parseInt(expInfo["design"]) === (5 | Number.parseInt(expInfo["design"]))) && ((5 | Number.parseInt(expInfo["design"])) === (6 | Number.parseInt(expInfo["design"])))) && ((6 | Number.parseInt(expInfo["design"])) === (7 | Number.parseInt(expInfo["design"])))) && ((7 | Number.parseInt(expInfo["design"])) === 8))) {
+            if ((Number.parseInt(expInfo["design"]) > 4)) {
                 pracCorr = "j";
             }
         }
