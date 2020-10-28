@@ -137,11 +137,11 @@ var corrpFix;
 var numPTrials;
 var pfix_switch;
 var prac_targetClock;
-var text_6;
 var image;
+var text_6;
 var prac_probeClock;
-var text_7;
 var image_2;
+var text_7;
 var prac_resp;
 var prac_fix_resp;
 var prac_feedbackClock;
@@ -359,6 +359,15 @@ function experimentInit() {
   pfix_switch = [0,0,shuffle_array([1,1,0,0,0,0]),0,0].flat();
   // Initialize components for Routine "prac_target"
   prac_targetClock = new util.Clock();
+  image = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'image', units : undefined, 
+    image : undefined, mask : undefined,
+    ori : 0, pos : [0, 0], size : [0.5, 0.5],
+    color : new util.Color([1, 1, 1]), opacity : 1,
+    flipHoriz : false, flipVert : false,
+    texRes : 512, interpolate : true, depth : -1.0 
+  });
   text_6 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_6',
@@ -367,20 +376,20 @@ function experimentInit() {
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
-    depth: -1.0 
+    depth: -2.0 
   });
   
-  image = new visual.ImageStim({
+  // Initialize components for Routine "prac_probe"
+  prac_probeClock = new util.Clock();
+  image_2 = new visual.ImageStim({
     win : psychoJS.window,
-    name : 'image', units : undefined, 
+    name : 'image_2', units : undefined, 
     image : undefined, mask : undefined,
     ori : 0, pos : [0, 0], size : [0.5, 0.5],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -2.0 
+    texRes : 512, interpolate : true, depth : 0.0 
   });
-  // Initialize components for Routine "prac_probe"
-  prac_probeClock = new util.Clock();
   text_7 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_7',
@@ -389,18 +398,9 @@ function experimentInit() {
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
-    depth: 0.0 
+    depth: -1.0 
   });
   
-  image_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_2', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0, pos : [0, 0], size : [0.5, 0.5],
-    color : new util.Color([1, 1, 1]), opacity : 1,
-    flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -1.0 
-  });
   prac_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   prac_fix_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
@@ -1013,12 +1013,12 @@ function prac_targetRoutineBegin(snapshot) {
         }
     }
     
-    text_6.setColor(new util.Color(pfix_color));
     image.setImage(prac_target);
+    text_6.setColor(new util.Color(pfix_color));
     // keep track of which components have finished
     prac_targetComponents = [];
-    prac_targetComponents.push(text_6);
     prac_targetComponents.push(image);
+    prac_targetComponents.push(text_6);
     
     for (const thisComponent of prac_targetComponents)
       if ('status' in thisComponent)
@@ -1039,20 +1039,6 @@ function prac_targetRoutineEachFrame(snapshot) {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *text_6* updates
-    if (t >= 0 && text_6.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_6.tStart = t;  // (not accounting for frame time here)
-      text_6.frameNStart = frameN;  // exact frame index
-      
-      text_6.setAutoDraw(true);
-    }
-
-    frameRemains = 0 + 0.3 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (text_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      text_6.setAutoDraw(false);
-    }
-    
     // *image* updates
     if (t >= 0.0 && image.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -1065,6 +1051,20 @@ function prac_targetRoutineEachFrame(snapshot) {
     frameRemains = 0.0 + 0.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (image.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       image.setAutoDraw(false);
+    }
+    
+    // *text_6* updates
+    if (t >= 0 && text_6.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_6.tStart = t;  // (not accounting for frame time here)
+      text_6.frameNStart = frameN;  // exact frame index
+      
+      text_6.setAutoDraw(true);
+    }
+
+    frameRemains = 0 + 0.3 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (text_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      text_6.setAutoDraw(false);
     }
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
@@ -1116,8 +1116,8 @@ function prac_probeRoutineBegin(snapshot) {
     prac_probeClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    text_7.setColor(new util.Color(pfix_color));
     image_2.setImage(prac_probe);
+    text_7.setColor(new util.Color(pfix_color));
     prac_resp.keys = undefined;
     prac_resp.rt = undefined;
     _prac_resp_allKeys = [];
@@ -1126,8 +1126,8 @@ function prac_probeRoutineBegin(snapshot) {
     _prac_fix_resp_allKeys = [];
     // keep track of which components have finished
     prac_probeComponents = [];
-    prac_probeComponents.push(text_7);
     prac_probeComponents.push(image_2);
+    prac_probeComponents.push(text_7);
     prac_probeComponents.push(prac_resp);
     prac_probeComponents.push(prac_fix_resp);
     
@@ -1149,16 +1149,6 @@ function prac_probeRoutineEachFrame(snapshot) {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *text_7* updates
-    if (t >= 0 && text_7.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_7.tStart = t;  // (not accounting for frame time here)
-      text_7.frameNStart = frameN;  // exact frame index
-      
-      text_7.setAutoDraw(true);
-    }
-
-    
     // *image_2* updates
     if (t >= 0.0 && image_2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -1172,6 +1162,16 @@ function prac_probeRoutineEachFrame(snapshot) {
     if (image_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       image_2.setAutoDraw(false);
     }
+    
+    // *text_7* updates
+    if (t >= 0 && text_7.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_7.tStart = t;  // (not accounting for frame time here)
+      text_7.frameNStart = frameN;  // exact frame index
+      
+      text_7.setAutoDraw(true);
+    }
+
     
     // *prac_resp* updates
     if (t >= 0.2 && prac_resp.status === PsychoJS.Status.NOT_STARTED) {
