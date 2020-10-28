@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 17:50:41 2020
+    on Wed Oct 28 18:03:03 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -201,13 +201,6 @@ prac_fix_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "prac_feedback"
 prac_feedbackClock = core.Clock()
-feedback_msg = visual.TextStim(win=win, name='feedback_msg',
-    text='default text',
-    font='Arial',
-    pos=(0, -1.5), height=0.05, wrapWidth=None, ori=0, 
-    color='black', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-1.0);
 image_3 = visual.ImageStim(
     win=win,
     name='image_3', 
@@ -215,7 +208,14 @@ image_3 = visual.ImageStim(
     ori=0, pos=(0, 0), size=(0.5, 0.5),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
-    texRes=512, interpolate=True, depth=-2.0)
+    texRes=512, interpolate=True, depth=-1.0)
+feedback_msg = visual.TextStim(win=win, name='feedback_msg',
+    text='default text',
+    font='Arial',
+    pos=(0, -1.5), height=0.05, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # Initialize components for Routine "startInstruct"
 startInstructClock = core.Clock()
@@ -643,7 +643,7 @@ for thisPTrial in pTrials:
     
     # ------Prepare to start Routine "prac_probe"-------
     continueRoutine = True
-    routineTimer.add(2.200000)
+    routineTimer.add(4.200000)
     # update component parameters for each repeat
     image_2.setImage(prac_probe)
     text_7.setColor(pfix_color, colorSpace='rgb')
@@ -704,7 +704,7 @@ for thisPTrial in pTrials:
             text_7.setAutoDraw(True)
         if text_7.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_7.tStartRefresh + 2.2-frameTolerance:
+            if tThisFlipGlobal > text_7.tStartRefresh + 4.2-frameTolerance:
                 # keep track of stop time/frame for later
                 text_7.tStop = t  # not accounting for scr refresh
                 text_7.frameNStop = frameN  # exact frame index
@@ -726,7 +726,7 @@ for thisPTrial in pTrials:
             win.callOnFlip(prac_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if prac_resp.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > prac_resp.tStartRefresh + 2-frameTolerance:
+            if tThisFlipGlobal > prac_resp.tStartRefresh + 4-frameTolerance:
                 # keep track of stop time/frame for later
                 prac_resp.tStop = t  # not accounting for scr refresh
                 prac_resp.frameNStop = frameN  # exact frame index
@@ -759,7 +759,7 @@ for thisPTrial in pTrials:
             win.callOnFlip(prac_fix_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if prac_fix_resp.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > prac_fix_resp.tStartRefresh + 2-frameTolerance:
+            if tThisFlipGlobal > prac_fix_resp.tStartRefresh + 4-frameTolerance:
                 # keep track of stop time/frame for later
                 prac_fix_resp.tStop = t  # not accounting for scr refresh
                 prac_fix_resp.frameNStop = frameN  # exact frame index
@@ -852,10 +852,10 @@ for thisPTrial in pTrials:
         elif prac_fix_resp.keys != corrPfix:
             feedIM = 'Stimuli/redWrong.png'
             prac_msg = 'Oops, both responses were wrong.'
-    feedback_msg.setText(prac_msg)
     image_3.setImage(feedIM)
+    feedback_msg.setText(prac_msg)
     # keep track of which components have finished
-    prac_feedbackComponents = [feedback_msg, image_3]
+    prac_feedbackComponents = [image_3, feedback_msg]
     for thisComponent in prac_feedbackComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -878,23 +878,6 @@ for thisPTrial in pTrials:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *feedback_msg* updates
-        if feedback_msg.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            feedback_msg.frameNStart = frameN  # exact frame index
-            feedback_msg.tStart = t  # local t and not account for scr refresh
-            feedback_msg.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(feedback_msg, 'tStartRefresh')  # time at next scr refresh
-            feedback_msg.setAutoDraw(True)
-        if feedback_msg.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > feedback_msg.tStartRefresh + 2-frameTolerance:
-                # keep track of stop time/frame for later
-                feedback_msg.tStop = t  # not accounting for scr refresh
-                feedback_msg.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(feedback_msg, 'tStopRefresh')  # time at next scr refresh
-                feedback_msg.setAutoDraw(False)
-        
         # *image_3* updates
         if image_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
@@ -911,6 +894,23 @@ for thisPTrial in pTrials:
                 image_3.frameNStop = frameN  # exact frame index
                 win.timeOnFlip(image_3, 'tStopRefresh')  # time at next scr refresh
                 image_3.setAutoDraw(False)
+        
+        # *feedback_msg* updates
+        if feedback_msg.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            feedback_msg.frameNStart = frameN  # exact frame index
+            feedback_msg.tStart = t  # local t and not account for scr refresh
+            feedback_msg.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(feedback_msg, 'tStartRefresh')  # time at next scr refresh
+            feedback_msg.setAutoDraw(True)
+        if feedback_msg.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > feedback_msg.tStartRefresh + 2-frameTolerance:
+                # keep track of stop time/frame for later
+                feedback_msg.tStop = t  # not accounting for scr refresh
+                feedback_msg.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(feedback_msg, 'tStopRefresh')  # time at next scr refresh
+                feedback_msg.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -934,10 +934,10 @@ for thisPTrial in pTrials:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     pTrial = pTrial + 1
-    pTrials.addData('feedback_msg.started', feedback_msg.tStartRefresh)
-    pTrials.addData('feedback_msg.stopped', feedback_msg.tStopRefresh)
     pTrials.addData('image_3.started', image_3.tStartRefresh)
     pTrials.addData('image_3.stopped', image_3.tStopRefresh)
+    pTrials.addData('feedback_msg.started', feedback_msg.tStartRefresh)
+    pTrials.addData('feedback_msg.stopped', feedback_msg.tStopRefresh)
     thisExp.nextEntry()
     
 # completed numPTrials repeats of 'pTrials'
