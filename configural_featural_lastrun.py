@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 01:52:40 2020
+    on Wed Oct 28 02:06:54 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -221,11 +221,6 @@ fix_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "prac_feedback"
 prac_feedbackClock = core.Clock()
-feedIM =''
-if prac_resp.keys == pracCorr: # & fix_resp.keys == corrFix
-    feedIM = 'Stimuli/greenCheck.png'
-elif prac_resp.keys != pracCorr:
-    feedIM = 'Stimuli/redWrong.png'
 image_3 = visual.ImageStim(
     win=win,
     name='image_3', 
@@ -814,6 +809,11 @@ for thisPTrial in pTrials:
     continueRoutine = True
     routineTimer.add(1.000000)
     # update component parameters for each repeat
+    feedIM =''
+    if prac_resp.keys == pracCorr: # & fix_resp.keys == corrFix
+        feedIM = 'Stimuli/greenCheck.png'
+    elif prac_resp.keys != pracCorr:
+        feedIM = 'Stimuli/redWrong.png'
     image_3.setImage(feedIM)
     # keep track of which components have finished
     prac_feedbackComponents = [image_3]

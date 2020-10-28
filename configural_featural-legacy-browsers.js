@@ -130,7 +130,7 @@ var prac_probeClock;
 var image_2;
 var text_7;
 var prac_resp;
-var fix_resp;
+var prac_fix_resp;
 var prac_feedbackClock;
 var image_3;
 var startInstructClock;
@@ -375,7 +375,7 @@ function experimentInit() {
   
   prac_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
-  fix_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  prac_fix_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "prac_feedback"
   prac_feedbackClock = new util.Clock();
@@ -943,6 +943,7 @@ function prac_targetRoutineBegin(snapshot) {
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = paths[samepTrials[sameCount]];
         prac_probe = paths[samepTrials[sameCount]];
+        console.log(Number.parseInt(expInfo["design"]));
         if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
             pracCorr = "f";
         } else {
@@ -950,6 +951,7 @@ function prac_targetRoutineBegin(snapshot) {
                 pracCorr = "j";
             }
         }
+        console.log(pracCorr);
         sameCount = (sameCount + 1);
     } else {
         if ((ptrial_order[pTrial] === 1)) {
@@ -959,9 +961,10 @@ function prac_targetRoutineBegin(snapshot) {
                 pracCorr = "j";
             } else {
                 if (((((Number.parseInt(expInfo["design"]) === (5 | Number.parseInt(expInfo["design"]))) && ((5 | Number.parseInt(expInfo["design"])) === (6 | Number.parseInt(expInfo["design"])))) && ((6 | Number.parseInt(expInfo["design"])) === (7 | Number.parseInt(expInfo["design"])))) && ((7 | Number.parseInt(expInfo["design"])) === 8))) {
-                    pracCorr = "s";
+                    pracCorr = "f";
                 }
             }
+            console.log(pracCorr);
             diffCount = (diffCount + 1);
         }
     }
@@ -1060,7 +1063,7 @@ function prac_targetRoutineEnd(snapshot) {
 
 
 var _prac_resp_allKeys;
-var _fix_resp_allKeys;
+var _prac_fix_resp_allKeys;
 var prac_probeComponents;
 function prac_probeRoutineBegin(snapshot) {
   return function () {
@@ -1073,15 +1076,15 @@ function prac_probeRoutineBegin(snapshot) {
     prac_resp.keys = undefined;
     prac_resp.rt = undefined;
     _prac_resp_allKeys = [];
-    fix_resp.keys = undefined;
-    fix_resp.rt = undefined;
-    _fix_resp_allKeys = [];
+    prac_fix_resp.keys = undefined;
+    prac_fix_resp.rt = undefined;
+    _prac_fix_resp_allKeys = [];
     // keep track of which components have finished
     prac_probeComponents = [];
     prac_probeComponents.push(image_2);
     prac_probeComponents.push(text_7);
     prac_probeComponents.push(prac_resp);
-    prac_probeComponents.push(fix_resp);
+    prac_probeComponents.push(prac_fix_resp);
     
     prac_probeComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1156,29 +1159,29 @@ function prac_probeRoutineEachFrame(snapshot) {
     }
     
     
-    // *fix_resp* updates
-    if (t >= 0.2 && fix_resp.status === PsychoJS.Status.NOT_STARTED) {
+    // *prac_fix_resp* updates
+    if (t >= 0.2 && prac_fix_resp.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      fix_resp.tStart = t;  // (not accounting for frame time here)
-      fix_resp.frameNStart = frameN;  // exact frame index
+      prac_fix_resp.tStart = t;  // (not accounting for frame time here)
+      prac_fix_resp.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      psychoJS.window.callOnFlip(function() { fix_resp.clock.reset(); });  // t=0 on next screen flip
-      psychoJS.window.callOnFlip(function() { fix_resp.start(); }); // start on screen flip
-      psychoJS.window.callOnFlip(function() { fix_resp.clearEvents(); });
+      psychoJS.window.callOnFlip(function() { prac_fix_resp.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { prac_fix_resp.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { prac_fix_resp.clearEvents(); });
     }
 
-    if (fix_resp.status === PsychoJS.Status.STARTED) {
-      let theseKeys = fix_resp.getKeys({keyList: ['space'], waitRelease: false});
-      _fix_resp_allKeys = _fix_resp_allKeys.concat(theseKeys);
-      if (_fix_resp_allKeys.length > 0) {
-        fix_resp.keys = _fix_resp_allKeys[_fix_resp_allKeys.length - 1].name;  // just the last key pressed
-        fix_resp.rt = _fix_resp_allKeys[_fix_resp_allKeys.length - 1].rt;
+    if (prac_fix_resp.status === PsychoJS.Status.STARTED) {
+      let theseKeys = prac_fix_resp.getKeys({keyList: ['space'], waitRelease: false});
+      _prac_fix_resp_allKeys = _prac_fix_resp_allKeys.concat(theseKeys);
+      if (_prac_fix_resp_allKeys.length > 0) {
+        prac_fix_resp.keys = _prac_fix_resp_allKeys[_prac_fix_resp_allKeys.length - 1].name;  // just the last key pressed
+        prac_fix_resp.rt = _prac_fix_resp_allKeys[_prac_fix_resp_allKeys.length - 1].rt;
         // was this correct?
-        if (fix_resp.keys == corrFix) {
-            fix_resp.corr = 1;
+        if (prac_fix_resp.keys == corrFix) {
+            prac_fix_resp.corr = 1;
         } else {
-            fix_resp.corr = 0;
+            prac_fix_resp.corr = 0;
         }
       }
     }
@@ -1236,21 +1239,21 @@ function prac_probeRoutineEnd(snapshot) {
     
     prac_resp.stop();
     // was no response the correct answer?!
-    if (fix_resp.keys === undefined) {
+    if (prac_fix_resp.keys === undefined) {
       if (['None','none',undefined].includes(corrFix)) {
-         fix_resp.corr = 1;  // correct non-response
+         prac_fix_resp.corr = 1;  // correct non-response
       } else {
-         fix_resp.corr = 0;  // failed to respond (incorrectly)
+         prac_fix_resp.corr = 0;  // failed to respond (incorrectly)
       }
     }
     // store data for thisExp (ExperimentHandler)
-    psychoJS.experiment.addData('fix_resp.keys', fix_resp.keys);
-    psychoJS.experiment.addData('fix_resp.corr', fix_resp.corr);
-    if (typeof fix_resp.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('fix_resp.rt', fix_resp.rt);
+    psychoJS.experiment.addData('prac_fix_resp.keys', prac_fix_resp.keys);
+    psychoJS.experiment.addData('prac_fix_resp.corr', prac_fix_resp.corr);
+    if (typeof prac_fix_resp.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('prac_fix_resp.rt', prac_fix_resp.rt);
         }
     
-    fix_resp.stop();
+    prac_fix_resp.stop();
     // the Routine "prac_probe" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     

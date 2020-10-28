@@ -789,10 +789,10 @@
       <CodeComponent name="code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="feedIM =''&amp;#10;if prac_resp.keys == pracCorr: # &amp; fix_resp.keys == corrFix&amp;#10;    feedIM = 'Stimuli/greenCheck.png'&amp;#10;elif prac_resp.keys != pracCorr:&amp;#10;    feedIM = 'Stimuli/redWrong.png'" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="feedIM = &quot;&quot;;&amp;#10;if ((prac_resp.keys === pracCorr)) {&amp;#10;    feedIM = &quot;Stimuli/greenCheck.png&quot;;&amp;#10;} else {&amp;#10;    if ((prac_resp.keys !== pracCorr)) {&amp;#10;        feedIM = &quot;Stimuli/redWrong.png&quot;;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="feedIM = &quot;&quot;;&amp;#10;if ((prac_resp.keys === pracCorr)) {&amp;#10;    feedIM = &quot;Stimuli/greenCheck.png&quot;;&amp;#10;} else {&amp;#10;    if ((prac_resp.keys !== pracCorr)) {&amp;#10;        feedIM = &quot;Stimuli/redWrong.png&quot;;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="feedIM =''&amp;#10;if prac_resp.keys == pracCorr: # &amp; fix_resp.keys == corrFix&amp;#10;    feedIM = 'Stimuli/greenCheck.png'&amp;#10;elif prac_resp.keys != pracCorr:&amp;#10;    feedIM = 'Stimuli/redWrong.png'" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
