@@ -636,8 +636,8 @@
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="if ((ptrial_order[pTrial] === 0)) {&amp;#10;    prac_target = paths[samepTrials[sameCount]];&amp;#10;    prac_probe = paths[samepTrials[sameCount]];&amp;#10;    if (((((Number.parseInt(expInfo[&quot;design&quot;]) === (1 | Number.parseInt(expInfo[&quot;design&quot;]))) &amp;&amp; ((1 | Number.parseInt(expInfo[&quot;design&quot;])) === (2 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((2 | Number.parseInt(expInfo[&quot;design&quot;])) === (3 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((3 | Number.parseInt(expInfo[&quot;design&quot;])) === 4))) {&amp;#10;        pracCorr = &quot;f&quot;;&amp;#10;    } else {&amp;#10;        if (((((Number.parseInt(expInfo[&quot;design&quot;]) === (5 | Number.parseInt(expInfo[&quot;design&quot;]))) &amp;&amp; ((5 | Number.parseInt(expInfo[&quot;design&quot;])) === (6 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((6 | Number.parseInt(expInfo[&quot;design&quot;])) === (7 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((7 | Number.parseInt(expInfo[&quot;design&quot;])) === 8))) {&amp;#10;            pracCorr = &quot;j&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;    sameCount = (sameCount + 1);&amp;#10;} else {&amp;#10;    if ((ptrial_order[pTrial] === 1)) {&amp;#10;        prac_target = paths[diffpTrials[diffCount][0]];&amp;#10;        prac_probe = paths[diffpTrials[diffCount][1]];&amp;#10;        if (((((Number.parseInt(expInfo[&quot;design&quot;]) === (1 | Number.parseInt(expInfo[&quot;design&quot;]))) &amp;&amp; ((1 | Number.parseInt(expInfo[&quot;design&quot;])) === (2 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((2 | Number.parseInt(expInfo[&quot;design&quot;])) === (3 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((3 | Number.parseInt(expInfo[&quot;design&quot;])) === 4))) {&amp;#10;            pracCorr = &quot;j&quot;;&amp;#10;        } else {&amp;#10;            if (((((Number.parseInt(expInfo[&quot;design&quot;]) === (5 | Number.parseInt(expInfo[&quot;design&quot;]))) &amp;&amp; ((5 | Number.parseInt(expInfo[&quot;design&quot;])) === (6 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((6 | Number.parseInt(expInfo[&quot;design&quot;])) === (7 | Number.parseInt(expInfo[&quot;design&quot;])))) &amp;&amp; ((7 | Number.parseInt(expInfo[&quot;design&quot;])) === 8))) {&amp;#10;                pracCorr = &quot;s&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;        diffCount = (diffCount + 1);&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if ptrial_order[pTrial] == 0:&amp;#10;    prac_target = paths[samepTrials[sameCount]]&amp;#10;    prac_probe = paths[samepTrials[sameCount]]&amp;#10;    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:&amp;#10;        pracCorr = 'f'&amp;#10;    elif int(expInfo['design']) == 5 | int(expInfo['design']) == 6 | int(expInfo['design']) == 7 | int(expInfo['design']) == 8:&amp;#10;        pracCorr = 'j'&amp;#10;    sameCount = sameCount + 1&amp;#10;elif ptrial_order[pTrial] == 1:&amp;#10;    prac_target = paths[diffpTrials[diffCount][0]]&amp;#10;    prac_probe = paths[diffpTrials[diffCount][1]]&amp;#10;    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:&amp;#10;        pracCorr = 'j'&amp;#10;    elif int(expInfo['design']) == 5 | int(expInfo['design']) == 6 | int(expInfo['design']) == 7 | int(expInfo['design']) == 8:&amp;#10;        pracCorr = 's'&amp;#10;    diffCount = diffCount + 1" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="if ((ptrial_order[pTrial] === 0)) {&amp;#10;    prac_target = paths[samepTrials[sameCount]];&amp;#10;    prac_probe = paths[samepTrials[sameCount]];&amp;#10;    if ((Number.parseInt(expInfo[&quot;design&quot;]) &lt; 5)) {&amp;#10;        pracCorr = &quot;f&quot;;&amp;#10;    } else {&amp;#10;        if ((Number.parseInt(expInfo[&quot;design&quot;]) &gt; 4)) {&amp;#10;            pracCorr = &quot;j&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;    sameCount = (sameCount + 1);&amp;#10;} else {&amp;#10;    if ((ptrial_order[pTrial] === 1)) {&amp;#10;        prac_target = paths[diffpTrials[diffCount][0]];&amp;#10;        prac_probe = paths[diffpTrials[diffCount][1]];&amp;#10;        console.log(pracCorr);&amp;#10;        if ((Number.parseInt(expInfo[&quot;design&quot;]) &lt; 5)) {&amp;#10;            pracCorr = &quot;j&quot;;&amp;#10;        } else {&amp;#10;            if ((Number.parseInt(expInfo[&quot;design&quot;]) &gt; 4)) {&amp;#10;                pracCorr = &quot;f&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;        console.log(pracCorr);&amp;#10;        diffCount = (diffCount + 1);&amp;#10;    } else {&amp;#10;        console.log(&quot;What is going on&quot;);&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if ptrial_order[pTrial] == 0:&amp;#10;    prac_target = paths[samepTrials[sameCount]]&amp;#10;    prac_probe = paths[samepTrials[sameCount]]&amp;#10;    if int(expInfo['design']) &lt; 5:&amp;#10;        pracCorr = 'f'&amp;#10;    elif int(expInfo['design']) &gt; 4:&amp;#10;        pracCorr = 'j'&amp;#10;    sameCount = sameCount + 1&amp;#10;elif ptrial_order[pTrial] == 1:&amp;#10;    prac_target = paths[diffpTrials[diffCount][0]]&amp;#10;    prac_probe = paths[diffpTrials[diffCount][1]]&amp;#10;    print(pracCorr)&amp;#10;    if int(expInfo['design']) &lt; 5:&amp;#10;        pracCorr = 'j'&amp;#10;    elif int(expInfo['design']) &gt; 4:&amp;#10;        pracCorr = 'f'&amp;#10;    print(pracCorr)&amp;#10;    diffCount = diffCount + 1&amp;#10;else:&amp;#10;    print('What is going on')" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -648,6 +648,30 @@
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="code_7" valType="code"/>
       </CodeComponent>
+      <TextComponent name="text_6">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="name" updates="None" val="text_6" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.3" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="+" valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
       <ImageComponent name="image">
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -673,30 +697,6 @@
         <Param name="texture resolution" updates="constant" val="512" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </ImageComponent>
-      <TextComponent name="text_6">
-        <Param name="color" updates="constant" val="white" valType="str"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flip" updates="constant" val="" valType="str"/>
-        <Param name="font" updates="constant" val="Arial" valType="str"/>
-        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
-        <Param name="name" updates="None" val="text_6" valType="code"/>
-        <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.2" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="0.3" valType="code"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="+" valType="extendedStr"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
-      </TextComponent>
     </Routine>
     <Routine name="prac_probe">
       <ImageComponent name="image_2">
@@ -766,14 +766,14 @@
         <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
-      <KeyboardComponent name="fix_resp">
+      <KeyboardComponent name="prac_fix_resp">
         <Param name="allowedKeys" updates="constant" val="'space'," valType="code"/>
         <Param name="correctAns" updates="constant" val="$corrFix" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="fix_resp" valType="code"/>
+        <Param name="name" updates="None" val="prac_fix_resp" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
