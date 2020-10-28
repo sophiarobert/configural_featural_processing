@@ -378,7 +378,8 @@ function experimentInit() {
   shuffle(samepTrials);
   diffpTrials = [[0, 1], [1, 0], [2, 3], [3, 2]];
   shuffle(diffpTrials);
-  ptrial_order = permutation([0, 0, 0, 0, 1, 1, 1, 1]);
+  ptrial_order = [0, 0, 0, 0, 1, 1, 1, 1];
+  shuffle(ptrial_order);
   corrFix = "space";
   numPTrials = 8;
   
