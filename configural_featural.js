@@ -135,7 +135,6 @@ var diffCount;
 var ptrial_order;
 var corrpFix;
 var numPTrials;
-var pfixs_shuffled;
 var pfix_switch;
 var prac_targetClock;
 var text_6;
@@ -325,6 +324,20 @@ function experimentInit() {
   });
   // Initialize components for Routine "prac_instructions"
   prac_instructionsClock = new util.Clock();
+  function shuffle_array(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+  
+              // swap elements array[i] and array[j]
+              // we use "destructuring assignment" syntax to achieve that
+              // you'll find more details about that syntax in later chapters
+              // same can be written as:
+              // let t = array[i]; array[i] = array[j]; array[j] = t
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array
+  }
+  
   pracCorr = "";
   corrFix = "";
   pTrial = 0;
@@ -343,10 +356,7 @@ function experimentInit() {
   shuffle(ptrial_order);
   corrpFix = "space";
   numPTrials = 8;
-  pfixs_shuffled = [1, 1, 0, 0, 0, 0];
-  shuffle(pfixs_shuffled);
-  pfix_switch = (([0, 0] + pfixs_shuffled) + [0, 0]);
-  
+  pfix_switch = [0,0,shuffle_array([1,1,0,0,0,0]),0,0].flat();
   // Initialize components for Routine "prac_target"
   prac_targetClock = new util.Clock();
   text_6 = new visual.TextStim({
