@@ -949,6 +949,7 @@ function prac_targetRoutineBegin(snapshot) {
         prac_target = paths[samepTrials[sameCount]];
         prac_probe = paths[samepTrials[sameCount]];
         console.log(Number.parseInt(expInfo["design"]));
+        console.log(pracCorr);
         if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
             pracCorr = "f";
         } else {
@@ -962,6 +963,7 @@ function prac_targetRoutineBegin(snapshot) {
         if ((ptrial_order[pTrial] === 1)) {
             prac_target = paths[diffpTrials[diffCount][0]];
             prac_probe = paths[diffpTrials[diffCount][1]];
+            console.log(pracCorr);
             if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
                 pracCorr = "j";
             } else {
@@ -971,6 +973,8 @@ function prac_targetRoutineBegin(snapshot) {
             }
             console.log(pracCorr);
             diffCount = (diffCount + 1);
+        } else {
+            console.log("What is going on");
         }
     }
     
