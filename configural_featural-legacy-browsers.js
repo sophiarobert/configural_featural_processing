@@ -986,7 +986,7 @@ function prac_targetRoutineBegin(snapshot) {
         }
     } else {
         pfix_color = pfix_color;
-        corrPfix = null;
+        corrPfix = undefined;
     }
     console.log(pfix_switch[pTrial]);
     console.log(pfix_color);
