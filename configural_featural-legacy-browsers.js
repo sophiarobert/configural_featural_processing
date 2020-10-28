@@ -113,9 +113,7 @@ var text_top;
 var text_bottom;
 var ccimage;
 var prac_instructionsClock;
-var same_key;
-var diff_key;
-var corr;
+var pracCorr;
 var corrFix;
 var pTrial;
 var paths;
@@ -314,50 +312,9 @@ function experimentInit() {
   });
   // Initialize components for Routine "prac_instructions"
   prac_instructionsClock = new util.Clock();
-  same_key = "";
-  diff_key = "";
-  corr = "";
+  pracCorr = "";
   corrFix = "";
   pTrial = 0;
-  if ((Number.parseInt(expInfo["design"]) === 1)) {
-      same_key = "f";
-      diff_key = "j";
-  } else {
-      if ((Number.parseInt(expInfo["design"]) === 2)) {
-          same_key = "f";
-          diff_key = "j";
-      } else {
-          if ((Number.parseInt(expInfo["design"]) === 3)) {
-              same_key = "f";
-              diff_key = "j";
-          } else {
-              if ((Number.parseInt(expInfo["design"]) === 4)) {
-                  same_key = "f";
-                  diff_key = "j";
-              } else {
-                  if ((Number.parseInt(expInfo["design"]) === 5)) {
-                      same_key = "j";
-                      diff_key = "f";
-                  } else {
-                      if ((Number.parseInt(expInfo["design"]) === 6)) {
-                          same_key = "j";
-                          diff_key = "f";
-                      } else {
-                          if ((Number.parseInt(expInfo["design"]) === 7)) {
-                              same_key = "j";
-                              diff_key = "f";
-                          } else {
-                              if ((Number.parseInt(expInfo["design"]) === 8)) {
-                                  same_key = "j";
-                                  diff_key = "f";
-                              }
-                          }
-                      }
-                  }
-              }
-          }
-      }
-  }
   paths = "";
   samepTrials = "";
   diffpTrials = "";
@@ -425,10 +382,10 @@ function experimentInit() {
   prac_feedbackClock = new util.Clock();
   feedIM = "";
   console.log(prac_resp.keys)
-  if ((prac_resp.keys === corr)) {
+  if ((prac_resp.keys === pracCorr)) {
       feedIM = "Stimuli/greenCheck.png";
   } else {
-      if ((prac_resp.keys !== corr)) {
+      if ((prac_resp.keys !== pracCorr)) {
           feedIM = "Stimuli/redWrong.png";
       }
   }
@@ -997,13 +954,25 @@ function prac_targetRoutineBegin(snapshot) {
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = paths[samepTrials[sameCount]];
         prac_probe = paths[samepTrials[sameCount]];
-        corr = same_key;
+        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+            pracCorr = "f";
+        } else {
+            if (((((Number.parseInt(expInfo["design"]) === (5 | Number.parseInt(expInfo["design"]))) && ((5 | Number.parseInt(expInfo["design"])) === (6 | Number.parseInt(expInfo["design"])))) && ((6 | Number.parseInt(expInfo["design"])) === (7 | Number.parseInt(expInfo["design"])))) && ((7 | Number.parseInt(expInfo["design"])) === 8))) {
+                pracCorr = "j";
+            }
+        }
         sameCount = (sameCount + 1);
     } else {
         if ((ptrial_order[pTrial] === 1)) {
             prac_target = paths[diffpTrials[diffCount][0]];
             prac_probe = paths[diffpTrials[diffCount][1]];
-            corr = diff_key;
+            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                pracCorr = "j";
+            } else {
+                if (((((Number.parseInt(expInfo["design"]) === (5 | Number.parseInt(expInfo["design"]))) && ((5 | Number.parseInt(expInfo["design"])) === (6 | Number.parseInt(expInfo["design"])))) && ((6 | Number.parseInt(expInfo["design"])) === (7 | Number.parseInt(expInfo["design"])))) && ((7 | Number.parseInt(expInfo["design"])) === 8))) {
+                    pracCorr = "s";
+                }
+            }
             diffCount = (diffCount + 1);
         }
     }
@@ -1187,7 +1156,7 @@ function prac_probeRoutineEachFrame(snapshot) {
         prac_resp.keys = _prac_resp_allKeys[_prac_resp_allKeys.length - 1].name;  // just the last key pressed
         prac_resp.rt = _prac_resp_allKeys[_prac_resp_allKeys.length - 1].rt;
         // was this correct?
-        if (prac_resp.keys == corr) {
+        if (prac_resp.keys == pracCorr) {
             prac_resp.corr = 1;
         } else {
             prac_resp.corr = 0;
@@ -1262,7 +1231,7 @@ function prac_probeRoutineEnd(snapshot) {
     });
     // was no response the correct answer?!
     if (prac_resp.keys === undefined) {
-      if (['None','none',undefined].includes(corr)) {
+      if (['None','none',undefined].includes(pracCorr)) {
          prac_resp.corr = 1;  // correct non-response
       } else {
          prac_resp.corr = 0;  // failed to respond (incorrectly)
@@ -1768,6 +1737,7 @@ function instrBlockRoutineEnd(snapshot) {
 var img_pair;
 var target;
 var probe;
+var corr;
 var xPosition;
 var _key_resp_3_allKeys;
 var target_imgComponents;

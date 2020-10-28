@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 01:40:52 2020
+    on Wed Oct 28 01:52:40 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -136,36 +136,34 @@ ccimage = visual.ImageStim(
 
 # Initialize components for Routine "prac_instructions"
 prac_instructionsClock = core.Clock()
-same_key =''
-diff_key =''
-corr=''
+pracCorr=''
 corrFix =''
 pTrial = 0
 
-if int(expInfo['design']) == 1:
-    same_key = 'f'
-    diff_key = 'j'
-elif int(expInfo['design']) == 2:
-    same_key = 'f'
-    diff_key = 'j'
-elif int(expInfo['design']) == 3:
-    same_key = 'f'
-    diff_key = 'j'
-elif int(expInfo['design']) == 4:
-    same_key = 'f'
-    diff_key = 'j'
-elif int(expInfo['design']) == 5:
-    same_key = 'j'
-    diff_key = 'f'
-elif int(expInfo['design']) == 6:
-    same_key = 'j'
-    diff_key = 'f'
-elif int(expInfo['design']) == 7:
-    same_key = 'j'
-    diff_key = 'f'
-elif int(expInfo['design']) == 8:
-    same_key = 'j'
-    diff_key = 'f'
+#if int(expInfo['design']) == 1:
+#    same_key = 'f'
+#    diff_key = 'j'
+#elif int(expInfo['design']) == 2:
+#    same_key = 'f'
+#    diff_key = 'j'
+#elif int(expInfo['design']) == 3:
+#    same_key = 'f'
+#    diff_key = 'j'
+#elif int(expInfo['design']) == 4:
+#    same_key = 'f'
+#    diff_key = 'j'
+#elif int(expInfo['design']) == 5:
+#    same_key = 'j'
+#    diff_key = 'f'
+#elif int(expInfo['design']) == 6:
+#    same_key = 'j'
+#    diff_key = 'f'
+#elif int(expInfo['design']) == 7:
+#    same_key = 'j'
+#    diff_key = 'f'
+#elif int(expInfo['design']) == 8:
+#    same_key = 'j'
+#    diff_key = 'f'
 
 paths=''
 samepTrials=''
@@ -177,7 +175,8 @@ samepTrials = [0,1,2,3]
 shuffle(samepTrials)
 diffpTrials = [[0,1],[1,0],[2,3],[3,2]]
 shuffle(diffpTrials)
-ptrial_order = permutation([0,0,0,0,1,1,1,1])
+ptrial_order = [0,0,0,0,1,1,1,1]
+shuffle(ptrial_order)
 
 corrFix = 'space'
 numPTrials = 8
@@ -223,9 +222,9 @@ fix_resp = keyboard.Keyboard()
 # Initialize components for Routine "prac_feedback"
 prac_feedbackClock = core.Clock()
 feedIM =''
-if prac_resp.keys == corr: # & fix_resp.keys == corrFix
+if prac_resp.keys == pracCorr: # & fix_resp.keys == corrFix
     feedIM = 'Stimuli/greenCheck.png'
-elif prac_resp.keys != corr:
+elif prac_resp.keys != pracCorr:
     feedIM = 'Stimuli/redWrong.png'
 image_3 = visual.ImageStim(
     win=win,
@@ -543,12 +542,18 @@ for thisPTrial in pTrials:
     if ptrial_order[pTrial] == 0:
         prac_target = paths[samepTrials[sameCount]]
         prac_probe = paths[samepTrials[sameCount]]
-        corr = same_key
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            pracCorr = 'f'
+        elif int(expInfo['design']) == 5 | int(expInfo['design']) == 6 | int(expInfo['design']) == 7 | int(expInfo['design']) == 8:
+            pracCorr = 'j'
         sameCount = sameCount + 1
     elif ptrial_order[pTrial] == 1:
         prac_target = paths[diffpTrials[diffCount][0]]
         prac_probe = paths[diffpTrials[diffCount][1]]
-        corr = diff_key
+        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+            pracCorr = 'j'
+        elif int(expInfo['design']) == 5 | int(expInfo['design']) == 6 | int(expInfo['design']) == 7 | int(expInfo['design']) == 8:
+            pracCorr = 's'
         diffCount = diffCount + 1
     image.setImage(prac_target)
     # keep track of which components have finished
@@ -715,7 +720,7 @@ for thisPTrial in pTrials:
                 prac_resp.keys = _prac_resp_allKeys[-1].name  # just the last key pressed
                 prac_resp.rt = _prac_resp_allKeys[-1].rt
                 # was this correct?
-                if (prac_resp.keys == str(corr)) or (prac_resp.keys == corr):
+                if (prac_resp.keys == str(pracCorr)) or (prac_resp.keys == pracCorr):
                     prac_resp.corr = 1
                 else:
                     prac_resp.corr = 0
@@ -776,7 +781,7 @@ for thisPTrial in pTrials:
     if prac_resp.keys in ['', [], None]:  # No response was made
         prac_resp.keys = None
         # was no response the correct answer?!
-        if str(corr).lower() == 'none':
+        if str(pracCorr).lower() == 'none':
            prac_resp.corr = 1;  # correct non-response
         else:
            prac_resp.corr = 0;  # failed to respond (incorrectly)
