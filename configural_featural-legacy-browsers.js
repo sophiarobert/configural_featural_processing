@@ -419,6 +419,7 @@ function experimentInit() {
   // Initialize components for Routine "prac_feedback"
   prac_feedbackClock = new util.Clock();
   feedIM = "";
+  console.log(prac_resp.keys)
   if ((prac_resp.keys === corr)) {
       feedIM = "Stimuli/greenCheck.png";
   } else {
