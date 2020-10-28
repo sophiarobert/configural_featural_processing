@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 02:19:55 2020
+    on Wed Oct 28 16:04:26 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -139,31 +139,7 @@ prac_instructionsClock = core.Clock()
 pracCorr=''
 corrFix =''
 pTrial = 0
-
-#if int(expInfo['design']) == 1:
-#    same_key = 'f'
-#    diff_key = 'j'
-#elif int(expInfo['design']) == 2:
-#    same_key = 'f'
-#    diff_key = 'j'
-#elif int(expInfo['design']) == 3:
-#    same_key = 'f'
-#    diff_key = 'j'
-#elif int(expInfo['design']) == 4:
-#    same_key = 'f'
-#    diff_key = 'j'
-#elif int(expInfo['design']) == 5:
-#    same_key = 'j'
-#    diff_key = 'f'
-#elif int(expInfo['design']) == 6:
-#    same_key = 'j'
-#    diff_key = 'f'
-#elif int(expInfo['design']) == 7:
-#    same_key = 'j'
-#    diff_key = 'f'
-#elif int(expInfo['design']) == 8:
-#    same_key = 'j'
-#    diff_key = 'f'
+pfix_color_options = ['white','black']
 
 paths=''
 samepTrials=''
@@ -178,8 +154,12 @@ shuffle(diffpTrials)
 ptrial_order = [0,0,0,0,1,1,1,1]
 shuffle(ptrial_order)
 
-corrFix = 'space'
+corrpFix = 'space'
 numPTrials = 8
+pfixs_shuffled = [1,1,0,0,0,0]
+shuffle(pfixs_shuffled)
+pfix_switch = [0,0]+pfixs_shuffled+[0,0]
+
 
 # Initialize components for Routine "prac_target"
 prac_targetClock = core.Clock()
@@ -201,6 +181,13 @@ image = visual.ImageStim(
 
 # Initialize components for Routine "prac_probe"
 prac_probeClock = core.Clock()
+text_7 = visual.TextStim(win=win, name='text_7',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0);
 image_2 = visual.ImageStim(
     win=win,
     name='image_2', 
@@ -208,14 +195,7 @@ image_2 = visual.ImageStim(
     ori=0, pos=(0, 0), size=(0.5, 0.5),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
-    texRes=512, interpolate=True, depth=0.0)
-text_7 = visual.TextStim(win=win, name='text_7',
-    text='+',
-    font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-1.0);
+    texRes=512, interpolate=True, depth=-1.0)
 prac_resp = keyboard.Keyboard()
 prac_fix_resp = keyboard.Keyboard()
 
@@ -232,7 +212,7 @@ image_3 = visual.ImageStim(
 
 # Initialize components for Routine "startInstruct"
 startInstructClock = core.Clock()
-fix_color_options = ["pink","orange"];
+fix_color_options = ["white","black"];
 
 if int(expInfo['design']) == 1:
     design_file = 'Designs/design1.csv'
@@ -463,6 +443,10 @@ routineTimer.reset()
 # ------Prepare to start Routine "prac_instructions"-------
 continueRoutine = True
 # update component parameters for each repeat
+rand_Pstart = [0,1]
+shuffle(rand_Pstart)
+pfix_color = pfix_color_options[rand_Pstart[0]]
+
 # keep track of which components have finished
 prac_instructionsComponents = []
 for thisComponent in prac_instructionsComponents:
@@ -534,6 +518,15 @@ for thisPTrial in pTrials:
     continueRoutine = True
     routineTimer.add(0.300000)
     # update component parameters for each repeat
+    if pfix_switch[pTrial] == 1:
+        corrPfix = 'space'
+        if pfix_switch == "white":
+            pfix_color = pfix_color_options[1]
+        else:
+            pfix_color = pfix_color_options[0]
+    else:
+        corrPfix = ''
+    
     if ptrial_order[pTrial] == 0:
         prac_target = paths[samepTrials[sameCount]]
         prac_probe = paths[samepTrials[sameCount]]
@@ -554,6 +547,7 @@ for thisPTrial in pTrials:
         diffCount = diffCount + 1
     else:
         print('What is going on')
+    text_6.setColor(pfix_color, colorSpace='rgb')
     image.setImage(prac_target)
     # keep track of which components have finished
     prac_targetComponents = [text_6, image]
@@ -642,6 +636,7 @@ for thisPTrial in pTrials:
     # ------Prepare to start Routine "prac_probe"-------
     continueRoutine = True
     # update component parameters for each repeat
+    text_7.setColor(pfix_color, colorSpace='rgb')
     image_2.setImage(prac_probe)
     prac_resp.keys = []
     prac_resp.rt = []
@@ -650,7 +645,7 @@ for thisPTrial in pTrials:
     prac_fix_resp.rt = []
     _prac_fix_resp_allKeys = []
     # keep track of which components have finished
-    prac_probeComponents = [image_2, text_7, prac_resp, prac_fix_resp]
+    prac_probeComponents = [text_7, image_2, prac_resp, prac_fix_resp]
     for thisComponent in prac_probeComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -673,6 +668,15 @@ for thisPTrial in pTrials:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
+        # *text_7* updates
+        if text_7.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+            # keep track of start time/frame for later
+            text_7.frameNStart = frameN  # exact frame index
+            text_7.tStart = t  # local t and not account for scr refresh
+            text_7.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text_7, 'tStartRefresh')  # time at next scr refresh
+            text_7.setAutoDraw(True)
+        
         # *image_2* updates
         if image_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
@@ -689,15 +693,6 @@ for thisPTrial in pTrials:
                 image_2.frameNStop = frameN  # exact frame index
                 win.timeOnFlip(image_2, 'tStopRefresh')  # time at next scr refresh
                 image_2.setAutoDraw(False)
-        
-        # *text_7* updates
-        if text_7.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
-            # keep track of start time/frame for later
-            text_7.frameNStart = frameN  # exact frame index
-            text_7.tStart = t  # local t and not account for scr refresh
-            text_7.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_7, 'tStartRefresh')  # time at next scr refresh
-            text_7.setAutoDraw(True)
         
         # *prac_resp* updates
         waitOnFlip = False
@@ -746,7 +741,7 @@ for thisPTrial in pTrials:
                 prac_fix_resp.keys = _prac_fix_resp_allKeys[-1].name  # just the last key pressed
                 prac_fix_resp.rt = _prac_fix_resp_allKeys[-1].rt
                 # was this correct?
-                if (prac_fix_resp.keys == str(corrFix)) or (prac_fix_resp.keys == corrFix):
+                if (prac_fix_resp.keys == str(corrPfix)) or (prac_fix_resp.keys == corrPfix):
                     prac_fix_resp.corr = 1
                 else:
                     prac_fix_resp.corr = 0
@@ -772,10 +767,10 @@ for thisPTrial in pTrials:
     for thisComponent in prac_probeComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    pTrials.addData('image_2.started', image_2.tStartRefresh)
-    pTrials.addData('image_2.stopped', image_2.tStopRefresh)
     pTrials.addData('text_7.started', text_7.tStartRefresh)
     pTrials.addData('text_7.stopped', text_7.tStopRefresh)
+    pTrials.addData('image_2.started', image_2.tStartRefresh)
+    pTrials.addData('image_2.stopped', image_2.tStopRefresh)
     # check responses
     if prac_resp.keys in ['', [], None]:  # No response was made
         prac_resp.keys = None
@@ -795,7 +790,7 @@ for thisPTrial in pTrials:
     if prac_fix_resp.keys in ['', [], None]:  # No response was made
         prac_fix_resp.keys = None
         # was no response the correct answer?!
-        if str(corrFix).lower() == 'none':
+        if str(corrPfix).lower() == 'none':
            prac_fix_resp.corr = 1;  # correct non-response
         else:
            prac_fix_resp.corr = 0;  # failed to respond (incorrectly)
@@ -1190,7 +1185,7 @@ for thisBlock in blocks:
         trialID = trialID + 1
         
         if fix_switch[trialID] == 1:
-            if fix_switch == "pink":
+            if fix_color == "pink":
                 fix_color = fix_color_options[1]
             else:
                 fix_color = fix_color_options[0]

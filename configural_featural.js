@@ -126,19 +126,23 @@ var prac_instructionsClock;
 var pracCorr;
 var corrFix;
 var pTrial;
+var pfix_color_options;
 var paths;
 var samepTrials;
 var diffpTrials;
 var sameCount;
 var diffCount;
 var ptrial_order;
+var corrpFix;
 var numPTrials;
+var pfixs_shuffled;
+var pfix_switch;
 var prac_targetClock;
 var text_6;
 var image;
 var prac_probeClock;
-var image_2;
 var text_7;
+var image_2;
 var prac_resp;
 var prac_fix_resp;
 var prac_feedbackClock;
@@ -324,6 +328,7 @@ function experimentInit() {
   pracCorr = "";
   corrFix = "";
   pTrial = 0;
+  pfix_color_options = ["white", "black"];
   paths = "";
   samepTrials = "";
   diffpTrials = "";
@@ -336,8 +341,11 @@ function experimentInit() {
   shuffle(diffpTrials);
   ptrial_order = [0, 0, 0, 0, 1, 1, 1, 1];
   shuffle(ptrial_order);
-  corrFix = "space";
+  corrpFix = "space";
   numPTrials = 8;
+  pfixs_shuffled = [1, 1, 0, 0, 0, 0];
+  shuffle(pfixs_shuffled);
+  pfix_switch = (([0, 0] + pfixs_shuffled) + [0, 0]);
   
   // Initialize components for Routine "prac_target"
   prac_targetClock = new util.Clock();
@@ -347,7 +355,7 @@ function experimentInit() {
     text: '+',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: -1.0 
   });
@@ -363,6 +371,17 @@ function experimentInit() {
   });
   // Initialize components for Routine "prac_probe"
   prac_probeClock = new util.Clock();
+  text_7 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_7',
+    text: '+',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: 0.0 
+  });
+  
   image_2 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_2', units : undefined, 
@@ -370,19 +389,8 @@ function experimentInit() {
     ori : 0, pos : [0, 0], size : [0.5, 0.5],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : 0.0 
+    texRes : 512, interpolate : true, depth : -1.0 
   });
-  text_7 = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'text_7',
-    text: '+',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
-    color: new util.Color('white'),  opacity: 1,
-    depth: -1.0 
-  });
-  
   prac_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   prac_fix_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
@@ -400,7 +408,7 @@ function experimentInit() {
   });
   // Initialize components for Routine "startInstruct"
   startInstructClock = new util.Clock();
-  fix_color_options = ["pink", "orange"];
+  fix_color_options = ["white", "black"];
   if ((Number.parseInt(expInfo["design"]) === 1)) {
       design_file = "Designs/design1.csv";
   } else {
@@ -738,6 +746,8 @@ function screen_scaleRoutineEnd(snapshot) {
 }
 
 
+var rand_Pstart;
+var pfix_color;
 var prac_instructionsComponents;
 function prac_instructionsRoutineBegin(snapshot) {
   return function () {
@@ -746,6 +756,10 @@ function prac_instructionsRoutineBegin(snapshot) {
     prac_instructionsClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    rand_Pstart = [0, 1];
+    shuffle(rand_Pstart);
+    pfix_color = pfix_color_options[rand_Pstart[0]];
+    
     // keep track of which components have finished
     prac_instructionsComponents = [];
     
@@ -934,6 +948,7 @@ function blocksLoopEnd() {
 }
 
 
+var corrPfix;
 var prac_target;
 var prac_probe;
 var prac_targetComponents;
@@ -945,6 +960,19 @@ function prac_targetRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.300000);
     // update component parameters for each repeat
+    if ((pfix_switch[pTrial] === 1)) {
+        corrPfix = "space";
+        if ((pfix_switch === "white")) {
+            pfix_color = pfix_color_options[1];
+        } else {
+            pfix_color = pfix_color_options[0];
+        }
+    } else {
+        pfix_color = pfix_color;
+        corrPfix = "";
+    }
+    console.log(pfix_switch[pTrial]);
+    console.log(pfix_color);
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = paths[samepTrials[sameCount]];
         prac_probe = paths[samepTrials[sameCount]];
@@ -975,6 +1003,7 @@ function prac_targetRoutineBegin(snapshot) {
         }
     }
     
+    text_6.setColor(new util.Color(pfix_color));
     image.setImage(prac_target);
     // keep track of which components have finished
     prac_targetComponents = [];
@@ -1077,6 +1106,7 @@ function prac_probeRoutineBegin(snapshot) {
     prac_probeClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    text_7.setColor(new util.Color(pfix_color));
     image_2.setImage(prac_probe);
     prac_resp.keys = undefined;
     prac_resp.rt = undefined;
@@ -1086,8 +1116,8 @@ function prac_probeRoutineBegin(snapshot) {
     _prac_fix_resp_allKeys = [];
     // keep track of which components have finished
     prac_probeComponents = [];
-    prac_probeComponents.push(image_2);
     prac_probeComponents.push(text_7);
+    prac_probeComponents.push(image_2);
     prac_probeComponents.push(prac_resp);
     prac_probeComponents.push(prac_fix_resp);
     
@@ -1109,6 +1139,16 @@ function prac_probeRoutineEachFrame(snapshot) {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
+    // *text_7* updates
+    if (t >= 0 && text_7.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_7.tStart = t;  // (not accounting for frame time here)
+      text_7.frameNStart = frameN;  // exact frame index
+      
+      text_7.setAutoDraw(true);
+    }
+
+    
     // *image_2* updates
     if (t >= 0.0 && image_2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -1122,16 +1162,6 @@ function prac_probeRoutineEachFrame(snapshot) {
     if (image_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       image_2.setAutoDraw(false);
     }
-    
-    // *text_7* updates
-    if (t >= 0 && text_7.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_7.tStart = t;  // (not accounting for frame time here)
-      text_7.frameNStart = frameN;  // exact frame index
-      
-      text_7.setAutoDraw(true);
-    }
-
     
     // *prac_resp* updates
     if (t >= 0.2 && prac_resp.status === PsychoJS.Status.NOT_STARTED) {
@@ -1182,7 +1212,7 @@ function prac_probeRoutineEachFrame(snapshot) {
         prac_fix_resp.keys = _prac_fix_resp_allKeys[_prac_fix_resp_allKeys.length - 1].name;  // just the last key pressed
         prac_fix_resp.rt = _prac_fix_resp_allKeys[_prac_fix_resp_allKeys.length - 1].rt;
         // was this correct?
-        if (prac_fix_resp.keys == corrFix) {
+        if (prac_fix_resp.keys == corrPfix) {
             prac_fix_resp.corr = 1;
         } else {
             prac_fix_resp.corr = 0;
@@ -1244,7 +1274,7 @@ function prac_probeRoutineEnd(snapshot) {
     prac_resp.stop();
     // was no response the correct answer?!
     if (prac_fix_resp.keys === undefined) {
-      if (['None','none',undefined].includes(corrFix)) {
+      if (['None','none',undefined].includes(corrPfix)) {
          prac_fix_resp.corr = 1;  // correct non-response
       } else {
          prac_fix_resp.corr = 0;  // failed to respond (incorrectly)
@@ -1758,7 +1788,7 @@ function target_imgRoutineBegin(snapshot) {
     corr = 0;
     trialID = (trialID + 1);
     if ((fix_switch[trialID] === 1)) {
-        if ((fix_switch === "pink")) {
+        if ((fix_color === "pink")) {
             fix_color = fix_color_options[1];
         } else {
             fix_color = fix_color_options[0];
