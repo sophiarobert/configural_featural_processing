@@ -142,7 +142,6 @@ var text_7;
 var prac_resp;
 var fix_resp;
 var prac_feedbackClock;
-var feedIM;
 var image_3;
 var startInstructClock;
 var fix_color_options;
@@ -390,16 +389,6 @@ function experimentInit() {
   
   // Initialize components for Routine "prac_feedback"
   prac_feedbackClock = new util.Clock();
-  feedIM = "";
-  console.log(prac_resp.keys)
-  if ((prac_resp.keys === pracCorr)) {
-      feedIM = "Stimuli/greenCheck.png";
-  } else {
-      if ((prac_resp.keys !== pracCorr)) {
-          feedIM = "Stimuli/redWrong.png";
-      }
-  }
-  
   image_3 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_3', units : undefined, 
@@ -1273,6 +1262,7 @@ function prac_probeRoutineEnd(snapshot) {
 }
 
 
+var feedIM;
 var prac_feedbackComponents;
 function prac_feedbackRoutineBegin(snapshot) {
   return function () {
@@ -1282,6 +1272,15 @@ function prac_feedbackRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(1.000000);
     // update component parameters for each repeat
+    feedIM = "";
+    if ((prac_resp.keys === pracCorr)) {
+        feedIM = "Stimuli/greenCheck.png";
+    } else {
+        if ((prac_resp.keys !== pracCorr)) {
+            feedIM = "Stimuli/redWrong.png";
+        }
+    }
+    
     image_3.setImage(feedIM);
     // keep track of which components have finished
     prac_feedbackComponents = [];
