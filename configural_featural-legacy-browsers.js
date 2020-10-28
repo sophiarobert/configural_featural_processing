@@ -967,7 +967,7 @@ function prac_targetRoutineBegin(snapshot) {
     // update component parameters for each repeat
     if ((pfix_switch[pTrial] === 1)) {
         corrPfix = "space";
-        if ((pfix_switch === "white")) {
+        if ((pfix_color === "white")) {
             pfix_color = pfix_color_options[1];
         } else {
             pfix_color = pfix_color_options[0];
