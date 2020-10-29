@@ -356,7 +356,7 @@ function experimentInit() {
   shuffle(ptrial_order);
   corrpFix = "";
   numPTrials = 12;
-  pfix_switch = [0,0,shuffle_array([1,0,0]),shuffle_array([1,0,0]),0,0].flat();
+  pfix_switch = [0,0,shuffle_array([1,0,0,1]),shuffle_array([1,0,0,1]),0,0].flat();
   side_same_prac = [0, 0, 0, 1, 1, 1];
   side_diff_prac = [0, 0, 0, 1, 1, 1];
   
@@ -1017,7 +1017,7 @@ function prac_targetRoutineBegin(snapshot) {
         if ((ptrial_order[pTrial] === 1)) {
             prac_target = prac_paths[diffpTrials[diffCount][0]];
             prac_probe = prac_paths[diffpTrials[diffCount][1]];
-            console.log(pracCorr);
+            console.log(prac_paths);
             if ((Number.parseInt(expInfo["design"]) < 5)) {
                 pracCorr = "j";
             } else {
@@ -1025,7 +1025,7 @@ function prac_targetRoutineBegin(snapshot) {
                     pracCorr = "f";
                 }
             }
-            console.log(pracCorr);
+            console.log(prac_target);
             diffCount = (diffCount + 1);
         } else {
             console.log("What is going on");
