@@ -127,6 +127,7 @@ var corrpFix;
 var numPTrials;
 var pfix_switch;
 var prac_targetClock;
+var xPosition;
 var image;
 var text_6;
 var prac_probeClock;
@@ -350,6 +351,8 @@ function experimentInit() {
   pfix_switch = [0,0,shuffle_array([1,0,0]),shuffle_array([1,0,0]),0,0].flat();
   // Initialize components for Routine "prac_target"
   prac_targetClock = new util.Clock();
+  xPosition = "";
+  
   image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image', units : undefined, 
@@ -968,7 +971,6 @@ function blocksLoopEnd() {
 var corrPfix;
 var prac_target;
 var prac_probe;
-var xPosition;
 var prac_targetComponents;
 function prac_targetRoutineBegin(snapshot) {
   return function () {
