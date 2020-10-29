@@ -364,7 +364,7 @@ function experimentInit() {
     win : psychoJS.window,
     name : 'image', units : undefined, 
     image : undefined, mask : undefined,
-    ori : 0, pos : [0, 0], size : [0.5, 0.5],
+    ori : 0, pos : [0, 0], size : 1.0,
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
     texRes : 512, interpolate : true, depth : -1.0 
@@ -386,7 +386,7 @@ function experimentInit() {
     win : psychoJS.window,
     name : 'image_2', units : undefined, 
     image : undefined, mask : undefined,
-    ori : 0, pos : [0, 0], size : [0.5, 0.5],
+    ori : 0, pos : [0, 0], size : 1.0,
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
     texRes : 512, interpolate : true, depth : 0.0 
@@ -423,7 +423,7 @@ function experimentInit() {
     text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.05,  wrapWidth: undefined, ori: 0,
+    pos: [0, (- 0.25)], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -2.0 
   });
@@ -1025,6 +1025,8 @@ function prac_targetRoutineBegin(snapshot) {
         }
     }
     
+    image.setPos([xPosition, 0]);
+    image.setSize([(width * x_scale), (height * y_scale)]);
     image.setImage(prac_target);
     text_6.setColor(new util.Color(pfix_color));
     // keep track of which components have finished
@@ -1129,6 +1131,8 @@ function prac_probeRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(4.200000);
     // update component parameters for each repeat
+    image_2.setPos([xPosition, 0]);
+    image_2.setSize([(width * x_scale), (height * y_scale)]);
     image_2.setImage(prac_probe);
     text_7.setColor(new util.Color(pfix_color));
     prac_resp.keys = undefined;
@@ -1873,10 +1877,12 @@ function target_imgRoutineBegin(snapshot) {
                     console.log(("left same ID: " + sameTrial_left_id.toString()));
                     target = paths[trialSame_left[sameTrial_left_id]];
                     probe = paths[trialSame_left[sameTrial_left_id]];
-                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                    if ((Number.parseInt(expInfo["design"]) < 5)) {
                         corr = "f";
                     } else {
-                        corr = "j";
+                        if ((Number.parseInt(expInfo["design"]) > 4)) {
+                            corr = "j";
+                        }
                     }
                 } else {
                     if ((side_same[sameTrialid] === 0)) {
@@ -1885,10 +1891,12 @@ function target_imgRoutineBegin(snapshot) {
                         console.log(("right same ID: " + sameTrial_right_id.toString()));
                         target = paths[trialSame_right[sameTrial_right_id]];
                         probe = paths[trialSame_right[sameTrial_right_id]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        if ((Number.parseInt(expInfo["design"]) < 5)) {
                             corr = "f";
                         } else {
-                            corr = "j";
+                            if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                corr = "j";
+                            }
                         }
                     }
                 }
@@ -1902,10 +1910,12 @@ function target_imgRoutineBegin(snapshot) {
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        if ((Number.parseInt(expInfo["design"]) < 5)) {
                             corr = "j";
                         } else {
-                            corr = "f";
+                            if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                corr = "f";
+                            }
                         }
                     } else {
                         if ((side_diff[diffTrialid] === 0)) {
@@ -1915,10 +1925,12 @@ function target_imgRoutineBegin(snapshot) {
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
-                            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            if ((Number.parseInt(expInfo["design"]) < 5)) {
                                 corr = "j";
                             } else {
-                                corr = "f";
+                                if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                    corr = "f";
+                                }
                             }
                         }
                     }
@@ -1931,10 +1943,12 @@ function target_imgRoutineBegin(snapshot) {
                     sameTrialid += 1;
                     target = paths[trialSame[sameTrialid]];
                     probe = paths[trialSame[sameTrialid]];
-                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                    if ((Number.parseInt(expInfo["design"]) < 5)) {
                         corr = "f";
                     } else {
-                        corr = "j";
+                        if ((Number.parseInt(expInfo["design"]) > 4)) {
+                            corr = "j";
+                        }
                     }
                 } else {
                     if ((trial_order[trialID] === 0)) {
@@ -1942,10 +1956,12 @@ function target_imgRoutineBegin(snapshot) {
                         img_pair = trialDiff[diffTrial[diffTrialid]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        if ((Number.parseInt(expInfo["design"]) < 5)) {
                             corr = "j";
                         } else {
-                            corr = "f";
+                            if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                corr = "f";
+                            }
                         }
                     }
                 }
@@ -1956,10 +1972,12 @@ function target_imgRoutineBegin(snapshot) {
                         sameTrialid += 1;
                         target = paths[trialSame[sameTrialid]];
                         probe = paths[trialSame[sameTrialid]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                        if ((Number.parseInt(expInfo["design"]) < 5)) {
                             corr = "f";
                         } else {
-                            corr = "j";
+                            if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                corr = "j";
+                            }
                         }
                     } else {
                         if ((trial_order[trialID] === 0)) {
@@ -1967,10 +1985,12 @@ function target_imgRoutineBegin(snapshot) {
                             img_pair = trialDiff[diffTrial[diffTrialid]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
-                            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                            if ((Number.parseInt(expInfo["design"]) < 5)) {
                                 corr = "j";
                             } else {
-                                corr = "f";
+                                if ((Number.parseInt(expInfo["design"]) > 4)) {
+                                    corr = "f";
+                                }
                             }
                         }
                     }

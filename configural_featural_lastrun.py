@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 18:03:03 2020
+    on Wed Oct 28 18:34:35 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -156,9 +156,11 @@ shuffle(ptrial_order)
 
 corrpFix =''
 numPTrials = 8
-pfixs_shuffled = [1,1,0,0,0,0]
-shuffle(pfixs_shuffled)
-pfix_switch = [0,0]+pfixs_shuffled+[0,0]
+pfixs_shuffled1 = [1,0,0]
+pfixs_shuffled2 = [1,0,0]
+shuffle(pfixs_shuffled1)
+shuffle(pfixs_shuffled2)
+pfix_switch = [0,0]+pfixs_shuffled1+pfixs_shuffled2+[0,0]
 
 
 # Initialize components for Routine "prac_target"
@@ -167,7 +169,7 @@ image = visual.ImageStim(
     win=win,
     name='image', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=(0.5, 0.5),
+    ori=0, pos=[0,0], size=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=512, interpolate=True, depth=-1.0)
@@ -185,7 +187,7 @@ image_2 = visual.ImageStim(
     win=win,
     name='image_2', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=(0.5, 0.5),
+    ori=0, pos=[0,0], size=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=512, interpolate=True, depth=0.0)
@@ -212,7 +214,7 @@ image_3 = visual.ImageStim(
 feedback_msg = visual.TextStim(win=win, name='feedback_msg',
     text='default text',
     font='Arial',
-    pos=(0, -1.5), height=0.05, wrapWidth=None, ori=0, 
+    pos=(0, -0.25), height=0.05, wrapWidth=None, ori=0, 
     color='black', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-2.0);
@@ -555,6 +557,8 @@ for thisPTrial in pTrials:
         diffCount = diffCount + 1
     else:
         print('What is going on')
+    image.setPos((xPosition, 0))
+    image.setSize((width*x_scale,height*y_scale))
     image.setImage(prac_target)
     text_6.setColor(pfix_color, colorSpace='rgb')
     # keep track of which components have finished
@@ -645,6 +649,8 @@ for thisPTrial in pTrials:
     continueRoutine = True
     routineTimer.add(4.200000)
     # update component parameters for each repeat
+    image_2.setPos((xPosition, 0))
+    image_2.setSize((width*x_scale,height*y_scale))
     image_2.setImage(prac_probe)
     text_7.setColor(pfix_color, colorSpace='rgb')
     prac_resp.keys = []
@@ -852,6 +858,10 @@ for thisPTrial in pTrials:
         elif prac_fix_resp.keys != corrPfix:
             feedIM = 'Stimuli/redWrong.png'
             prac_msg = 'Oops, both responses were wrong.'
+    
+    print(prac_resp.keys)
+    print(prac_fix_resp.keys)
+    print(prac_msg)
     image_3.setImage(feedIM)
     feedback_msg.setText(prac_msg)
     # keep track of which components have finished
