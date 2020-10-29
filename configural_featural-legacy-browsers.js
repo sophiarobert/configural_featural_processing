@@ -120,6 +120,10 @@ var pfix_color_options;
 var paths;
 var samepTrials;
 var diffpTrials;
+var side_same_prac;
+var side_diff_prac;
+var samePTrialid;
+var diffPTrialid;
 var sameCount;
 var diffCount;
 var ptrial_order;
@@ -336,6 +340,10 @@ function experimentInit() {
   paths = "";
   samepTrials = "";
   diffpTrials = "";
+  side_same_prac = "";
+  side_diff_prac = "";
+  samePTrialid = 0;
+  diffPTrialid = 0;
   paths = ["Stimuli/dory1.png", "Stimuli/dory2.png", "Stimuli/nemo1.jpg", "Stimuli/nemo2.png"];
   sameCount = 0;
   diffCount = 0;
@@ -343,15 +351,16 @@ function experimentInit() {
   shuffle(samepTrials);
   diffpTrials = [[0, 1], [1, 0], [2, 3], [3, 2]];
   shuffle(diffpTrials);
-  ptrial_order = [0, 0, 0, 0, 1, 1, 1, 1];
+  ptrial_order = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1];
   shuffle(ptrial_order);
-  corrpFix = "space";
-  numPTrials = 8;
+  corrpFix = "";
+  numPTrials = 12;
   pfix_switch = [0,0,shuffle_array([1,0,0]),shuffle_array([1,0,0]),0,0].flat();
+  side_same_prac = [0, 0, 0, 1, 1, 1];
+  side_diff_prac = [0, 0, 0, 1, 1, 1];
+  
   // Initialize components for Routine "prac_target"
   prac_targetClock = new util.Clock();
-  
-  
   image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image', units : undefined, 
@@ -993,8 +1002,8 @@ function prac_targetRoutineBegin(snapshot) {
         corrPfix = undefined;
     }
     if ((ptrial_order[pTrial] === 0)) {
-        prac_target = paths[samepTrials[sameCount]];
-        prac_probe = paths[samepTrials[sameCount]];
+        prac_target = prac_paths[samepTrials[sameCount]];
+        prac_probe = prac_paths[samepTrials[sameCount]];
         if ((Number.parseInt(expInfo["design"]) < 5)) {
             pracCorr = "f";
         } else {
@@ -1005,8 +1014,8 @@ function prac_targetRoutineBegin(snapshot) {
         sameCount = (sameCount + 1);
     } else {
         if ((ptrial_order[pTrial] === 1)) {
-            prac_target = paths[diffpTrials[diffCount][0]];
-            prac_probe = paths[diffpTrials[diffCount][1]];
+            prac_target = prac_paths[diffpTrials[diffCount][0]];
+            prac_probe = prac_paths[diffpTrials[diffCount][1]];
             console.log(pracCorr);
             if ((Number.parseInt(expInfo["design"]) < 5)) {
                 pracCorr = "j";
@@ -1025,70 +1034,32 @@ function prac_targetRoutineBegin(snapshot) {
         xPosition = 0;
     } else {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
-            if ((trial_order[trialID] === 1)) {
-                sameTrialid += 1;
-                if ((side_same[sameTrialid] === 1)) {
+            if ((ptrial_order[pTrial] === 1)) {
+                if ((side_same_prac[samePTrialid] === 1)) {
                     xPosition = (- (width * x_scale));
-                    sameTrial_left_id += 1;
-                    console.log(("left same ID: " + sameTrial_left_id.toString()));
-                    target = paths[trialSame_left[sameTrial_left_id]];
-                    probe = paths[trialSame_left[sameTrial_left_id]];
-                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
-                        corr = "f";
-                    } else {
-                        corr = "j";
-                    }
                 } else {
-                    if ((side_same[sameTrialid] === 0)) {
+                    if ((side_same_prac[samePTrialid] === 0)) {
                         xPosition = (width * x_scale);
-                        sameTrial_right_id += 1;
-                        console.log(("right same ID: " + sameTrial_right_id.toString()));
-                        target = paths[trialSame_right[sameTrial_right_id]];
-                        probe = paths[trialSame_right[sameTrial_right_id]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
-                            corr = "f";
-                        } else {
-                            corr = "j";
-                        }
                     }
                 }
+                samePTrialid += 1;
             } else {
-                if ((trial_order[trialID] === 0)) {
-                    diffTrialid += 1;
-                    if ((side_diff[diffTrialid] === 1)) {
+                if ((ptrial_order[pTrial] === 0)) {
+                    if ((side_diff_prac[diffPTrialid] === 1)) {
                         xPosition = (- (width * x_scale));
-                        diffTrial_left_id += 1;
-                        console.log(("left diff ID: " + diffTrial_left_id.toString()));
-                        img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
-                        target = paths[img_pair[0]];
-                        probe = paths[img_pair[1]];
-                        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
-                            corr = "j";
-                        } else {
-                            corr = "f";
-                        }
                     } else {
-                        if ((side_diff[diffTrialid] === 0)) {
+                        if ((side_diff_prac[diffPTrialid] === 0)) {
                             xPosition = (width * x_scale);
-                            diffTrial_right_id += 1;
-                            console.log(("right diff ID: " + diffTrial_right_id.toString()));
-                            img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
-                            target = paths[img_pair[0]];
-                            probe = paths[img_pair[1]];
-                            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
-                                corr = "j";
-                            } else {
-                                corr = "f";
-                            }
                         }
                     }
+                    diffPTrialid += 1;
                 }
             }
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
                 xPosition = (- (width * x_scale));
             } else {
-                if ((expInfo["position"] === "3")) {
+                if ((Number.parseInt(expInfo["position"]) === "3")) {
                     xPosition = (width * x_scale);
                 }
             }

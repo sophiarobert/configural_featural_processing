@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Wed Oct 28 18:34:35 2020
+    on Thu Oct 29 19:34:16 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -141,10 +141,10 @@ corrFix =''
 pTrial = 0
 pfix_color_options = ['white','black']
 
-paths=''
+prac_paths=''
 samepTrials=''
 diffpTrials=''
-paths = ['Stimuli/dory1.png','Stimuli/dory2.png','Stimuli/nemo1.jpg','Stimuli/nemo2.png']
+prac_paths = ['Stimuli/dory1.png','Stimuli/dory2.png','Stimuli/nemo1.jpg','Stimuli/nemo2.png']
 sameCount = 0
 diffCount = 0
 samepTrials = [0,1,2,3]
@@ -155,12 +155,17 @@ ptrial_order = [0,0,0,0,1,1,1,1]
 shuffle(ptrial_order)
 
 corrpFix =''
+samePTrialid = 0
+diffPTrialid = 0
 numPTrials = 8
 pfixs_shuffled1 = [1,0,0]
 pfixs_shuffled2 = [1,0,0]
 shuffle(pfixs_shuffled1)
 shuffle(pfixs_shuffled2)
 pfix_switch = [0,0]+pfixs_shuffled1+pfixs_shuffled2+[0,0]
+side_same_prac = [0,0,1,1]
+side_diff_prac = [0,0,1,1]
+
 
 
 # Initialize components for Routine "prac_target"
@@ -526,6 +531,7 @@ for thisPTrial in pTrials:
     continueRoutine = True
     routineTimer.add(0.300000)
     # update component parameters for each repeat
+    xPosition =''
     if pfix_switch[pTrial] == 1:
         corrPfix = 'space'
         if pfix_color == "white":
@@ -535,19 +541,18 @@ for thisPTrial in pTrials:
     else:
         pfix_color = pfix_color
         corrPfix = None
-    print(pfix_switch[pTrial])
-    print(pfix_color)
+    
     if ptrial_order[pTrial] == 0:
-        prac_target = paths[samepTrials[sameCount]]
-        prac_probe = paths[samepTrials[sameCount]]
+        prac_target = prac_paths[samepTrials[sameCount]]
+        prac_probe = prac_paths[samepTrials[sameCount]]
         if int(expInfo['design']) < 5:
             pracCorr = 'f'
         elif int(expInfo['design']) > 4:
             pracCorr = 'j'
         sameCount = sameCount + 1
     elif ptrial_order[pTrial] == 1:
-        prac_target = paths[diffpTrials[diffCount][0]]
-        prac_probe = paths[diffpTrials[diffCount][1]]
+        prac_target = prac_paths[diffpTrials[diffCount][0]]
+        prac_probe = prac_paths[diffpTrials[diffCount][1]]
         print(pracCorr)
         if int(expInfo['design']) < 5:
             pracCorr = 'j'
@@ -557,6 +562,26 @@ for thisPTrial in pTrials:
         diffCount = diffCount + 1
     else:
         print('What is going on')
+    
+    if int(expInfo['position']) == 0:
+        xPosition = 0
+    elif int(expInfo['position']) == 2:
+        if ptrial_order[pTrial]==1:
+            if side_same_prac[samePTrialid] == 1: #left
+                xPosition = -(width*x_scale)
+            elif side_same_prac[samePTrialid] == 0: #right
+                xPosition = width*x_scale
+            samePTrialid += 1
+        elif ptrial_order[pTrial]==0:
+            if side_diff_prac[diffPTrialid] == 1: #left
+                xPosition = -(width*x_scale)
+            elif side_diff_prac[diffPTrialid] == 0: #right
+                xPosition = width*x_scale
+            diffPTrialid += 1
+    elif int(expInfo['position']) == 1:
+        xPosition = -(width*x_scale)
+    elif int(expInfo['position']) == '3':
+        xPosition = width*x_scale
     image.setPos((xPosition, 0))
     image.setSize((width*x_scale,height*y_scale))
     image.setImage(prac_target)
@@ -1270,9 +1295,9 @@ for thisBlock in blocks:
                     print('left same ID: ' + str(sameTrial_left_id))
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
-                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    if int(expInfo['design']) < 5:
                         corr = 'f'
-                    else:
+                    elif int(expInfo['design']) > 4:
                         corr = 'j'
                 elif side_same[sameTrialid] == 0: #right
                     xPosition = width*x_scale
@@ -1280,9 +1305,9 @@ for thisBlock in blocks:
                     print('right same ID: ' + str(sameTrial_right_id))
                     target = paths[trialSame_right[sameTrial_right_id]]
                     probe = paths[trialSame_right[sameTrial_right_id]]
-                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    if int(expInfo['design']) < 5:
                         corr = 'f'
-                    else:
+                    elif int(expInfo['design']) > 4:
                         corr = 'j'
             elif trial_order[trialID]==0:
                 diffTrialid += 1
@@ -1293,9 +1318,9 @@ for thisBlock in blocks:
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
-                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    if int(expInfo['design']) < 5:
                         corr = 'j'
-                    else:
+                    elif int(expInfo['design']) > 4:
                         corr = 'f'
                 elif side_diff[diffTrialid] == 0: #right
                     xPosition = width*x_scale
@@ -1304,9 +1329,9 @@ for thisBlock in blocks:
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
-                    if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                    if int(expInfo['design']) < 5:
                         corr = 'j'
-                    else:
+                    elif int(expInfo['design']) > 4:
                         corr = 'f'
         elif int(expInfo['position']) == 1:
             xPosition = -(width*x_scale)
@@ -1314,18 +1339,18 @@ for thisBlock in blocks:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                if int(expInfo['design']) < 5:
                     corr = 'f'
-                else:
+                elif int(expInfo['design']) > 4:
                     corr = 'j'
             elif trial_order[trialID]==0:
                 diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                if int(expInfo['design']) < 5:
                     corr = 'j'
-                else:
+                elif int(expInfo['design']) > 4:
                     corr = 'f'
         elif expInfo['position'] == '3':
             xPosition = width*x_scale
@@ -1333,18 +1358,18 @@ for thisBlock in blocks:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
                 probe = paths[trialSame[sameTrialid]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                if int(expInfo['design']) < 5:
                     corr = 'f'
-                else:
+                elif int(expInfo['design']) > 4:
                     corr = 'j'
             elif trial_order[trialID]==0:
                 diffTrialid += 1
                 img_pair = trialDiff[diffTrial[diffTrialid]]
                 target = paths[img_pair[0]]
                 probe = paths[img_pair[1]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+                if int(expInfo['design']) < 5:
                     corr = 'j'
-                else:
+                elif int(expInfo['design']) > 4:
                     corr = 'f'
         
         thisExp.addData('fix_switches', fix_switch[trialID])
