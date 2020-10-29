@@ -124,7 +124,6 @@ var side_same_prac;
 var side_diff_prac;
 var samePTrialid;
 var diffPTrialid;
-var paths;
 var sameCount;
 var diffCount;
 var ptrial_order;
@@ -345,7 +344,7 @@ function experimentInit() {
   side_diff_prac = "";
   samePTrialid = 0;
   diffPTrialid = 0;
-  paths = ["Stimuli/dory1.png", "Stimuli/dory2.png", "Stimuli/nemo1.jpg", "Stimuli/nemo2.png"];
+  prac_paths = ["Stimuli/dory1.png", "Stimuli/dory2.png", "Stimuli/nemo1.jpg", "Stimuli/nemo2.png"];
   sameCount = 0;
   diffCount = 0;
   samepTrials = [0, 1, 2, 3];
@@ -1621,6 +1620,7 @@ function startInstructRoutineEnd(snapshot) {
 }
 
 
+var paths;
 var instruction_img;
 var trialSame;
 var trialDiff;
