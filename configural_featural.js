@@ -357,9 +357,9 @@ function experimentInit() {
   prac_paths = ["Stimuli/dory1.png", "Stimuli/dory2.png", "Stimuli/nemo1.jpg", "Stimuli/nemo2.png"];
   sameCount = 0;
   diffCount = 0;
-  samepTrials = [0, 1, 2, 3];
+  samepTrials = [0, 1, 2, 3, 1, 3];
   shuffle(samepTrials);
-  diffpTrials = [[0, 1], [1, 0], [2, 3], [3, 2]];
+  diffpTrials = [[0, 1], [1, 0], [0,1], [2, 3], [3, 2], [2, 3]];
   shuffle(diffpTrials);
   ptrial_order = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1];
   shuffle(ptrial_order);
