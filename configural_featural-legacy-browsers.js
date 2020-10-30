@@ -2077,7 +2077,7 @@ function blocksLoopBegin(blocksLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   blocks = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 2, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: design_file,
     seed: undefined, name: 'blocks'
@@ -3095,7 +3095,7 @@ function target_imgRoutineBegin(snapshot) {
     corr = 0;
     trialID = (trialID + 1);
     if ((fix_switch[trialID] === 1)) {
-        if ((fix_color === "pink")) {
+        if ((fix_color === "white")) {
             fix_color = fix_color_options[1];
         } else {
             fix_color = fix_color_options[0];

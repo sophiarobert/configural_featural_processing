@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Oct 30 18:29:02 2020
+    on Fri Oct 30 19:35:06 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1996,7 +1996,7 @@ for thisComponent in startInstructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-blocks = data.TrialHandler(nReps=1, method='sequential', 
+blocks = data.TrialHandler(nReps=2, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions(design_file),
     seed=None, name='blocks')
@@ -2888,7 +2888,7 @@ for thisBlock in blocks:
             thisComponent.setAutoDraw(False)
     # the Routine "feedback" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed 1 repeats of 'blocks'
+# completed 2 repeats of 'blocks'
 
 
 # ------Prepare to start Routine "EndScreen"-------
