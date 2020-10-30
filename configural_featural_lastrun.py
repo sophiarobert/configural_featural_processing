@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Oct 30 00:10:44 2020
+    on Fri Oct 30 18:29:02 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -360,7 +360,7 @@ image_3 = visual.ImageStim(
     win=win,
     name='image_3', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=(0.5, 0.5),
+    ori=0, pos=(0, 0), size=(0.25, 0.25),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=512, interpolate=True, depth=-1.0)
@@ -1124,7 +1124,7 @@ thisExp.addData('image_9.stopped', image_9.tStopRefresh)
 
 # ------Prepare to start Routine "prePrac4"-------
 continueRoutine = True
-routineTimer.add(5.000000)
+routineTimer.add(9.000000)
 # update component parameters for each repeat
 prac_instr4.setImage(prePrac4)
 key_resp_10.keys = []
@@ -1167,7 +1167,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         prac_instr4.setAutoDraw(True)
     if prac_instr4.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > prac_instr4.tStartRefresh + 5-frameTolerance:
+        if tThisFlipGlobal > prac_instr4.tStartRefresh + 9-frameTolerance:
             # keep track of stop time/frame for later
             prac_instr4.tStop = t  # not accounting for scr refresh
             prac_instr4.frameNStop = frameN  # exact frame index
@@ -1189,7 +1189,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         win.callOnFlip(key_resp_10.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp_10.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > key_resp_10.tStartRefresh + 5-frameTolerance:
+        if tThisFlipGlobal > key_resp_10.tStartRefresh + 9-frameTolerance:
             # keep track of stop time/frame for later
             key_resp_10.tStop = t  # not accounting for scr refresh
             key_resp_10.frameNStop = frameN  # exact frame index
@@ -1222,7 +1222,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         win.callOnFlip(key_resp_13.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp_13.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > key_resp_13.tStartRefresh + 5-frameTolerance:
+        if tThisFlipGlobal > key_resp_13.tStartRefresh + 9-frameTolerance:
             # keep track of stop time/frame for later
             key_resp_13.tStop = t  # not accounting for scr refresh
             key_resp_13.frameNStop = frameN  # exact frame index
@@ -2017,27 +2017,32 @@ for thisBlock in blocks:
     # ------Prepare to start Routine "instrBlock"-------
     continueRoutine = True
     # update component parameters for each repeat
+    img_size =''
     if Block_type == 'conf_face':
+        img_size = (width*x_scale*0.67,height*y_scale)
         paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']
-        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+        if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_face_1234.png'
         else:
             instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'conf_haus':
+        img_size = (width*x_scale*1.36,height*y_scale)
         paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']
-        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+        if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_haus_1234.png'
         else:
             instruction_img = 'Designs/instructions_haus_5678.png'
     elif Block_type == 'feat_face':
+        img_size = (width*x_scale*0.67,height*y_scale)
         paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']
-        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+        if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_face_1234.png'
         else:
             instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'feat_haus':
+        img_size = (width*x_scale*1.36,height*y_scale)
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
-        if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
+        if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_haus_1234.png'
         else:
             instruction_img = 'Designs/instructions_haus_5678.png'
@@ -2311,7 +2316,7 @@ for thisBlock in blocks:
         thisExp.addData('probe',probe)
         text_4.setColor(fix_color, colorSpace='rgb')
         target_image.setPos((xPosition, 0))
-        target_image.setSize((width*x_scale,height*y_scale))
+        target_image.setSize(img_size)
         target_image.setImage(target)
         key_resp_3.keys = []
         key_resp_3.rt = []
@@ -2541,7 +2546,7 @@ for thisBlock in blocks:
         # update component parameters for each repeat
         text_5.setColor(fix_color, colorSpace='rgb')
         probe_image.setPos((xPosition, 0))
-        probe_image.setSize((width*x_scale,height*y_scale))
+        probe_image.setSize(img_size)
         probe_image.setImage(probe)
         key_resp_5.keys = []
         key_resp_5.rt = []

@@ -669,7 +669,7 @@ function experimentInit() {
     win : psychoJS.window,
     name : 'image_3', units : undefined, 
     image : undefined, mask : undefined,
-    ori : 0, pos : [0, 0], size : [0.5, 0.5],
+    ori : 0, pos : [0, 0], size : [0.25, 0.25],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
     texRes : 512, interpolate : true, depth : -1.0 
@@ -1658,7 +1658,7 @@ function prePrac4RoutineBegin(snapshot) {
     t = 0;
     prePrac4Clock.reset(); // clock
     frameN = -1;
-    routineTimer.add(5.000000);
+    routineTimer.add(9.000000);
     // update component parameters for each repeat
     prac_instr4.setImage(prePrac4);
     key_resp_10.keys = undefined;
@@ -1700,7 +1700,7 @@ function prePrac4RoutineEachFrame(snapshot) {
       prac_instr4.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 9 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (prac_instr4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       prac_instr4.setAutoDraw(false);
     }
@@ -1717,7 +1717,7 @@ function prePrac4RoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { key_resp_10.clearEvents(); });
     }
 
-    frameRemains = 0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0 + 9 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (key_resp_10.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       key_resp_10.status = PsychoJS.Status.FINISHED;
   }
@@ -1750,7 +1750,7 @@ function prePrac4RoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { key_resp_13.clearEvents(); });
     }
 
-    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 9 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (key_resp_13.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       key_resp_13.status = PsychoJS.Status.FINISHED;
   }
@@ -2799,6 +2799,7 @@ function startInstructRoutineEnd(snapshot) {
 }
 
 
+var img_size;
 var paths;
 var instruction_img;
 var trialSame;
@@ -2871,33 +2872,39 @@ function instrBlockRoutineBegin(snapshot) {
         return array
     }
     
+    img_size="";
+    
     if ((Block_type === "conf_face")) {
+        img_size = (width*x_scale*0.67,height*y_scale)
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
-        if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+        if ((Number.parseInt(expInfo["design"]) < 5)) {
             instruction_img = "Designs/instructions_face_1234.png";
         } else {
             instruction_img = "Designs/instructions_face_5678.png";
         }
     } else {
         if ((Block_type === "conf_haus")) {
+            img_size = (width*x_scale*1.36,height*y_scale)
             paths = ["Stimuli/H-8sim0.png", "Stimuli/H-8sim1.png", "Stimuli/H-8sim2.png", "Stimuli/H-8sim3.png"];
-            if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+            if ((Number.parseInt(expInfo["design"]) < 5)) {
                 instruction_img = "Designs/instructions_haus_1234.png";
             } else {
                 instruction_img = "Designs/instructions_haus_5678.png";
             }
         } else {
             if ((Block_type === "feat_face")) {
+                img_size = (width*x_scale*0.67,height*y_scale)
                 paths = ["Stimuli/f15.png", "Stimuli/f24.png", "Stimuli/f131.png", "Stimuli/f142.png"];
-                if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                if ((Number.parseInt(expInfo["design"]) < 5)) {
                     instruction_img = "Designs/instructions_face_1234.png";
                 } else {
                     instruction_img = "Designs/instructions_face_5678.png";
                 }
             } else {
                 if ((Block_type === "feat_haus")) {
+                    img_size = (width*x_scale*1.36,height*y_scale)
                     paths = ["Stimuli/H5sim0.png", "Stimuli/H6sim0.png", "Stimuli/H7sim0.png", "Stimuli/H8sim0.png"];
-                    if (((((Number.parseInt(expInfo["design"]) === (1 | Number.parseInt(expInfo["design"]))) && ((1 | Number.parseInt(expInfo["design"])) === (2 | Number.parseInt(expInfo["design"])))) && ((2 | Number.parseInt(expInfo["design"])) === (3 | Number.parseInt(expInfo["design"])))) && ((3 | Number.parseInt(expInfo["design"])) === 4))) {
+                    if ((Number.parseInt(expInfo["design"]) < 5)) {
                         instruction_img = "Designs/instructions_haus_1234.png";
                     } else {
                         instruction_img = "Designs/instructions_haus_5678.png";
@@ -2921,9 +2928,7 @@ function instrBlockRoutineBegin(snapshot) {
     fix_color = fix_color_options[rand_start[0]];
     
     if ((Number.parseInt(expInfo["position"]) === 2)) {
-        console.log(numTrials)
         numTrials = 48;
-        console.log(numTrials)
         trial_order = [shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]),shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6]), shuffle_array([1, 2, 3, 4, 5, 6])].flat();
         trial_order = round_array(divide_subPoint1(trial_order,6))
         trialSame_left = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
@@ -3230,7 +3235,7 @@ function target_imgRoutineBegin(snapshot) {
     
     text_4.setColor(new util.Color(fix_color));
     target_image.setPos([xPosition, 0]);
-    target_image.setSize([(width * x_scale), (height * y_scale)]);
+    target_image.setSize(img_size);
     target_image.setImage(target);
     key_resp_3.keys = undefined;
     key_resp_3.rt = undefined;
@@ -3494,7 +3499,7 @@ function probe_imgRoutineBegin(snapshot) {
     // update component parameters for each repeat
     text_5.setColor(new util.Color(fix_color));
     probe_image.setPos([xPosition, 0]);
-    probe_image.setSize([(width * x_scale), (height * y_scale)]);
+    probe_image.setSize(img_size);
     probe_image.setImage(probe);
     key_resp_5.keys = undefined;
     key_resp_5.rt = undefined;
