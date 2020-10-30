@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Thu Oct 29 17:32:02 2020
+    on Thu Oct 29 21:05:25 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -141,26 +141,31 @@ corrFix =''
 pTrial = 0
 pfix_color_options = ['white','black']
 
-paths=''
+prac_paths=''
 samepTrials=''
 diffpTrials=''
-paths = ['Stimuli/dory1.png','Stimuli/dory2.png','Stimuli/nemo1.jpg','Stimuli/nemo2.png']
+prac_paths = ['Stimuli/dory1.png','Stimuli/dory2.png','Stimuli/nemo1.jpg','Stimuli/nemo2.png']
 sameCount = 0
 diffCount = 0
-samepTrials = [0,1,2,3]
+samepTrials = [0,1,2,3,1,3]
 shuffle(samepTrials)
-diffpTrials = [[0,1],[1,0],[2,3],[3,2]]
+diffpTrials = [[0,1],[1,0],[0,1],[2,3],[3,2],[2,3]]
 shuffle(diffpTrials)
-ptrial_order = [0,0,0,0,1,1,1,1]
+ptrial_order = [0,0,0,0,0,0,1,1,1,1,1,1]
 shuffle(ptrial_order)
 
 corrpFix =''
-numPTrials = 8
-pfixs_shuffled1 = [1,0,0]
-pfixs_shuffled2 = [1,0,0]
+samePTrialid = 0
+diffPTrialid = 0
+numPTrials = 12
+pfixs_shuffled1 = [1,0,0,0]
+pfixs_shuffled2 = [1,0,0,1]
 shuffle(pfixs_shuffled1)
 shuffle(pfixs_shuffled2)
 pfix_switch = [0,0]+pfixs_shuffled1+pfixs_shuffled2+[0,0]
+side_same_prac = [0,0,0,1,1,1]
+side_diff_prac = [0,0,0,1,1,1]
+
 
 
 # Initialize components for Routine "prac_target"
@@ -538,16 +543,16 @@ for thisPTrial in pTrials:
         corrPfix = None
     
     if ptrial_order[pTrial] == 0:
-        prac_target = paths[samepTrials[sameCount]]
-        prac_probe = paths[samepTrials[sameCount]]
+        prac_target = prac_paths[samepTrials[sameCount]]
+        prac_probe = prac_paths[samepTrials[sameCount]]
         if int(expInfo['design']) < 5:
             pracCorr = 'f'
         elif int(expInfo['design']) > 4:
             pracCorr = 'j'
         sameCount = sameCount + 1
     elif ptrial_order[pTrial] == 1:
-        prac_target = paths[diffpTrials[diffCount][0]]
-        prac_probe = paths[diffpTrials[diffCount][1]]
+        prac_target = prac_paths[diffpTrials[diffCount][0]]
+        prac_probe = prac_paths[diffpTrials[diffCount][1]]
         print(pracCorr)
         if int(expInfo['design']) < 5:
             pracCorr = 'j'
@@ -561,56 +566,28 @@ for thisPTrial in pTrials:
     if int(expInfo['position']) == 0:
         xPosition = 0
     elif int(expInfo['position']) == 2:
-        if trial_order[trialID]==1:
-            sameTrialid += 1
-            if side_same[sameTrialid] == 1: #left
+        if ptrial_order[pTrial]==1:
+            if side_same_prac[samePTrialid] == 1: #left
                 xPosition = -(width*x_scale)
-                sameTrial_left_id += 1
-                print('left same ID: ' + str(sameTrial_left_id))
-                target = paths[trialSame_left[sameTrial_left_id]]
-                probe = paths[trialSame_left[sameTrial_left_id]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
-                    corr = 'f'
-                else:
-                    corr = 'j'
-            elif side_same[sameTrialid] == 0: #right
+            elif side_same_prac[samePTrialid] == 0: #right
                 xPosition = width*x_scale
-                sameTrial_right_id += 1
-                print('right same ID: ' + str(sameTrial_right_id))
-                target = paths[trialSame_right[sameTrial_right_id]]
-                probe = paths[trialSame_right[sameTrial_right_id]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
-                    corr = 'f'
-                else:
-                    corr = 'j'
-        elif trial_order[trialID]==0:
-            diffTrialid += 1
-            if side_diff[diffTrialid] == 1: #left
+            samePTrialid += 1
+        elif ptrial_order[pTrial]==0:
+            if side_diff_prac[diffPTrialid] == 1: #left
                 xPosition = -(width*x_scale)
-                diffTrial_left_id += 1
-                print('left diff ID: ' + str(diffTrial_left_id))
-                img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
-                target = paths[img_pair[0]]
-                probe = paths[img_pair[1]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
-                    corr = 'j'
-                else:
-                    corr = 'f'
-            elif side_diff[diffTrialid] == 0: #right
+            elif side_diff_prac[diffPTrialid] == 0: #right
                 xPosition = width*x_scale
-                diffTrial_right_id += 1
-                print('right diff ID: ' + str(diffTrial_right_id))
-                img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
-                target = paths[img_pair[0]]
-                probe = paths[img_pair[1]]
-                if int(expInfo['design']) == 1 | int(expInfo['design']) == 2 | int(expInfo['design']) == 3 | int(expInfo['design']) == 4:
-                    corr = 'j'
-                else:
-                    corr = 'f'
+            diffPTrialid += 1
     elif int(expInfo['position']) == 1:
         xPosition = -(width*x_scale)
-    elif expInfo['position'] == '3':
+    elif int(expInfo['position']) == '3':
         xPosition = width*x_scale
+    
+    thisExp.addData('pfix_switches', pfix_switch[pTrial])
+    thisExp.addData('Pside', xPosition)
+    thisExp.addData('ptrial_type1S0D',ptrial_order[pTrial])
+    thisExp.addData('ptarget',prac_target)
+    thisExp.addData('pprobe',prac_probe)
     image.setPos((xPosition, 0))
     image.setSize((width*x_scale,height*y_scale))
     image.setImage(prac_target)
