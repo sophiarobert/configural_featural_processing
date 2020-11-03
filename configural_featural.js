@@ -140,6 +140,7 @@ var unittext;
 var vsize;
 var height;
 var width;
+var width3deg;
 var text_top;
 var text_bottom;
 var ccimage;
@@ -359,8 +360,9 @@ function experimentInit() {
           vsize = 1;
       }
   }
-  height = 3.459;
-  width = 3.459;
+  height = 1.7296;
+  width = 1.7296;
+  width3deg = 2.5958;
   
   text_top = new visual.TextStim({
     win: psychoJS.window,
@@ -402,13 +404,13 @@ function experimentInit() {
       xPosition = 0;
   } else {
       if ((Number.parseInt(expInfo["position"]) === 2)) {
-          xPosition = (width * x_scale);
+          xPosition = (width3deg * x_scale);
       } else {
           if ((Number.parseInt(expInfo["position"]) === 1)) {
-              xPosition = (- (width * x_scale));
+              xPosition = (- (width3deg * x_scale));
           } else {
               if ((Number.parseInt(expInfo["position"]) === "3")) {
-                  xPosition = (width * x_scale);
+                  xPosition = (width3deg * x_scale);
               }
           }
       }
@@ -442,7 +444,7 @@ function experimentInit() {
     text: '+',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: -1.0 
   });
@@ -511,7 +513,7 @@ function experimentInit() {
     text: '+',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -1.0 
   });
@@ -2195,7 +2197,6 @@ function prac_targetRoutineBegin(snapshot) {
         if ((ptrial_order[pTrial] === 1)) {
             prac_target = prac_paths[diffpTrials[diffCount][0]];
             prac_probe = prac_paths[diffpTrials[diffCount][1]];
-            console.log(prac_paths);
             if ((Number.parseInt(expInfo["design"]) < 5)) {
                 pracCorr = "j";
             } else {
@@ -2215,20 +2216,20 @@ function prac_targetRoutineBegin(snapshot) {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
             if ((ptrial_order[pTrial] === 1)) {
                 if ((side_same_prac[samePTrialid] === 1)) {
-                    xPosition = (- (width * x_scale));
+                    xPosition = (- (width3deg * x_scale));
                 } else {
                     if ((side_same_prac[samePTrialid] === 0)) {
-                        xPosition = (width * x_scale);
+                        xPosition = (width3deg * x_scale);
                     }
                 }
                 samePTrialid += 1;
             } else {
                 if ((ptrial_order[pTrial] === 0)) {
                     if ((side_diff_prac[diffPTrialid] === 1)) {
-                        xPosition = (- (width * x_scale));
+                        xPosition = (- (width3deg * x_scale));
                     } else {
                         if ((side_diff_prac[diffPTrialid] === 0)) {
-                            xPosition = (width * x_scale);
+                            xPosition = (width3deg * x_scale);
                         }
                     }
                     diffPTrialid += 1;
@@ -2236,10 +2237,10 @@ function prac_targetRoutineBegin(snapshot) {
             }
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width * x_scale));
+                xPosition = (- (width3deg * x_scale));
             } else {
                 if ((Number.parseInt(expInfo["position"]) === "3")) {
-                    xPosition = (width * x_scale);
+                    xPosition = (width3deg * x_scale);
                 }
             }
         }
@@ -2574,14 +2575,14 @@ function prac_feedbackRoutineBegin(snapshot) {
         } else {
             if ((prac_fix_resp.keys !== corrPfix)) {
                 feedIM = "Stimuli/redWrong.png";
-                prac_msg = "Oops, your image response was right but the cross response was wrong.";
+                prac_msg = "Oops, your picture response was right but the cross response was wrong.";
             }
         }
     } else {
         if ((prac_resp.keys !== pracCorr)) {
             if ((prac_fix_resp.keys === corrPfix)) {
                 feedIM = "Stimuli/redWrong.png";
-                prac_msg = "Oops, your cross response was right but the image response was wrong.";
+                prac_msg = "Oops, your cross response was right but the picture response was wrong.";
             } else {
                 if ((prac_fix_resp.keys !== corrPfix)) {
                     feedIM = "Stimuli/redWrong.png";
@@ -3101,9 +3102,8 @@ function target_imgRoutineBegin(snapshot) {
             if ((trial_order[trialID] === 1)) {
                 sameTrialid += 1;
                 if ((side_same[sameTrialid] === 1)) {
-                    xPosition = (- (width * x_scale));
+                    xPosition = (- (width3deg * x_scale));
                     sameTrial_left_id += 1;
-                    console.log(("left same ID: " + sameTrial_left_id.toString()));
                     target = paths[trialSame_left[sameTrial_left_id]];
                     probe = paths[trialSame_left[sameTrial_left_id]];
                     if ((Number.parseInt(expInfo["design"]) < 5)) {
@@ -3115,9 +3115,8 @@ function target_imgRoutineBegin(snapshot) {
                     }
                 } else {
                     if ((side_same[sameTrialid] === 0)) {
-                        xPosition = (width * x_scale);
+                        xPosition = (width3deg * x_scale);
                         sameTrial_right_id += 1;
-                        console.log(("right same ID: " + sameTrial_right_id.toString()));
                         target = paths[trialSame_right[sameTrial_right_id]];
                         probe = paths[trialSame_right[sameTrial_right_id]];
                         if ((Number.parseInt(expInfo["design"]) < 5)) {
@@ -3133,9 +3132,8 @@ function target_imgRoutineBegin(snapshot) {
                 if ((trial_order[trialID] === 0)) {
                     diffTrialid += 1;
                     if ((side_diff[diffTrialid] === 1)) {
-                        xPosition = (- (width * x_scale));
+                        xPosition = (- (width3deg * x_scale));
                         diffTrial_left_id += 1;
-                        console.log(("left diff ID: " + diffTrial_left_id.toString()));
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
@@ -3148,9 +3146,8 @@ function target_imgRoutineBegin(snapshot) {
                         }
                     } else {
                         if ((side_diff[diffTrialid] === 0)) {
-                            xPosition = (width * x_scale);
+                            xPosition = (width3deg * x_scale);
                             diffTrial_right_id += 1;
-                            console.log(("right diff ID: " + diffTrial_right_id.toString()));
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
@@ -3167,7 +3164,7 @@ function target_imgRoutineBegin(snapshot) {
             }
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width * x_scale));
+                xPosition = (- (width3deg * x_scale));
                 if ((trial_order[trialID] === 1)) {
                     sameTrialid += 1;
                     target = paths[trialSame[sameTrialid]];
@@ -3196,7 +3193,7 @@ function target_imgRoutineBegin(snapshot) {
                 }
             } else {
                 if ((expInfo["position"] === "3")) {
-                    xPosition = (width * x_scale);
+                    xPosition = (width3deg * x_scale);
                     if ((trial_order[trialID] === 1)) {
                         sameTrialid += 1;
                         target = paths[trialSame[sameTrialid]];

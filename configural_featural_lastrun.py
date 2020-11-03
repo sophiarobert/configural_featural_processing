@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Oct 30 19:35:06 2020
+    on Tue Nov  3 17:43:41 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -109,8 +109,9 @@ else:
     vsize=1
 
 # h = tan(degrees = 2) x (distance = 49.53)
-height = 3.459
-width = 3.459
+height = 1.7296
+width = 1.7296
+width3deg = 2.5958
 text_top = visual.TextStim(win=win, name='text_top',
     text='Resize this image to match the size of a credit card with arrow keys',
     font='Arial',
@@ -144,11 +145,11 @@ prePracProbeImg1 = 'Stimuli/dory2.png'
 if int(expInfo['position']) == 0:
     xPosition = 0
 elif int(expInfo['position']) == 2:
-    xPosition = (width*x_scale)
+    xPosition = (width3deg*x_scale)
 elif int(expInfo['position']) == 1:
-    xPosition = -(width*x_scale)
+    xPosition = -(width3deg*x_scale)
 elif int(expInfo['position']) == '3':
-    xPosition = width*x_scale
+    xPosition = width3deg*x_scale
 prac_instr1 = visual.ImageStim(
     win=win,
     name='prac_instr1', 
@@ -1479,7 +1480,6 @@ for thisPTrial in pTrials:
     elif ptrial_order[pTrial] == 1:
         prac_target = prac_paths[diffpTrials[diffCount][0]]
         prac_probe = prac_paths[diffpTrials[diffCount][1]]
-        print(pracCorr)
         if int(expInfo['design']) < 5:
             pracCorr = 'j'
         elif int(expInfo['design']) > 4:
@@ -1494,20 +1494,20 @@ for thisPTrial in pTrials:
     elif int(expInfo['position']) == 2:
         if ptrial_order[pTrial]==1:
             if side_same_prac[samePTrialid] == 1: #left
-                xPosition = -(width*x_scale)
+                xPosition = -(width3deg*x_scale)
             elif side_same_prac[samePTrialid] == 0: #right
-                xPosition = width*x_scale
+                xPosition = width3deg*x_scale
             samePTrialid += 1
         elif ptrial_order[pTrial]==0:
             if side_diff_prac[diffPTrialid] == 1: #left
-                xPosition = -(width*x_scale)
+                xPosition = -(width3deg*x_scale)
             elif side_diff_prac[diffPTrialid] == 0: #right
-                xPosition = width*x_scale
+                xPosition = width3deg*x_scale
             diffPTrialid += 1
     elif int(expInfo['position']) == 1:
-        xPosition = -(width*x_scale)
+        xPosition = -(width3deg*x_scale)
     elif int(expInfo['position']) == '3':
-        xPosition = width*x_scale
+        xPosition = width3deg*x_scale
     
     thisExp.addData('pfix_switches', pfix_switch[pTrial])
     thisExp.addData('Pside', xPosition)
@@ -1807,11 +1807,11 @@ for thisPTrial in pTrials:
             prac_msg = 'Well done!'
         elif prac_fix_resp.keys != corrPfix:
             feedIM = 'Stimuli/redWrong.png'
-            prac_msg = 'Oops, your image response was right but the cross response was wrong.'
+            prac_msg = 'Oops, your picture response was right but the cross response was wrong.'
     elif prac_resp.keys != pracCorr:
         if prac_fix_resp.keys == corrPfix:
             feedIM = 'Stimuli/redWrong.png'
-            prac_msg = 'Oops, your cross response was right but the image response was wrong.'
+            prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
         elif prac_fix_resp.keys != corrPfix:
             feedIM = 'Stimuli/redWrong.png'
             prac_msg = 'Oops, both responses were wrong.'
@@ -2019,28 +2019,28 @@ for thisBlock in blocks:
     # update component parameters for each repeat
     img_size =''
     if Block_type == 'conf_face':
-        img_size = (width*x_scale*0.67,height*y_scale)
+        img_size = (width*x_scale,height*y_scale)
         paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']
         if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_face_1234.png'
         else:
             instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'conf_haus':
-        img_size = (width*x_scale*1.36,height*y_scale)
+        img_size = (width*x_scale,height*y_scale)
         paths =  ['Stimuli/H-8sim0.png', 'Stimuli/H-8sim1.png', 'Stimuli/H-8sim2.png', 'Stimuli/H-8sim3.png']
         if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_haus_1234.png'
         else:
             instruction_img = 'Designs/instructions_haus_5678.png'
     elif Block_type == 'feat_face':
-        img_size = (width*x_scale*0.67,height*y_scale)
+        img_size = (width*x_scale,height*y_scale)
         paths =  ['Stimuli/f15.png', 'Stimuli/f24.png', 'Stimuli/f131.png', 'Stimuli/f142.png']
         if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_face_1234.png'
         else:
             instruction_img = 'Designs/instructions_face_5678.png'
     elif Block_type == 'feat_haus':
-        img_size = (width*x_scale*1.36,height*y_scale)
+        img_size = (width*x_scale,height*y_scale)
         paths = ['Stimuli/H5sim0.png', 'Stimuli/H6sim0.png', 'Stimuli/H7sim0.png', 'Stimuli/H8sim0.png']
         if int(expInfo['design']) < 5:
             instruction_img = 'Designs/instructions_haus_1234.png'
@@ -2216,7 +2216,7 @@ for thisBlock in blocks:
         trialID = trialID + 1
         
         if fix_switch[trialID] == 1:
-            if fix_color == "pink":
+            if fix_color == "white":
                 fix_color = fix_color_options[1]
             else:
                 fix_color = fix_color_options[0]
@@ -2227,9 +2227,8 @@ for thisBlock in blocks:
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 if side_same[sameTrialid] == 1: #left
-                    xPosition = -(width*x_scale)
+                    xPosition = -(width3deg*x_scale)
                     sameTrial_left_id += 1
-                    print('left same ID: ' + str(sameTrial_left_id))
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
                     if int(expInfo['design']) < 5:
@@ -2237,9 +2236,8 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'j'
                 elif side_same[sameTrialid] == 0: #right
-                    xPosition = width*x_scale
+                    xPosition = width3deg*x_scale
                     sameTrial_right_id += 1
-                    print('right same ID: ' + str(sameTrial_right_id))
                     target = paths[trialSame_right[sameTrial_right_id]]
                     probe = paths[trialSame_right[sameTrial_right_id]]
                     if int(expInfo['design']) < 5:
@@ -2249,9 +2247,8 @@ for thisBlock in blocks:
             elif trial_order[trialID]==0:
                 diffTrialid += 1
                 if side_diff[diffTrialid] == 1: #left
-                    xPosition = -(width*x_scale)
+                    xPosition = -(width3deg*x_scale)
                     diffTrial_left_id += 1
-                    print('left diff ID: ' + str(diffTrial_left_id))
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -2260,9 +2257,8 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'f'
                 elif side_diff[diffTrialid] == 0: #right
-                    xPosition = width*x_scale
+                    xPosition = width3deg*x_scale
                     diffTrial_right_id += 1
-                    print('right diff ID: ' + str(diffTrial_right_id))
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -2271,7 +2267,7 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'f'
         elif int(expInfo['position']) == 1:
-            xPosition = -(width*x_scale)
+            xPosition = -(width3deg*x_scale)
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
@@ -2290,7 +2286,7 @@ for thisBlock in blocks:
                 elif int(expInfo['design']) > 4:
                     corr = 'f'
         elif expInfo['position'] == '3':
-            xPosition = width*x_scale
+            xPosition = width3deg*x_scale
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
