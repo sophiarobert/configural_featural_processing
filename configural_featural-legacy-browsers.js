@@ -1410,13 +1410,13 @@ function prePrac3RoutineBegin(snapshot) {
         xPosition = 0;
     } else {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
-            xPosition = (- (width * x_scale));
+            xPosition = (- (width3deg * x_scale));
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width * x_scale));
+                xPosition = (- (width3deg * x_scale));
             } else {
                 if ((Number.parseInt(expInfo["position"]) === "3")) {
-                    xPosition = (width * x_scale);
+                    xPosition = (width3deg * x_scale);
                 }
             }
         }
