@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Nov  3 17:43:41 2020
+    on Tue Nov  3 18:28:11 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -84,6 +84,8 @@ defaultKeyboard = keyboard.Keyboard()
 screen_scaleClock = core.Clock()
 from numpy.random import permutation
 from numpy.random import shuffle
+
+expInfo['winSize'] = win.size;
 oldt=0
 x_size=8.560
 y_size=5.398
@@ -173,7 +175,7 @@ image_6 = visual.ImageStim(
 text_8 = visual.TextStim(win=win, name='text_8',
     text='+',
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-1.0);
@@ -233,7 +235,7 @@ image_8 = visual.ImageStim(
 text_9 = visual.TextStim(win=win, name='text_9',
     text='+',
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='black', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-1.0);
