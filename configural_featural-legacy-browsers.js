@@ -261,7 +261,6 @@ function experimentInit() {
       }
       return array
   }
-  console.log(shuffle_array([1,2,3,3]))
   
   function divide_subPoint1(array, divisor) {
       let array_divided = array.map(function(element) {
@@ -4037,6 +4036,8 @@ function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
   
   
   
