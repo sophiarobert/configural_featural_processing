@@ -131,6 +131,7 @@ var vsize;
 var height;
 var width;
 var width3deg;
+var width4deg;
 var text_top;
 var text_bottom;
 var ccimage;
@@ -310,7 +311,6 @@ function experimentInit() {
   {name: ("Designs/instructions_face_5678.png"), path:("Designs/instructions_face_5678.png")},
   {name: ("Designs/instructions_haus_1234.png"), path:("Designs/instructions_haus_1234.png")},
   {name: ("Designs/instructions_haus_5678.png"), path:("Designs/instructions_haus_5678.png")},
-  {name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   {name: ("Designs/prac_instr2_1234.png"), path:("Designs/prac_instr2_1234.png")},
   {name: ("Designs/prac_instr2_5678.png"), path:("Designs/prac_instr2_5678.png")},
   {name: ("Designs/prac_instr3_corr.png"), path:("Designs/prac_instr3_corr.png")},
@@ -324,6 +324,7 @@ function experimentInit() {
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
   
+  //{name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   oldt = 0;
   x_size = 8.56;
   y_size = 5.398;
@@ -349,9 +350,10 @@ function experimentInit() {
           vsize = 1;
       }
   }
-  height = 1.7296;
-  width = 1.7296;
+  height = (1.7296 * 2);
+  width = (1.7296 * 2);
   width3deg = 2.5958;
+  width4deg = (1.7296 * 2);
   
   text_top = new visual.TextStim({
     win: psychoJS.window,
@@ -393,13 +395,13 @@ function experimentInit() {
       xPosition = 0;
   } else {
       if ((Number.parseInt(expInfo["position"]) === 2)) {
-          xPosition = (width3deg * x_scale);
+          xPosition = (width4deg * x_scale);
       } else {
           if ((Number.parseInt(expInfo["position"]) === 1)) {
-              xPosition = (- (width3deg * x_scale));
+              xPosition = (- (width4deg * x_scale));
           } else {
               if ((Number.parseInt(expInfo["position"]) === "3")) {
-                  xPosition = (width3deg * x_scale);
+                  xPosition = (width4deg * x_scale);
               }
           }
       }
@@ -1409,13 +1411,13 @@ function prePrac3RoutineBegin(snapshot) {
         xPosition = 0;
     } else {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
-            xPosition = (- (width3deg * x_scale));
+            xPosition = (- (width4deg * x_scale));
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width3deg * x_scale));
+                xPosition = (- (width4deg * x_scale));
             } else {
                 if ((Number.parseInt(expInfo["position"]) === "3")) {
-                    xPosition = (width3deg * x_scale);
+                    xPosition = (width4deg * x_scale);
                 }
             }
         }
@@ -3108,7 +3110,7 @@ function target_imgRoutineBegin(snapshot) {
             if ((trial_order[trialID] === 1)) {
                 sameTrialid += 1;
                 if ((side_same[sameTrialid] === 1)) {
-                    xPosition = (- (width3deg * x_scale));
+                    xPosition = (- (width4deg * x_scale));
                     sameTrial_left_id += 1;
                     target = paths[trialSame_left[sameTrial_left_id]];
                     probe = paths[trialSame_left[sameTrial_left_id]];
@@ -3121,7 +3123,7 @@ function target_imgRoutineBegin(snapshot) {
                     }
                 } else {
                     if ((side_same[sameTrialid] === 0)) {
-                        xPosition = (width3deg * x_scale);
+                        xPosition = (width4deg * x_scale);
                         sameTrial_right_id += 1;
                         target = paths[trialSame_right[sameTrial_right_id]];
                         probe = paths[trialSame_right[sameTrial_right_id]];
@@ -3138,7 +3140,7 @@ function target_imgRoutineBegin(snapshot) {
                 if ((trial_order[trialID] === 0)) {
                     diffTrialid += 1;
                     if ((side_diff[diffTrialid] === 1)) {
-                        xPosition = (- (width3deg * x_scale));
+                        xPosition = (- (width4deg * x_scale));
                         diffTrial_left_id += 1;
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
@@ -3152,7 +3154,7 @@ function target_imgRoutineBegin(snapshot) {
                         }
                     } else {
                         if ((side_diff[diffTrialid] === 0)) {
-                            xPosition = (width3deg * x_scale);
+                            xPosition = (width4deg * x_scale);
                             diffTrial_right_id += 1;
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
@@ -3170,7 +3172,7 @@ function target_imgRoutineBegin(snapshot) {
             }
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width3deg * x_scale));
+                xPosition = (- (width4deg * x_scale));
                 if ((trial_order[trialID] === 1)) {
                     sameTrialid += 1;
                     target = paths[trialSame[sameTrialid]];
@@ -3199,7 +3201,7 @@ function target_imgRoutineBegin(snapshot) {
                 }
             } else {
                 if ((expInfo["position"] === "3")) {
-                    xPosition = (width3deg * x_scale);
+                    xPosition = (width4deg * x_scale);
                     if ((trial_order[trialID] === 1)) {
                         sameTrialid += 1;
                         target = paths[trialSame[sameTrialid]];

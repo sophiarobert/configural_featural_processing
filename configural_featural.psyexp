@@ -1399,7 +1399,6 @@
   </Routines>
   <Flow>
     <Routine name="screen_scale"/>
-    <Routine name="check_scale"/>
     <Routine name="prePrac1"/>
     <Routine name="prePrac1_1"/>
     <Routine name="prePrac2"/>
