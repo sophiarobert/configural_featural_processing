@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Tue Nov  3 19:07:27 2020
+    on Thu Nov  5 17:54:06 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -111,9 +111,10 @@ else:
     vsize=1
 
 # h = tan(degrees = 2) x (distance = 49.53)
-height = 1.7296
-width = 1.7296
+height = 1.7296*2
+width = 1.7296*2
 width3deg = 2.5958
+width4deg = 1.7296*2
 text_top = visual.TextStim(win=win, name='text_top',
     text='Resize this image to match the size of a credit card with arrow keys',
     font='Arial',
@@ -137,18 +138,6 @@ ccimage = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=512, interpolate=True, depth=-5.0)
 
-# Initialize components for Routine "check_scale"
-check_scaleClock = core.Clock()
-width_card = 8.5
-height_card = 5.2
-polygon = visual.Rect(
-    win=win, name='polygon',
-    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
-    ori=0, pos=(0, 0),
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-1.0, interpolate=True)
-
 # Initialize components for Routine "prePrac1"
 prePrac1Clock = core.Clock()
 prePrac1 = 'Designs/prac_instr1.png'
@@ -159,11 +148,11 @@ prePracProbeImg1 = 'Stimuli/dory2.png'
 if int(expInfo['position']) == 0:
     xPosition = 0
 elif int(expInfo['position']) == 2:
-    xPosition = (width3deg*x_scale)
+    xPosition = (width4deg*x_scale)
 elif int(expInfo['position']) == 1:
-    xPosition = -(width3deg*x_scale)
+    xPosition = -(width4deg*x_scale)
 elif int(expInfo['position']) == '3':
-    xPosition = width3deg*x_scale
+    xPosition = width4deg*x_scale
 prac_instr1 = visual.ImageStim(
     win=win,
     name='prac_instr1', 
@@ -617,76 +606,6 @@ thisExp.addData('Y Scale',y_scale)
 # the Routine "screen_scale" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "check_scale"-------
-continueRoutine = True
-routineTimer.add(10.000000)
-# update component parameters for each repeat
-polygon.setSize((height_card*x_scale,width_card*y_scale))
-# keep track of which components have finished
-check_scaleComponents = [polygon]
-for thisComponent in check_scaleComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-check_scaleClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "check_scale"-------
-while continueRoutine and routineTimer.getTime() > 0:
-    # get current time
-    t = check_scaleClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=check_scaleClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # *polygon* updates
-    if polygon.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        polygon.frameNStart = frameN  # exact frame index
-        polygon.tStart = t  # local t and not account for scr refresh
-        polygon.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
-        polygon.setAutoDraw(True)
-    if polygon.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > polygon.tStartRefresh + 10-frameTolerance:
-            # keep track of stop time/frame for later
-            polygon.tStop = t  # not accounting for scr refresh
-            polygon.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(polygon, 'tStopRefresh')  # time at next scr refresh
-            polygon.setAutoDraw(False)
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in check_scaleComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "check_scale"-------
-for thisComponent in check_scaleComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-thisExp.addData('polygon.started', polygon.tStartRefresh)
-thisExp.addData('polygon.stopped', polygon.tStopRefresh)
-
 # ------Prepare to start Routine "prePrac1"-------
 continueRoutine = True
 # update component parameters for each repeat
@@ -1006,11 +925,11 @@ elif prePrac1Resp.keys != prePrac1Corr:
 if int(expInfo['position']) == 0:
     xPosition = 0
 elif int(expInfo['position']) == 2:
-    xPosition = -(width3deg*x_scale)
+    xPosition = -(width4deg*x_scale)
 elif int(expInfo['position']) == 1:
-    xPosition = -(width3deg*x_scale)
+    xPosition = -(width4deg*x_scale)
 elif int(expInfo['position']) == '3':
-    xPosition = width3deg*x_scale
+    xPosition = width4deg*x_scale
 prac_instr3_feedback.setImage(prePrac3)
 key_resp_11.keys = []
 key_resp_11.rt = []
@@ -2311,7 +2230,7 @@ for thisBlock in blocks:
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 if side_same[sameTrialid] == 1: #left
-                    xPosition = -(width3deg*x_scale)
+                    xPosition = -(width4deg*x_scale)
                     sameTrial_left_id += 1
                     target = paths[trialSame_left[sameTrial_left_id]]
                     probe = paths[trialSame_left[sameTrial_left_id]]
@@ -2320,7 +2239,7 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'j'
                 elif side_same[sameTrialid] == 0: #right
-                    xPosition = width3deg*x_scale
+                    xPosition = width4deg*x_scale
                     sameTrial_right_id += 1
                     target = paths[trialSame_right[sameTrial_right_id]]
                     probe = paths[trialSame_right[sameTrial_right_id]]
@@ -2331,7 +2250,7 @@ for thisBlock in blocks:
             elif trial_order[trialID]==0:
                 diffTrialid += 1
                 if side_diff[diffTrialid] == 1: #left
-                    xPosition = -(width3deg*x_scale)
+                    xPosition = -(width4deg*x_scale)
                     diffTrial_left_id += 1
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
@@ -2341,7 +2260,7 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'f'
                 elif side_diff[diffTrialid] == 0: #right
-                    xPosition = width3deg*x_scale
+                    xPosition = width4deg*x_scale
                     diffTrial_right_id += 1
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
@@ -2351,7 +2270,7 @@ for thisBlock in blocks:
                     elif int(expInfo['design']) > 4:
                         corr = 'f'
         elif int(expInfo['position']) == 1:
-            xPosition = -(width3deg*x_scale)
+            xPosition = -(width4deg*x_scale)
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
@@ -2370,7 +2289,7 @@ for thisBlock in blocks:
                 elif int(expInfo['design']) > 4:
                     corr = 'f'
         elif expInfo['position'] == '3':
-            xPosition = width3deg*x_scale
+            xPosition = width4deg*x_scale
             if trial_order[trialID]==1:
                 sameTrialid += 1
                 target = paths[trialSame[sameTrialid]]
