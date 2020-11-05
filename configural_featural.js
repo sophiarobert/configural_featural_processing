@@ -321,6 +321,7 @@ function experimentInit() {
   {name: ("Designs/instructions_face_5678.png"), path:("Designs/instructions_face_5678.png")},
   {name: ("Designs/instructions_haus_1234.png"), path:("Designs/instructions_haus_1234.png")},
   {name: ("Designs/instructions_haus_5678.png"), path:("Designs/instructions_haus_5678.png")},
+  {name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   {name: ("Designs/prac_instr2_1234.png"), path:("Designs/prac_instr2_1234.png")},
   {name: ("Designs/prac_instr2_5678.png"), path:("Designs/prac_instr2_5678.png")},
   {name: ("Designs/prac_instr3_corr.png"), path:("Designs/prac_instr3_corr.png")},
@@ -334,7 +335,6 @@ function experimentInit() {
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
   
-  //{name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   oldt = 0;
   x_size = 8.56;
   y_size = 5.398;
