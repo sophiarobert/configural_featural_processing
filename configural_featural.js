@@ -1298,7 +1298,7 @@ function prePrac2RoutineEachFrame(snapshot) {
     // update/draw components on each frame
     
     // *prac_instr2* updates
-    if (t >= 0.5 && prac_instr2.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 0.2 && prac_instr2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       prac_instr2.tStart = t;  // (not accounting for frame time here)
       prac_instr2.frameNStart = frameN;  // exact frame index
@@ -1308,7 +1308,7 @@ function prePrac2RoutineEachFrame(snapshot) {
 
     
     // *prePrac1Resp* updates
-    if (t >= 0.5 && prePrac1Resp.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 0.2 && prePrac1Resp.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       prePrac1Resp.tStart = t;  // (not accounting for frame time here)
       prePrac1Resp.frameNStart = frameN;  // exact frame index
@@ -2205,7 +2205,6 @@ function prac_targetRoutineBegin(snapshot) {
                     pracCorr = "f";
                 }
             }
-            console.log(prac_target);
             diffCount = (diffCount + 1);
         } else {
             console.log("What is going on");
@@ -2217,20 +2216,20 @@ function prac_targetRoutineBegin(snapshot) {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
             if ((ptrial_order[pTrial] === 1)) {
                 if ((side_same_prac[samePTrialid] === 1)) {
-                    xPosition = (- (width3deg * x_scale));
+                    xPosition = (- (width4deg * x_scale));
                 } else {
                     if ((side_same_prac[samePTrialid] === 0)) {
-                        xPosition = (width3deg * x_scale);
+                        xPosition = (width4deg * x_scale);
                     }
                 }
                 samePTrialid += 1;
             } else {
                 if ((ptrial_order[pTrial] === 0)) {
                     if ((side_diff_prac[diffPTrialid] === 1)) {
-                        xPosition = (- (width3deg * x_scale));
+                        xPosition = (- (width4deg * x_scale));
                     } else {
                         if ((side_diff_prac[diffPTrialid] === 0)) {
-                            xPosition = (width3deg * x_scale);
+                            xPosition = (width4deg * x_scale);
                         }
                     }
                     diffPTrialid += 1;
@@ -2238,7 +2237,7 @@ function prac_targetRoutineBegin(snapshot) {
             }
         } else {
             if ((Number.parseInt(expInfo["position"]) === 1)) {
-                xPosition = (- (width3deg * x_scale));
+                xPosition = (- (width4deg * x_scale));
             } else {
                 if ((Number.parseInt(expInfo["position"]) === "3")) {
                     xPosition = (width3deg * x_scale);
@@ -3089,13 +3088,6 @@ function target_imgRoutineBegin(snapshot) {
     probe = 0;
     corr = 0;
     trialID = (trialID + 1);
-    if ((fix_switch[trialID] === 1)) {
-        if ((fix_color === "white")) {
-            fix_color = fix_color_options[1];
-        } else {
-            fix_color = fix_color_options[0];
-        }
-    }
     if ((Number.parseInt(expInfo["position"]) === 0)) {
         xPosition = 0;
     } else {
@@ -3615,6 +3607,14 @@ function probe_imgRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
+    if ((fix_switch[trialID] === 1)) {
+        if ((fix_color === "white")) {
+            fix_color = fix_color_options[1];
+        } else {
+            fix_color = fix_color_options[0];
+        }
+    }
+    
     psychoJS.experiment.addData('key_resp_5.keys', key_resp_5.keys);
     if (typeof key_resp_5.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_5.rt', key_resp_5.rt);
