@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Thu Nov  5 21:29:15 2020
+    on Mon Nov 16 13:23:26 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -142,8 +142,8 @@ ccimage = visual.ImageStim(
 prePrac1Clock = core.Clock()
 prePrac1 = 'Designs/prac_instr1.png'
 
-prePracTargetImg1 = 'Stimuli/dory1.png'
-prePracProbeImg1 = 'Stimuli/dory2.png'
+prePracTargetImg1 = 'Stimuli/eomu.png'
+prePracProbeImg1 = 'Stimuli/eumu.png'
 
 if int(expInfo['position']) == 0:
     xPosition = 0
@@ -198,8 +198,8 @@ elif int(expInfo['design']) > 4:
     prePrac2 = 'Designs/prac_instr2_5678.png'
     prePrac1Corr = 'f'
 
-prePracTargetImg2 = 'Stimuli/nemo2.png'
-prePracProbeImg2 = 'Stimuli/nemo2.png'
+prePracTargetImg2 = 'Stimuli/H6sim0.png'
+prePracProbeImg2 = 'Stimuli/H6sim0.png'
 
 prac_instr2 = visual.ImageStim(
     win=win,
@@ -477,6 +477,17 @@ text_2 = visual.TextStim(win=win, name='text_2',
     depth=0.0);
 key_resp = keyboard.Keyboard()
 key_resp_6 = keyboard.Keyboard()
+
+# Initialize components for Routine "ITI_fix"
+ITI_fixClock = core.Clock()
+ITI_fix_cross = visual.TextStim(win=win, name='ITI_fix_cross',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
+fix_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "feedback"
 feedbackClock = core.Clock()
@@ -837,7 +848,7 @@ while continueRoutine:
     # update/draw components on each frame
     
     # *prac_instr2* updates
-    if prac_instr2.status == NOT_STARTED and tThisFlip >= 0.5-frameTolerance:
+    if prac_instr2.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
         # keep track of start time/frame for later
         prac_instr2.frameNStart = frameN  # exact frame index
         prac_instr2.tStart = t  # local t and not account for scr refresh
@@ -847,7 +858,7 @@ while continueRoutine:
     
     # *prePrac1Resp* updates
     waitOnFlip = False
-    if prePrac1Resp.status == NOT_STARTED and tThisFlip >= 0.5-frameTolerance:
+    if prePrac1Resp.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
         # keep track of start time/frame for later
         prePrac1Resp.frameNStart = frameN  # exact frame index
         prePrac1Resp.tStart = t  # local t and not account for scr refresh
@@ -1497,20 +1508,20 @@ for thisPTrial in pTrials:
     elif int(expInfo['position']) == 2:
         if ptrial_order[pTrial]==1:
             if side_same_prac[samePTrialid] == 1: #left
-                xPosition = -(width3deg*x_scale)
+                xPosition = -(width4deg*x_scale)
             elif side_same_prac[samePTrialid] == 0: #right
-                xPosition = width3deg*x_scale
+                xPosition = width4deg*x_scale
             samePTrialid += 1
         elif ptrial_order[pTrial]==0:
             if side_diff_prac[diffPTrialid] == 1: #left
-                xPosition = -(width3deg*x_scale)
+                xPosition = -(width4deg*x_scale)
             elif side_diff_prac[diffPTrialid] == 0: #right
-                xPosition = width3deg*x_scale
+                xPosition = width4deg*x_scale
             diffPTrialid += 1
     elif int(expInfo['position']) == 1:
-        xPosition = -(width3deg*x_scale)
+        xPosition = -(width4deg*x_scale)
     elif int(expInfo['position']) == '3':
-        xPosition = width3deg*x_scale
+        xPosition = width4deg*x_scale
     
     thisExp.addData('pfix_switches', pfix_switch[pTrial])
     thisExp.addData('Pside', xPosition)
@@ -2218,12 +2229,6 @@ for thisBlock in blocks:
         corr = 0
         trialID = trialID + 1
         
-        if fix_switch[trialID] == 1:
-            if fix_color == "white":
-                fix_color = fix_color_options[1]
-            else:
-                fix_color = fix_color_options[0]
-        
         if int(expInfo['position']) == 0:
             xPosition = 0
         elif int(expInfo['position']) == 2:
@@ -2797,6 +2802,125 @@ for thisBlock in blocks:
         trials.addData('key_resp_6.started', key_resp_6.tStartRefresh)
         trials.addData('key_resp_6.stopped', key_resp_6.tStopRefresh)
         # the Routine "trial_resp" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
+        
+        # ------Prepare to start Routine "ITI_fix"-------
+        continueRoutine = True
+        # update component parameters for each repeat
+        if fix_switch[trialID] == 1:
+            if fix_color == "white":
+                fix_color = fix_color_options[1]
+            else:
+                fix_color = fix_color_options[0]
+        
+        a = 1.25 # min ITI
+        b = 1.75 # max ITI
+        fixDur = (b-a) * random()+a
+        ITI_fix_cross.setColor(fix_color, colorSpace='rgb')
+        fix_resp.keys = []
+        fix_resp.rt = []
+        _fix_resp_allKeys = []
+        # keep track of which components have finished
+        ITI_fixComponents = [ITI_fix_cross, fix_resp]
+        for thisComponent in ITI_fixComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        ITI_fixClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "ITI_fix"-------
+        while continueRoutine:
+            # get current time
+            t = ITI_fixClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=ITI_fixClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *ITI_fix_cross* updates
+            if ITI_fix_cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                ITI_fix_cross.frameNStart = frameN  # exact frame index
+                ITI_fix_cross.tStart = t  # local t and not account for scr refresh
+                ITI_fix_cross.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(ITI_fix_cross, 'tStartRefresh')  # time at next scr refresh
+                ITI_fix_cross.setAutoDraw(True)
+            if ITI_fix_cross.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > ITI_fix_cross.tStartRefresh + fixDur-frameTolerance:
+                    # keep track of stop time/frame for later
+                    ITI_fix_cross.tStop = t  # not accounting for scr refresh
+                    ITI_fix_cross.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(ITI_fix_cross, 'tStopRefresh')  # time at next scr refresh
+                    ITI_fix_cross.setAutoDraw(False)
+            
+            # *fix_resp* updates
+            waitOnFlip = False
+            if fix_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fix_resp.frameNStart = frameN  # exact frame index
+                fix_resp.tStart = t  # local t and not account for scr refresh
+                fix_resp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fix_resp, 'tStartRefresh')  # time at next scr refresh
+                fix_resp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(fix_resp.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(fix_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if fix_resp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > fix_resp.tStartRefresh + fixDur-frameTolerance:
+                    # keep track of stop time/frame for later
+                    fix_resp.tStop = t  # not accounting for scr refresh
+                    fix_resp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(fix_resp, 'tStopRefresh')  # time at next scr refresh
+                    fix_resp.status = FINISHED
+            if fix_resp.status == STARTED and not waitOnFlip:
+                theseKeys = fix_resp.getKeys(keyList=['space'], waitRelease=False)
+                _fix_resp_allKeys.extend(theseKeys)
+                if len(_fix_resp_allKeys):
+                    fix_resp.keys = _fix_resp_allKeys[-1].name  # just the last key pressed
+                    fix_resp.rt = _fix_resp_allKeys[-1].rt
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in ITI_fixComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "ITI_fix"-------
+        for thisComponent in ITI_fixComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        trials.addData('ITI_fix_cross.started', ITI_fix_cross.tStartRefresh)
+        trials.addData('ITI_fix_cross.stopped', ITI_fix_cross.tStopRefresh)
+        # check responses
+        if fix_resp.keys in ['', [], None]:  # No response was made
+            fix_resp.keys = None
+        trials.addData('fix_resp.keys',fix_resp.keys)
+        if fix_resp.keys != None:  # we had a response
+            trials.addData('fix_resp.rt', fix_resp.rt)
+        trials.addData('fix_resp.started', fix_resp.tStartRefresh)
+        trials.addData('fix_resp.stopped', fix_resp.tStopRefresh)
+        # the Routine "ITI_fix" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
         
