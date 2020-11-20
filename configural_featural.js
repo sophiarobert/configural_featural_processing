@@ -2860,12 +2860,9 @@ function prac_target_slowRoutineBegin(snapshot) {
         pfix_color = pfix_color;
         corrPfix = undefined;
     }
-    console.log("fix resp");
-    console.log(pFixs[pBlockTrial]);
-    console.log("pTrial");
-    console.log(pTrial);
-    console.log("pBlockTrial");
-    console.log(pBlockTrial);
+    
+    console.log(ptrial_order)
+    
     
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = prac_paths[samepTrials[sameCount]];
@@ -3488,13 +3485,7 @@ function prac_target_fastRoutineBegin(snapshot) {
     // update component parameters for each repeat
     xPosition = "";
     
-    console.log("prac_target_fast");
-    console.log('Fix array')
-    console.log(pFixs);
-    console.log('This fix')
-    console.log(pFixs[pBlockTrial]);
-    console.log('overall trial')
-    console.log(pTrial);
+    console.log(ptrial_order)
     
     if ((pFixs[pBlockTrial] === 1)) {
         corrPfix = "space";
