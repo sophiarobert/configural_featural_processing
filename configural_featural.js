@@ -2697,7 +2697,7 @@ function prac_introRoutineBegin(snapshot) {
     t = 0;
     prac_introClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(5.000000);
+    routineTimer.add(7.000000);
     // update component parameters for each repeat
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -2718,16 +2718,16 @@ function prac_introRoutineBegin(snapshot) {
     if ((Number.parseInt(expInfo["design"]) < 5)) {
         if ((which_first[0] === 1)) {
             if ((pTrial < 8)) {
-                prac_intro_msg = "First we are going to practice with the Smith sisters. \nRemember, if you see the same sister, press F. \nIf you see two different sisters, press J.";
+                prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \nRemember, if you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
             } else {
-                prac_intro_msg = "Good job! Now we are going to practice with the houses in their neighborhood. \nIf you see the same house, press F. \nIf you see two different houses, press J.";
+                prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \nIf you see the same house, \npress F. \nIf you see two different houses, \npress J.";
             }
         } else {
             if ((which_first[0] === 0)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice with the houses in the Smith's neighborhood. \nRemember, if you see the same house, press F. \nIf you see two different houses, press J.";
+                    prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
                 } else {
-                    prac_intro_msg = "Now we are going to practice with the Smith sisters. \nIf you see the same sister, press F. \nIf you see two different sisters, press J.";
+                    prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \nIf you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
                 }
             }
         }
@@ -2735,16 +2735,16 @@ function prac_introRoutineBegin(snapshot) {
         if ((Number.parseInt(expInfo["design"]) > 4)) {
             if ((which_first[0] === 1)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice with the Smith sisters. \nRemember, if you see the same sister, press J. \nIf you see two different sisters, press F.";
+                    prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \nRemember, if you see the same sister, \npress J. \nIf you see two different sisters, \npress F.";
                 } else {
-                    prac_intro_msg = "Good job! Now we are going to practice with the houses in their neighborhood. \nIf you see the same house, press J. \nIf you see two different houses, press F.";
+                    prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \nIf you see the same house, press J. \nIf you see two different houses, \npress F.";
                 }
             } else {
                 if ((which_first[0] === 0)) {
                     if ((pTrial < 8)) {
-                        prac_intro_msg = "First we are going to practice with the houses in the Smith's neighborhood. \nRemember, if you see the same house, press J. \nIf you see two different houses, press F.";
+                        prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \nRemember, if you see the same house, \npress J. \nIf you see two different houses, \npress F.";
                     } else {
-                        prac_intro_msg = "Now we are going to practice with the Smith sisters. \nIf you see the same sister, press J. \nIf you see two different sisters, press F.";
+                        prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \nIf you see the same sister, press J. \nIf you see two different sisters, \npress F.";
                     }
                 }
             }
@@ -2785,7 +2785,7 @@ function prac_introRoutineEachFrame(snapshot) {
       text_12.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 7 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (text_12.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text_12.setAutoDraw(false);
     }
