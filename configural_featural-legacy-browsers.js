@@ -683,18 +683,19 @@ function experimentInit() {
   diffCount = 0;
   samepTrials = [0,1,2,3,4,5,6,7];
   shuffle(samepTrials);
+  console.log(samepTrials)
   diffpTrials = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3],[4,5],[4,6],[4,7],[5,6],[5,7],[6,7]];
   shuffle(diffpTrials);
+  console.log(diffpTrials)
   ptrial_order = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1];
-  shuffle(ptrial_order);
   corrpFix = "";
   numPTrials_slow=''
   numPTrials_fast=''
   numPTrials_slow = 4
   numPTrials_fast = 4
   //pfix_switch = [0,0,shuffle_array([1,0,0,0]),shuffle_array([1,0,0,1]),0,0].flat();
-  side_same_prac = [0, 0, 0, 1, 1, 1];
-  side_diff_prac = [0, 0, 0, 1, 1, 1];
+  side_same_prac = [0, 0, 0, 0, 1, 1, 1, 1];
+  side_diff_prac = [0, 0, 0, 0, 1, 1, 1, 1];
   
   // Initialize components for Routine "prac_intro"
   prac_introClock = new util.Clock();
@@ -2935,6 +2936,11 @@ function prac_target_slowRoutineBegin(snapshot) {
             }
         }
     }
+    
+    console.log('Correct Responses')
+    console.log(pracCorr)
+    console.log(corrPfix)
+    
     thisExp.addData("pfix_switches", pFixs[pBlockTrial]);
     thisExp.addData("Pside", xPosition);
     thisExp.addData("ptrial_type1S0D", ptrial_order[pTrial]);
@@ -3260,23 +3266,23 @@ function prac_feedbackRoutineBegin(snapshot) {
     routineTimer.add(2.000000);
     // update component parameters for each repeat
     feedIM = "";
-    if ((prac_resp.keys === pracCorr)) {
-        if ((prac_fix_resp.keys === corrPfix)) {
+    if ((prac_resp.corr === 1)) {
+        if ((prac_fix_resp.corr === 1)) {
             feedIM = "Stimuli/greenCheck.png";
             prac_msg = "Well done!";
         } else {
-            if ((prac_fix_resp.keys !== corrPfix)) {
+            if ((prac_fix_resp.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
                 prac_msg = "Oops, your picture response was right but the cross response was wrong.";
             }
         }
     } else {
-        if ((prac_resp.keys !== pracCorr)) {
-            if ((prac_fix_resp.keys === corrPfix)) {
+        if ((prac_resp.corr !== 1)) {
+            if ((prac_fix_resp.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
                 prac_msg = "Oops, your cross response was right but the picture response was wrong.";
             } else {
-                if ((prac_fix_resp.keys !== corrPfix)) {
+                if ((prac_fix_resp.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
                     prac_msg = "Oops, both responses were wrong.";
                 }
@@ -3494,7 +3500,12 @@ function prac_target_fastRoutineBegin(snapshot) {
     xPosition = "";
     
     console.log("prac_target_fast");
+    console.log('Fix array')
     console.log(pFixs);
+    console.log('This fix')
+    console.log(pFixs[pBlockTrial]);
+    console.log('overall trial')
+    console.log(pTrial);
     
     if ((pFixs[pBlockTrial] === 1)) {
         corrPfix = "space";
@@ -3507,8 +3518,7 @@ function prac_target_fastRoutineBegin(snapshot) {
         pfix_color = pfix_color;
         corrPfix = undefined;
     }
-    console.log(pFixs[pBlockTrial]);
-    console.log(pTrial);
+    
     
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = prac_paths[samepTrials[sameCount]];
@@ -3572,6 +3582,11 @@ function prac_target_fastRoutineBegin(snapshot) {
             }
         }
     }
+    
+    console.log('Correct Responses')
+    console.log(pracCorr)
+    console.log(corrPfix)
+    
     thisExp.addData("pfix_switches", pFixs[pBlockTrial]);
     thisExp.addData("Pside", xPosition);
     thisExp.addData("ptrial_type1S0D", ptrial_order[pTrial]);
