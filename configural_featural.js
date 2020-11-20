@@ -715,7 +715,7 @@ function experimentInit() {
     text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -1.0 
   });
@@ -2697,7 +2697,7 @@ function prac_introRoutineBegin(snapshot) {
     t = 0;
     prac_introClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(3.500000);
+    routineTimer.add(5.000000);
     // update component parameters for each repeat
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -2715,25 +2715,42 @@ function prac_introRoutineBegin(snapshot) {
     
     pFixs = [0,shuffle_array([0,1]),0].flat();
     
-    console.log('prac_target_slow')
-    console.log(pFixs)
-    console.log(pBlockTrial)
-    
-    if ((which_first[0] === 1)) {
-        if ((pTrial < 8)) {
-            prac_intro_msg = "First we are going to practice with the Smith sisters.";
+    if ((Number.parseInt(expInfo["design"]) < 5)) {
+        if ((which_first[0] === 1)) {
+            if ((pTrial < 8)) {
+                prac_intro_msg = "First we are going to practice with the Smith sisters. \nRemember, if you see the same sister, press F. \nIf you see two different sisters, press J.";
+            } else {
+                prac_intro_msg = "Good job! Now we are going to practice with the houses in their neighborhood. \nIf you see the same house, press F. \nIf you see two different houses, press J.";
+            }
         } else {
-            prac_intro_msg = "Now we are going to practice with the houses in their neighborhood.";
+            if ((which_first[0] === 0)) {
+                if ((pTrial < 8)) {
+                    prac_intro_msg = "First we are going to practice with the houses in the Smith's neighborhood. \nRemember, if you see the same house, press F. \nIf you see two different houses, press J.";
+                } else {
+                    prac_intro_msg = "Now we are going to practice with the Smith sisters. \nIf you see the same sister, press F. \nIf you see two different sisters, press J.";
+                }
+            }
         }
     } else {
-        if ((which_first[0] === 0)) {
-            if ((pTrial < 8)) {
-                prac_intro_msg = "First we are going to practice with the houses in the Smith's neighborhood.";
+        if ((Number.parseInt(expInfo["design"]) > 4)) {
+            if ((which_first[0] === 1)) {
+                if ((pTrial < 8)) {
+                    prac_intro_msg = "First we are going to practice with the Smith sisters. \nRemember, if you see the same sister, press J. \nIf you see two different sisters, press F.";
+                } else {
+                    prac_intro_msg = "Good job! Now we are going to practice with the houses in their neighborhood. \nIf you see the same house, press J. \nIf you see two different houses, press F.";
+                }
             } else {
-                prac_intro_msg = "Now we are going to practice with the Smith sisters.";
+                if ((which_first[0] === 0)) {
+                    if ((pTrial < 8)) {
+                        prac_intro_msg = "First we are going to practice with the houses in the Smith's neighborhood. \nRemember, if you see the same house, press J. \nIf you see two different houses, press F.";
+                    } else {
+                        prac_intro_msg = "Now we are going to practice with the Smith sisters. \nIf you see the same sister, press J. \nIf you see two different sisters, press F.";
+                    }
+                }
             }
         }
     }
+    
     pBlockTrial = 0;
     
     text_12.setText(prac_intro_msg);
@@ -2768,7 +2785,7 @@ function prac_introRoutineEachFrame(snapshot) {
       text_12.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 3.5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (text_12.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text_12.setAutoDraw(false);
     }
