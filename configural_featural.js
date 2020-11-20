@@ -2686,6 +2686,7 @@ function blocksLoopEnd() {
 }
 
 
+var pFixs;
 var prac_intro_msg;
 var pBlockTrial;
 var prac_introComponents;
@@ -2697,6 +2698,26 @@ function prac_introRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(3.500000);
     // update component parameters for each repeat
+    function shuffle_array(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    
+                // swap elements array[i] and array[j]
+                // we use "destructuring assignment" syntax to achieve that
+                // you'll find more details about that syntax in later chapters
+                // same can be written as:
+                // let t = array[i]; array[i] = array[j]; array[j] = t
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+    
+    pFixs = [0,shuffle_array([0,1]),0].flat();
+    
+    console.log('prac_target_slow')
+    console.log(pFixs)
+    console.log(pBlockTrial)
+    
     if ((which_first[0] === 1)) {
         if ((pTrial < 8)) {
             prac_intro_msg = "First we are going to practice with the Smith sisters.";
@@ -2790,7 +2811,6 @@ function prac_introRoutineEnd(snapshot) {
 }
 
 
-var pFixs;
 var corrPfix;
 var prac_target;
 var prac_probe;
@@ -2803,20 +2823,6 @@ function prac_target_slowRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.800000);
     // update component parameters for each repeat
-    function shuffle_array(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-    
-                // swap elements array[i] and array[j]
-                // we use "destructuring assignment" syntax to achieve that
-                // you'll find more details about that syntax in later chapters
-                // same can be written as:
-                // let t = array[i]; array[i] = array[j]; array[j] = t
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array
-    }
-    
     xPosition = "";
     if ((which_first[0] === 0)) {
         if ((pTrial < 8)) {
@@ -2841,12 +2847,6 @@ function prac_target_slowRoutineBegin(snapshot) {
             }
         }
     }
-    
-    pFixs = [0,shuffle_array([0,1]),0].flat();
-    
-    console.log('prac_target_slow')
-    console.log(pFixs)
-    console.log(pBlockTrial)
     
     if ((pFixs[pBlockTrial] === 1)) {
         corrPfix = "space";
@@ -3380,6 +3380,21 @@ function fast_warningRoutineBegin(snapshot) {
     routineTimer.add(3.000000);
     // update component parameters for each repeat
     pBlockTrial = 0;
+    function shuffle_array(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    
+                // swap elements array[i] and array[j]
+                // we use "destructuring assignment" syntax to achieve that
+                // you'll find more details about that syntax in later chapters
+                // same can be written as:
+                // let t = array[i]; array[i] = array[j]; array[j] = t
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+    
+    pFixs = [0,shuffle_array([0,1]),0].flat();
     
     // keep track of which components have finished
     fast_warningComponents = [];
@@ -3465,22 +3480,7 @@ function prac_target_fastRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.500000);
     // update component parameters for each repeat
-    function shuffle_array(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-    
-                // swap elements array[i] and array[j]
-                // we use "destructuring assignment" syntax to achieve that
-                // you'll find more details about that syntax in later chapters
-                // same can be written as:
-                // let t = array[i]; array[i] = array[j]; array[j] = t
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array
-    }
-    
     xPosition = "";
-    pFixs = [0,shuffle_array([0,1]),0].flat();
     
     console.log("prac_target_fast");
     console.log(pFixs);
