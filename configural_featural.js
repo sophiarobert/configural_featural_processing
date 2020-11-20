@@ -715,7 +715,7 @@ function experimentInit() {
     text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.06,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: -1.0 
   });
@@ -2718,16 +2718,16 @@ function prac_introRoutineBegin(snapshot) {
     if ((Number.parseInt(expInfo["design"]) < 5)) {
         if ((which_first[0] === 1)) {
             if ((pTrial < 8)) {
-                prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \nRemember, if you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
+                prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \n\nRemember, if you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
             } else {
-                prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \nIf you see the same house, \npress F. \nIf you see two different houses, \npress J.";
+                prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \n\nIf you see the same house, \npress F. \nIf you see two different houses, \npress J.";
             }
         } else {
             if ((which_first[0] === 0)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
+                    prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \n\nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
                 } else {
-                    prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \nIf you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
+                    prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \n\nIf you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
                 }
             }
         }
