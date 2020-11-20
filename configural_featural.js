@@ -2803,6 +2803,20 @@ function prac_target_slowRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.800000);
     // update component parameters for each repeat
+    function shuffle_array(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    
+                // swap elements array[i] and array[j]
+                // we use "destructuring assignment" syntax to achieve that
+                // you'll find more details about that syntax in later chapters
+                // same can be written as:
+                // let t = array[i]; array[i] = array[j]; array[j] = t
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+    
     xPosition = "";
     if ((which_first[0] === 0)) {
         if ((pTrial < 8)) {
@@ -3451,6 +3465,20 @@ function prac_target_fastRoutineBegin(snapshot) {
     frameN = -1;
     routineTimer.add(0.500000);
     // update component parameters for each repeat
+    function shuffle_array(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    
+                // swap elements array[i] and array[j]
+                // we use "destructuring assignment" syntax to achieve that
+                // you'll find more details about that syntax in later chapters
+                // same can be written as:
+                // let t = array[i]; array[i] = array[j]; array[j] = t
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+    
     xPosition = "";
     pFixs = [0,shuffle_array([0,1]),0].flat();
     
