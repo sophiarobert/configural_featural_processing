@@ -2731,7 +2731,7 @@ function prac_introRoutineBegin(snapshot) {
         } else {
             if ((which_first[0] === 0)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \n\nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
+                    prac_intro_msg = "First we are going to practice with the \nhouses in the Smith's neighborhood. \n\nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
                 } else {
                     prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \n\nIf you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
                 }
