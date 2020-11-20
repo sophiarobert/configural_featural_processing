@@ -360,8 +360,10 @@ function experimentInit() {
   {name: ("Designs/prac_instr3_wrong.png"), path:("Designs/prac_instr3_wrong.png")},
   {name: ("Designs/prac_instr4_1234.png"), path:("Designs/prac_instr4_1234.png")},
   {name: ("Designs/prac_instr4_5678.png"), path:("Designs/prac_instr4_5678.png")},
-  {name: ("Designs/prac_instr5_1234.png"), path:("Designs/prac_instr5_1234.png")},
-  {name: ("Designs/prac_instr5_5678.png"), path:("Designs/prac_instr5_5678.png")}]);
+  {name: ("Designs/prac_instr5_1234_corr.png"), path:("Designs/prac_instr5_1234_corr.png")},
+  {name: ("Designs/prac_instr5_5678_corr.png"), path:("Designs/prac_instr5_5678_corr.png")},
+  {name: ("Designs/prac_instr5_1234_wrong.png"), path:("Designs/prac_instr5_1234_wrong.png")},
+  {name: ("Designs/prac_instr5_5678_wrong.png"), path:("Designs/prac_instr5_5678_wrong.png")}]);
   
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
