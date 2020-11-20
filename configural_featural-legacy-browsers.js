@@ -2797,7 +2797,6 @@ function prac_introRoutineEnd(snapshot) {
 }
 
 
-var pFixSwitch;
 var pFixs;
 var corrPfix;
 var prac_target;
@@ -2835,9 +2834,8 @@ function prac_target_slowRoutineBegin(snapshot) {
             }
         }
     }
-    pFixSwitch = [0, 1];
-    shuffle(pFixSwitch);
-    pFixs = (([0] + pFixSwitch) + [0]);
+    
+    pFixs = [0,shuffle_array([0,1]),0].flat();
     
     console.log('prac_target_slow')
     console.log(pFixs)
@@ -3465,11 +3463,11 @@ function prac_target_fastRoutineBegin(snapshot) {
     routineTimer.add(0.500000);
     // update component parameters for each repeat
     xPosition = "";
-    pFixSwitch = [0, 1];
-    shuffle(pFixSwitch);
-    pFixs = (([0] + pFixSwitch) + [0]);
+    pFixs = [0,shuffle_array([0,1]),0].flat();
+    
     console.log("prac_target_fast");
     console.log(pFixs);
+    
     if ((pFixs[pBlockTrial] === 1)) {
         corrPfix = "space";
         if ((pfix_color === "white")) {
@@ -3479,10 +3477,11 @@ function prac_target_fastRoutineBegin(snapshot) {
         }
     } else {
         pfix_color = pfix_color;
-        corrPfix = null;
+        corrPfix = undefined;
     }
     console.log(pFixs[pBlockTrial]);
     console.log(pTrial);
+    
     if ((ptrial_order[pTrial] === 0)) {
         prac_target = prac_paths[samepTrials[sameCount]];
         prac_probe = prac_paths[samepTrials[sameCount]];
