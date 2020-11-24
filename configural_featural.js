@@ -147,6 +147,7 @@ var dbase;
 var unittext;
 var vsize;
 var height;
+var width;
 var width4deg;
 var text_top;
 var text_bottom;
@@ -393,6 +394,7 @@ function experimentInit() {
       }
   }
   height = (1.7296 * 2);
+  width = 3.47618705978;
   width4deg = 3.47618705978;
   
   text_top = new visual.TextStim({
