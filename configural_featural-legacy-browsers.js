@@ -137,8 +137,6 @@ var dbase;
 var unittext;
 var vsize;
 var height;
-var width;
-var width3deg;
 var width4deg;
 var text_top;
 var text_bottom;
@@ -385,9 +383,7 @@ function experimentInit() {
       }
   }
   height = (1.7296 * 2);
-  width = (1.7296 * 2);
-  width3deg = 2.5958;
-  width4deg = (1.7296 * 2);
+  width4deg = 3.47618705978;
   
   text_top = new visual.TextStim({
     win: psychoJS.window,
@@ -2724,16 +2720,16 @@ function prac_introRoutineBegin(snapshot) {
     if ((Number.parseInt(expInfo["design"]) < 5)) {
         if ((which_first[0] === 1)) {
             if ((pTrial < 8)) {
-                prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \n\nRemember, if you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
+                prac_intro_msg = "First we will practice with the Smith sisters. \n\nRemember, if you see the same sister, press F. If you see two different sisters, press J.";
             } else {
-                prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \n\nIf you see the same house, \npress F. \nIf you see two different houses, \npress J.";
+                prac_intro_msg = "Good job! Now we will practice with the neighborhood houses. \n\nIf you see the same house, press F. If you see two different houses, press J.";
             }
         } else {
             if ((which_first[0] === 0)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice with the \nhouses in the Smith's neighborhood. \n\nRemember, if you see the same house, \npress F. \nIf you see two different houses, \npress J.";
+                    prac_intro_msg = "First we will practice with the neighborhood houses. \n\nRemember, if you see \nthe same house, press F. If you see two different houses, press J.";
                 } else {
-                    prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \n\nIf you see the same sister, \npress F. \nIf you see two different sisters, \npress J.";
+                    prac_intro_msg = "Good job! Now we will practice with the Smith sisters. \n\nIf you see the same sister, press F. If you see two different sisters, press J.";
                 }
             }
         }
@@ -2741,16 +2737,16 @@ function prac_introRoutineBegin(snapshot) {
         if ((Number.parseInt(expInfo["design"]) > 4)) {
             if ((which_first[0] === 1)) {
                 if ((pTrial < 8)) {
-                    prac_intro_msg = "First we are going to practice \nwith the Smith sisters. \nRemember, if you see the same sister, \npress J. \nIf you see two different sisters, \npress F.";
+                    prac_intro_msg = "First we will practice with the Smith sisters. \n\nRemember, if you see the same sister, press J. If you see two different sisters, press F.";
                 } else {
-                    prac_intro_msg = "Good job! Now we are going to practice \nwith the houses in their neighborhood. \nIf you see the same house, press J. \nIf you see two different houses, \npress F.";
+                    prac_intro_msg = "Good job! Now we will practice with the houses in their neighborhood. \n\nIf you see the same house, press J. \nIf you see two different houses, press F.";
                 }
             } else {
                 if ((which_first[0] === 0)) {
                     if ((pTrial < 8)) {
-                        prac_intro_msg = "First we are going to practice \nwith the houses in the Smith's neighborhood. \nRemember, if you see the same house, \npress J. \nIf you see two different houses, \npress F.";
+                        prac_intro_msg = "First we will practice with the houses in the Smith's neighborhood. \n\nRemember, if you see the same house, press J. If you see two different houses, press F.";
                     } else {
-                        prac_intro_msg = "Now we are going to practice \nwith the Smith sisters. \nIf you see the same sister, press J. \nIf you see two different sisters, \npress F.";
+                        prac_intro_msg = "Good job! Now we will practice with the Smith sisters. \n\nIf you see the same sister, press J. If you see two different sisters, press F.";
                     }
                 }
             }
@@ -3065,7 +3061,7 @@ function prac_probe_slowRoutineBegin(snapshot) {
     t = 0;
     prac_probe_slowClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(4.200000);
+    routineTimer.add(5.000000);
     // update component parameters for each repeat
     image_2.setPos([xPosition, 0]);
     image_2.setSize([(width * x_scale), (height * y_scale)]);
@@ -3126,7 +3122,7 @@ function prac_probe_slowRoutineEachFrame(snapshot) {
       text_7.setAutoDraw(true);
     }
 
-    frameRemains = 0 + 4.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (text_7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text_7.setAutoDraw(false);
     }
@@ -3143,7 +3139,7 @@ function prac_probe_slowRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_resp.clearEvents(); });
     }
 
-    frameRemains = 0.2 + 4 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.2 + 4.8 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (prac_resp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       prac_resp.status = PsychoJS.Status.FINISHED;
   }
@@ -3176,7 +3172,7 @@ function prac_probe_slowRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_fix_resp.clearEvents(); });
     }
 
-    frameRemains = 0.2 + 4 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.2 + 4.8 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (prac_fix_resp.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       prac_fix_resp.status = PsychoJS.Status.FINISHED;
   }
@@ -3705,7 +3701,7 @@ function prac_probe_fastRoutineBegin(snapshot) {
     t = 0;
     prac_probe_fastClock.reset(); // clock
     frameN = -1;
-    routineTimer.add(4.200000);
+    routineTimer.add(5.000000);
     // update component parameters for each repeat
     image_5.setPos([xPosition, 0]);
     image_5.setSize([(width * x_scale), (height * y_scale)]);
@@ -3766,7 +3762,7 @@ function prac_probe_fastRoutineEachFrame(snapshot) {
       text_11.setAutoDraw(true);
     }
 
-    frameRemains = 0.0 + 4.2 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (text_11.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       text_11.setAutoDraw(false);
     }
@@ -3783,7 +3779,7 @@ function prac_probe_fastRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_fix_resp_fast.clearEvents(); });
     }
 
-    frameRemains = 0.2 + 4 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.2 + 4.8 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (prac_fix_resp_fast.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       prac_fix_resp_fast.status = PsychoJS.Status.FINISHED;
   }
@@ -3816,7 +3812,7 @@ function prac_probe_fastRoutineEachFrame(snapshot) {
       psychoJS.window.callOnFlip(function() { prac_resp2.clearEvents(); });
     }
 
-    frameRemains = 0.2 + 4 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    frameRemains = 0.2 + 4.8 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (prac_resp2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       prac_resp2.status = PsychoJS.Status.FINISHED;
   }
