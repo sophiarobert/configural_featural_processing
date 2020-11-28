@@ -4159,7 +4159,7 @@ function instrBlockRoutineBegin(snapshot) {
         trialSame_right = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
         trialDiff_right = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
         diffTrial_right = shuffle_array(list([...Array(12).keys()]));
-        fix_switch = [[0,0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0,0]].flat();
+        fix_switch = [[0,0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0,0]].flat();
         if ((block_count === 0)) {
             if ((start_side === 0)) {
                 side_same = 0;
@@ -4195,7 +4195,7 @@ function instrBlockRoutineBegin(snapshot) {
             trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
             trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
             diffTrial = shuffle_array(list([...Array(12).keys()]));
-            fix_switch = [[0,0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0,0]].flat();
+            fix_switch = [[0,0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0,0]].flat();
         } else {
             if ((Number.parseInt(expInfo["position"]) === 3)) {
                 numTrials = 24;
@@ -4204,7 +4204,7 @@ function instrBlockRoutineBegin(snapshot) {
                 trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
                 trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
                 diffTrial = shuffle_array(list([...Array(12).keys()]));
-                fix_switch = [[0,0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0,0]].flat();
+                fix_switch = [[0,0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0]),[0,0]].flat();
             }
         }
     }

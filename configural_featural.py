@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Nov 27 21:41:59 2020
+    on Fri Nov 27 22:14:37 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -614,12 +614,12 @@ fix_resp = keyboard.Keyboard()
 # Initialize components for Routine "feedback"
 feedbackClock = core.Clock()
 good_job = visual.TextStim(win=win, name='good_job',
-    text='Great Job!\n\nPress <SPACE> to keep going!',
+    text='default text',
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='black', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 key_resp_8 = keyboard.Keyboard()
 
 # Initialize components for Routine "EndScreen"
@@ -2976,7 +2976,7 @@ for thisBlock in blocks:
     # update component parameters for each repeat
     img_size =''
     block_count = block_count + 1
-    
+    corrFix_count = 0
     if Block_type == 'conf_face':
         img_size = (width*x_scale,height*y_scale)
         paths = ['Stimuli/edmd.png', 'Stimuli/eimd.png', 'Stimuli/eomu.png', 'Stimuli/eumu.png']
@@ -3673,10 +3673,16 @@ for thisBlock in blocks:
         if fix_switch[trialID] == 1:
             if fix_color == "white":
                 fix_color = fix_color_options[1]
+                corrFix_resp = 'space'
+                corrFix_count = corrFix_count + 1
             else:
                 fix_color = fix_color_options[0]
+                corrFix_resp = 'space'
+                corrFix_count = corrFix_count + 1
         else:
             fix_color = fix_color
+            corrFix_resp = ''
+        
         
         a = 1.25 # min ITI
         b = 1.75 # max ITI
@@ -3754,7 +3760,7 @@ for thisBlock in blocks:
                     fix_resp.keys = _fix_resp_allKeys[-1].name  # just the last key pressed
                     fix_resp.rt = _fix_resp_allKeys[-1].rt
                     # was this correct?
-                    if (fix_resp.keys == str('')) or (fix_resp.keys == ''):
+                    if (fix_resp.keys == str(corrFix_resp)) or (fix_resp.keys == corrFix_resp):
                         fix_resp.corr = 1
                     else:
                         fix_resp.corr = 0
@@ -3786,7 +3792,7 @@ for thisBlock in blocks:
         if fix_resp.keys in ['', [], None]:  # No response was made
             fix_resp.keys = None
             # was no response the correct answer?!
-            if str('').lower() == 'none':
+            if str(corrFix_resp).lower() == 'none':
                fix_resp.corr = 1;  # correct non-response
             else:
                fix_resp.corr = 0;  # failed to respond (incorrectly)
@@ -3807,6 +3813,9 @@ for thisBlock in blocks:
     # ------Prepare to start Routine "feedback"-------
     continueRoutine = True
     # update component parameters for each repeat
+    
+    blockMsg = 'You caught'+str(corrFix_count)+' of the fix changes, make sure you keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
+    good_job.setText(blockMsg)
     key_resp_8.keys = []
     key_resp_8.rt = []
     _key_resp_8_allKeys = []
