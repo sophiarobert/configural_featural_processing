@@ -4356,6 +4356,8 @@ function target_imgRoutineBegin(snapshot) {
                     if ((side_diff === 1)) {
                         xPosition = (- (width4deg * x_scale));
                         diffTrial_left_id += 1;
+                        console.log(diffTrial_left_id);
+                        console.log(trialDiff_left[diffTrial_left]);
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
                         target = paths[img_pair[0]];
                         probe = paths[img_pair[1]];
@@ -4370,6 +4372,8 @@ function target_imgRoutineBegin(snapshot) {
                         if ((side_diff === 0)) {
                             xPosition = (width4deg * x_scale);
                             diffTrial_right_id += 1;
+                            console.log(diffTrial_right_id);
+                            console.log(trialDiff_right[diffTrial_right]);
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
                             target = paths[img_pair[0]];
                             probe = paths[img_pair[1]];
