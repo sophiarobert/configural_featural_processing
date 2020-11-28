@@ -4022,6 +4022,8 @@ function startInstructRoutineEnd(snapshot) {
 
 
 var img_size;
+var corrFix_count;
+var missFix_count;
 var paths;
 var instruction_img;
 var trialSame;
@@ -4096,6 +4098,8 @@ function instrBlockRoutineBegin(snapshot) {
     
     img_size="";
     block_count = block_count + 1;
+    corrFix_count = 0;
+    missFix_count = 0;
     if ((Block_type === "conf_face")) {
         img_size = (width*x_scale*0.67,height*y_scale)
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
@@ -5023,7 +5027,6 @@ function ITI_fixRoutineEachFrame(snapshot) {
 }
 
 
-var corrFix_count;
 function ITI_fixRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'ITI_fix'-------
