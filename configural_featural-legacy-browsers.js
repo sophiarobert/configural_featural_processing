@@ -5040,6 +5040,9 @@ function ITI_fixRoutineEnd(snapshot) {
         }
     }
     
+    
+    console.log(corrFix_count)
+    console.log(missFix_count)
     // was no response the correct answer?!
     if (fix_resp.keys === undefined) {
       if (['None','none',undefined].includes(corrFix_resp)) {
