@@ -88,16 +88,14 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'bankcard.png', 'path': 'bankcard.png'},
+    {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'},
     {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'},
-    {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'}
+    {'name': 'bankcard.png', 'path': 'bankcard.png'}
   ]
 });
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.DEBUG);
 
-
-var frameDur;
 function updateInfo() {
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
   expInfo['expName'] = expName;
@@ -117,150 +115,6 @@ function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
-
-var screen_scaleClock;
-var thisExp;
-var win;
-var event;
-var shuffle;
-var webbrowser;
-var random;
-var randint;
-var round;
-var oldt;
-var x_size;
-var y_size;
-var screen_height;
-var x_scale;
-var y_scale;
-var dbase;
-var unittext;
-var vsize;
-var height;
-var width;
-var width4deg;
-var text_top;
-var text_bottom;
-var ccimage;
-var intro_taskClock;
-var text_13;
-var key_resp_10;
-var intro_imagesClock;
-var image_10;
-var image_11;
-var prePrac1Clock;
-var prePrac1;
-var all_paths_prac;
-var feat_H_paths_prac;
-var conf_H_paths_prac;
-var feat_F_paths_prac;
-var conf_F_paths_prac;
-var allHs;
-var allFs;
-var which_first;
-var prePracTargetImg1;
-var prePracProbeImg1;
-var xPosition;
-var prac_instr1;
-var key_resp_9;
-var prePrac1_1Clock;
-var image_6;
-var text_8;
-var image_7;
-var prePrac2Clock;
-var prePrac2;
-var prePrac1Corr;
-var prePracTargetImg2;
-var prePracProbeImg2;
-var prac_instr2;
-var prePrac1Resp;
-var prePrac3Clock;
-var prac_instr3_feedback;
-var key_resp_11;
-var prePrac3_2Clock;
-var image_8;
-var text_9;
-var image_9;
-var prePrac4Clock;
-var prePrac4;
-var prePrac2Corr;
-var prePracFix;
-var prac_instr4;
-var prePrac2_fixResp;
-var prePrac2_imgResp;
-var prePrac5Clock;
-var prac_instr5;
-var key_resp_12;
-var prac_instructionsClock;
-var pracCorr;
-var corrFix;
-var pTrial;
-var pfix_color_options;
-var prac_paths;
-var samepTrials;
-var diffpTrials;
-var side_same_prac;
-var side_diff_prac;
-var samePTrialid;
-var diffPTrialid;
-var sameCount;
-var diffCount;
-var ptrial_order;
-var corrpFix;
-var numPTrials_slow;
-var numPTrials_fast;
-var prac_introClock;
-var text_12;
-var prac_target_slowClock;
-var image;
-var text_6;
-var prac_probe_slowClock;
-var image_2;
-var text_7;
-var prac_resp;
-var prac_fix_resp;
-var prac_feedbackClock;
-var image_3;
-var feedback_msg;
-var fast_warningClock;
-var transition;
-var prac_target_fastClock;
-var image_4;
-var text_10;
-var prac_probe_fastClock;
-var image_5;
-var text_11;
-var prac_fix_resp_fast;
-var prac_resp2;
-var startInstructClock;
-var fix_color_options;
-var design_file;
-var text_3;
-var key_resp_7;
-var instrBlockClock;
-var instructions_image;
-var key_resp_2;
-var target_imgClock;
-var text_4;
-var target_image;
-var ISI_fixClock;
-var text;
-var probe_imgClock;
-var text_5;
-var probe_image;
-var trial_respClock;
-var text_2;
-var key_resp;
-var ITI_fixClock;
-var ITI_fix_cross;
-var fix_resp;
-var feedbackClock;
-var good_job;
-var key_resp_8;
-var EndScreenClock;
-var allDone;
-var globalClock;
-var routineTimer;
 function experimentInit() {
   // Initialize components for Routine "screen_scale"
   screen_scaleClock = new util.Clock();
@@ -681,10 +535,8 @@ function experimentInit() {
   diffCount = 0;
   samepTrials = [0,1,2,3,4,5,6,7];
   shuffle(samepTrials);
-  console.log(samepTrials)
   diffpTrials = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3],[4,5],[4,6],[4,7],[5,6],[5,7],[6,7]];
-  shuffle(diffpTrials);
-  console.log(diffpTrials)
+  shuffle(diffpTrials); 
   ptrial_order = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1];
   corrpFix = "";
   numPTrials_slow=''
@@ -864,6 +716,7 @@ function experimentInit() {
   // Initialize components for Routine "startInstruct"
   startInstructClock = new util.Clock();
   fix_color_options = ["white", "black"];
+  block_count = (- 1);
   if ((Number.parseInt(expInfo["design"]) === 1)) {
       design_file = "Designs/design1.csv";
   } else {
@@ -911,6 +764,8 @@ function experimentInit() {
   
   // Initialize components for Routine "instrBlock"
   instrBlockClock = new util.Clock();
+  start_side = shuffle_array([0,1])
+  start_side = start_side[0]
   instructions_image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'instructions_image', units : undefined, 
@@ -1014,12 +869,12 @@ function experimentInit() {
   good_job = new visual.TextStim({
     win: psychoJS.window,
     name: 'good_job',
-    text: 'Great Job!\n\nPress <SPACE> to keep going!',
+    text: 'default text',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
-    depth: 0.0 
+    depth: -1.0 
   });
   
   key_resp_8 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
@@ -1044,10 +899,6 @@ function experimentInit() {
   return Scheduler.Event.NEXT;
 }
 
-
-var t;
-var frameN;
-var screen_scaleComponents;
 function screen_scaleRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'screen_scale'-------
@@ -1070,11 +921,6 @@ function screen_scaleRoutineBegin(snapshot) {
   };
 }
 
-
-var _pj;
-var keys;
-var dscale;
-var continueRoutine;
 function screen_scaleRoutineEachFrame(snapshot) {
   return function () {
     //------Loop for each frame of Routine 'screen_scale'-------
@@ -1189,7 +1035,6 @@ function screen_scaleRoutineEachFrame(snapshot) {
   };
 }
 
-
 function screen_scaleRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'screen_scale'-------
@@ -1208,9 +1053,6 @@ function screen_scaleRoutineEnd(snapshot) {
   };
 }
 
-
-var _key_resp_10_allKeys;
-var intro_taskComponents;
 function intro_taskRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'intro_task'-------
@@ -1234,7 +1076,6 @@ function intro_taskRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function intro_taskRoutineEachFrame(snapshot) {
   return function () {
@@ -1304,7 +1145,6 @@ function intro_taskRoutineEachFrame(snapshot) {
   };
 }
 
-
 function intro_taskRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'intro_task'-------
@@ -1327,8 +1167,6 @@ function intro_taskRoutineEnd(snapshot) {
   };
 }
 
-
-var intro_imagesComponents;
 function intro_imagesRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'intro_images'-------
@@ -1351,8 +1189,6 @@ function intro_imagesRoutineBegin(snapshot) {
   };
 }
 
-
-var frameRemains;
 function intro_imagesRoutineEachFrame(snapshot) {
   return function () {
     //------Loop for each frame of Routine 'intro_images'-------
@@ -1415,7 +1251,6 @@ function intro_imagesRoutineEachFrame(snapshot) {
   };
 }
 
-
 function intro_imagesRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'intro_images'-------
@@ -1428,9 +1263,6 @@ function intro_imagesRoutineEnd(snapshot) {
   };
 }
 
-
-var _key_resp_9_allKeys;
-var prePrac1Components;
 function prePrac1RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac1'-------
@@ -1455,7 +1287,6 @@ function prePrac1RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac1RoutineEachFrame(snapshot) {
   return function () {
@@ -1525,7 +1356,6 @@ function prePrac1RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac1RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac1'-------
@@ -1541,8 +1371,6 @@ function prePrac1RoutineEnd(snapshot) {
   };
 }
 
-
-var prePrac1_1Components;
 function prePrac1_1RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac1_1'-------
@@ -1571,7 +1399,6 @@ function prePrac1_1RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac1_1RoutineEachFrame(snapshot) {
   return function () {
@@ -1649,7 +1476,6 @@ function prePrac1_1RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac1_1RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac1_1'-------
@@ -1662,9 +1488,6 @@ function prePrac1_1RoutineEnd(snapshot) {
   };
 }
 
-
-var _prePrac1Resp_allKeys;
-var prePrac2Components;
 function prePrac2RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac2'-------
@@ -1689,7 +1512,6 @@ function prePrac2RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac2RoutineEachFrame(snapshot) {
   return function () {
@@ -1765,7 +1587,6 @@ function prePrac2RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac2RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac2'-------
@@ -1798,10 +1619,6 @@ function prePrac2RoutineEnd(snapshot) {
   };
 }
 
-
-var prePrac3;
-var _key_resp_11_allKeys;
-var prePrac3Components;
 function prePrac3RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac3'-------
@@ -1849,7 +1666,6 @@ function prePrac3RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac3RoutineEachFrame(snapshot) {
   return function () {
@@ -1919,7 +1735,6 @@ function prePrac3RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac3RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac3'-------
@@ -1935,8 +1750,6 @@ function prePrac3RoutineEnd(snapshot) {
   };
 }
 
-
-var prePrac3_2Components;
 function prePrac3_2RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac3_2'-------
@@ -1965,7 +1778,6 @@ function prePrac3_2RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac3_2RoutineEachFrame(snapshot) {
   return function () {
@@ -2043,7 +1855,6 @@ function prePrac3_2RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac3_2RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac3_2'-------
@@ -2056,10 +1867,6 @@ function prePrac3_2RoutineEnd(snapshot) {
   };
 }
 
-
-var _prePrac2_fixResp_allKeys;
-var _prePrac2_imgResp_allKeys;
-var prePrac4Components;
 function prePrac4RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac4'-------
@@ -2089,7 +1896,6 @@ function prePrac4RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac4RoutineEachFrame(snapshot) {
   return function () {
@@ -2205,7 +2011,6 @@ function prePrac4RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac4RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac4'-------
@@ -2250,10 +2055,6 @@ function prePrac4RoutineEnd(snapshot) {
   };
 }
 
-
-var prePrac5;
-var _key_resp_12_allKeys;
-var prePrac5Components;
 function prePrac5RoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prePrac5'-------
@@ -2308,7 +2109,6 @@ function prePrac5RoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prePrac5RoutineEachFrame(snapshot) {
   return function () {
@@ -2378,7 +2178,6 @@ function prePrac5RoutineEachFrame(snapshot) {
   };
 }
 
-
 function prePrac5RoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prePrac5'-------
@@ -2394,10 +2193,6 @@ function prePrac5RoutineEnd(snapshot) {
   };
 }
 
-
-var rand_Pstart;
-var pfix_color;
-var prac_instructionsComponents;
 function prac_instructionsRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_instructions'-------
@@ -2420,7 +2215,6 @@ function prac_instructionsRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prac_instructionsRoutineEachFrame(snapshot) {
   return function () {
@@ -2456,7 +2250,6 @@ function prac_instructionsRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_instructionsRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_instructions'-------
@@ -2472,9 +2265,6 @@ function prac_instructionsRoutineEnd(snapshot) {
   };
 }
 
-
-var pTrials;
-var currentLoop;
 function pTrialsLoopBegin(pTrialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   pTrials = new TrialHandler({
@@ -2512,8 +2302,6 @@ function pTrialsLoopBegin(pTrialsLoopScheduler) {
   return Scheduler.Event.NEXT;
 }
 
-
-var pTrials_slow;
 function pTrials_slowLoopBegin(pTrials_slowLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   pTrials_slow = new TrialHandler({
@@ -2546,15 +2334,12 @@ function pTrials_slowLoopBegin(pTrials_slowLoopScheduler) {
   return Scheduler.Event.NEXT;
 }
 
-
 function pTrials_slowLoopEnd() {
   psychoJS.experiment.removeLoop(pTrials_slow);
 
   return Scheduler.Event.NEXT;
 }
 
-
-var pTrials_fast;
 function pTrials_fastLoopBegin(pTrials_fastLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   pTrials_fast = new TrialHandler({
@@ -2587,13 +2372,11 @@ function pTrials_fastLoopBegin(pTrials_fastLoopScheduler) {
   return Scheduler.Event.NEXT;
 }
 
-
 function pTrials_fastLoopEnd() {
   psychoJS.experiment.removeLoop(pTrials_fast);
 
   return Scheduler.Event.NEXT;
 }
-
 
 function pTrialsLoopEnd() {
   psychoJS.experiment.removeLoop(pTrials);
@@ -2601,8 +2384,6 @@ function pTrialsLoopEnd() {
   return Scheduler.Event.NEXT;
 }
 
-
-var blocks;
 function blocksLoopBegin(blocksLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   blocks = new TrialHandler({
@@ -2636,8 +2417,6 @@ function blocksLoopBegin(blocksLoopScheduler) {
   return Scheduler.Event.NEXT;
 }
 
-
-var trials;
 function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
@@ -2676,13 +2455,11 @@ function trialsLoopBegin(trialsLoopScheduler) {
   return Scheduler.Event.NEXT;
 }
 
-
 function trialsLoopEnd() {
   psychoJS.experiment.removeLoop(trials);
 
   return Scheduler.Event.NEXT;
 }
-
 
 function blocksLoopEnd() {
   psychoJS.experiment.removeLoop(blocks);
@@ -2690,11 +2467,6 @@ function blocksLoopEnd() {
   return Scheduler.Event.NEXT;
 }
 
-
-var pFixs;
-var prac_intro_msg;
-var pBlockTrial;
-var prac_introComponents;
 function prac_introRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_intro'-------
@@ -2771,7 +2543,6 @@ function prac_introRoutineBegin(snapshot) {
   };
 }
 
-
 function prac_introRoutineEachFrame(snapshot) {
   return function () {
     //------Loop for each frame of Routine 'prac_intro'-------
@@ -2820,7 +2591,6 @@ function prac_introRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_introRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_intro'-------
@@ -2833,11 +2603,6 @@ function prac_introRoutineEnd(snapshot) {
   };
 }
 
-
-var corrPfix;
-var prac_target;
-var prac_probe;
-var prac_target_slowComponents;
 function prac_target_slowRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_target_slow'-------
@@ -2977,7 +2742,6 @@ function prac_target_slowRoutineBegin(snapshot) {
   };
 }
 
-
 function prac_target_slowRoutineEachFrame(snapshot) {
   return function () {
     //------Loop for each frame of Routine 'prac_target_slow'-------
@@ -3040,7 +2804,6 @@ function prac_target_slowRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_target_slowRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_target_slow'-------
@@ -3053,10 +2816,6 @@ function prac_target_slowRoutineEnd(snapshot) {
   };
 }
 
-
-var _prac_resp_allKeys;
-var _prac_fix_resp_allKeys;
-var prac_probe_slowComponents;
 function prac_probe_slowRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_probe_slow'-------
@@ -3090,7 +2849,6 @@ function prac_probe_slowRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prac_probe_slowRoutineEachFrame(snapshot) {
   return function () {
@@ -3220,7 +2978,6 @@ function prac_probe_slowRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_probe_slowRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_probe_slow'-------
@@ -3265,10 +3022,6 @@ function prac_probe_slowRoutineEnd(snapshot) {
   };
 }
 
-
-var feedIM;
-var prac_msg;
-var prac_feedbackComponents;
 function prac_feedbackRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_feedback'-------
@@ -3317,7 +3070,6 @@ function prac_feedbackRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prac_feedbackRoutineEachFrame(snapshot) {
   return function () {
@@ -3381,7 +3133,6 @@ function prac_feedbackRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_feedbackRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_feedback'-------
@@ -3397,8 +3148,6 @@ function prac_feedbackRoutineEnd(snapshot) {
   };
 }
 
-
-var fast_warningComponents;
 function fast_warningRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'fast_warning'-------
@@ -3436,7 +3185,6 @@ function fast_warningRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function fast_warningRoutineEachFrame(snapshot) {
   return function () {
@@ -3486,7 +3234,6 @@ function fast_warningRoutineEachFrame(snapshot) {
   };
 }
 
-
 function fast_warningRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'fast_warning'-------
@@ -3499,8 +3246,6 @@ function fast_warningRoutineEnd(snapshot) {
   };
 }
 
-
-var prac_target_fastComponents;
 function prac_target_fastRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_target_fast'-------
@@ -3617,7 +3362,6 @@ function prac_target_fastRoutineBegin(snapshot) {
   };
 }
 
-
 function prac_target_fastRoutineEachFrame(snapshot) {
   return function () {
     //------Loop for each frame of Routine 'prac_target_fast'-------
@@ -3680,7 +3424,6 @@ function prac_target_fastRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_target_fastRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_target_fast'-------
@@ -3693,10 +3436,6 @@ function prac_target_fastRoutineEnd(snapshot) {
   };
 }
 
-
-var _prac_fix_resp_fast_allKeys;
-var _prac_resp2_allKeys;
-var prac_probe_fastComponents;
 function prac_probe_fastRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'prac_probe_fast'-------
@@ -3730,7 +3469,6 @@ function prac_probe_fastRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function prac_probe_fastRoutineEachFrame(snapshot) {
   return function () {
@@ -3860,7 +3598,6 @@ function prac_probe_fastRoutineEachFrame(snapshot) {
   };
 }
 
-
 function prac_probe_fastRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'prac_probe_fast'-------
@@ -3905,9 +3642,6 @@ function prac_probe_fastRoutineEnd(snapshot) {
   };
 }
 
-
-var _key_resp_7_allKeys;
-var startInstructComponents;
 function startInstructRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'startInstruct'-------
@@ -3931,7 +3665,6 @@ function startInstructRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function startInstructRoutineEachFrame(snapshot) {
   return function () {
@@ -4001,7 +3734,6 @@ function startInstructRoutineEachFrame(snapshot) {
   };
 }
 
-
 function startInstructRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'startInstruct'-------
@@ -4017,35 +3749,6 @@ function startInstructRoutineEnd(snapshot) {
   };
 }
 
-
-var img_size;
-var paths;
-var instruction_img;
-var trialSame;
-var trialDiff;
-var diffTrial;
-var sameTrialid;
-var diffTrialid;
-var sameTrial_left_id;
-var diffTrial_left_id;
-var sameTrial_right_id;
-var diffTrial_right_id;
-var trialID;
-var rand_start;
-var fix_color;
-var numTrials;
-var trial_order;
-var trialSame_left;
-var trialDiff_left;
-var diffTrial_left;
-var trialSame_right;
-var trialDiff_right;
-var diffTrial_right;
-var fix_switch;
-var side_same;
-var side_diff;
-var _key_resp_2_allKeys;
-var instrBlockComponents;
 function instrBlockRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'instrBlock'-------
@@ -4092,7 +3795,7 @@ function instrBlockRoutineBegin(snapshot) {
     }
     
     img_size="";
-    
+    block_count = block_count + 1;
     if ((Block_type === "conf_face")) {
         img_size = (width*x_scale*0.67,height*y_scale)
         paths = ["Stimuli/edmd.png", "Stimuli/eimd.png", "Stimuli/eomu.png", "Stimuli/eumu.png"];
@@ -4156,9 +3859,34 @@ function instrBlockRoutineBegin(snapshot) {
         trialSame_right = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
         trialDiff_right = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
         diffTrial_right = shuffle_array(list([...Array(12).keys()]));
-        fix_switch = [0,0,shuffle_array([1,0,0,0,0,0,0]),shuffle_array([1,0,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0,0]),shuffle_array([1,0,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0,0]),shuffle_array([1,0,0,0,0,0,0]),0,0].flat();
-        side_same = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
-        side_diff = shuffle_array([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]);
+        fix_switch = [[0,0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+shuffle_array([1,0,0])+[0]+shuffle_array([1,0,0])+[0,0]].flat();
+        if ((block_count === 0)) {
+            if ((start_side === 0)) {
+                side_same = 0;
+                side_diff = 0;
+            } else {
+                side_same = 1;
+                side_diff = 1;
+            }
+        } else {
+            if ((block_count < 5)) {
+                if ((start_side === 0)) {
+                    side_same = 0;
+                    side_diff = 0;
+                } else {
+                    side_same = 1;
+                    side_diff = 1;
+                }
+            } else {
+                if ((start_side === 0)) {
+                    side_same = 1;
+                    side_diff = 1;
+                } else {
+                    side_same = 0;
+                    side_diff = 0;
+                }
+            }
+        }
     } else {
         if ((Number.parseInt(expInfo["position"]) === 1)) {
             numTrials = 24;
@@ -4167,7 +3895,7 @@ function instrBlockRoutineBegin(snapshot) {
             trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
             trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
             diffTrial = shuffle_array(list([...Array(12).keys()]));
-            fix_switch = [0,0,shuffle_array([1,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0]),0,0].flat();
+            fix_switch = [[0,0]+shuffle_array([1,0,0]+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0,0]].flat();
         } else {
             if ((Number.parseInt(expInfo["position"]) === 3)) {
                 numTrials = 24;
@@ -4176,7 +3904,7 @@ function instrBlockRoutineBegin(snapshot) {
                 trialSame = [shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3]), shuffle_array([0, 1, 2, 3])].flat();
                 trialDiff = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
                 diffTrial = shuffle_array(list([...Array(12).keys()]));
-                fix_switch = [0,0,shuffle_array([1,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0]),0,shuffle_array([1,0,0,0,0,0]),0,0].flat();
+                fix_switch = [[0,0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0]+shuffle_array([1,0,0])+[0]+shuffle_array([1,0])+[0,0]].flat();
             }
         }
     }
@@ -4199,7 +3927,6 @@ function instrBlockRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function instrBlockRoutineEachFrame(snapshot) {
   return function () {
@@ -4269,7 +3996,6 @@ function instrBlockRoutineEachFrame(snapshot) {
   };
 }
 
-
 function instrBlockRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'instrBlock'-------
@@ -4285,12 +4011,6 @@ function instrBlockRoutineEnd(snapshot) {
   };
 }
 
-
-var img_pair;
-var target;
-var probe;
-var corr;
-var target_imgComponents;
 function target_imgRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'target_img'-------
@@ -4310,7 +4030,7 @@ function target_imgRoutineBegin(snapshot) {
         if ((Number.parseInt(expInfo["position"]) === 2)) {
             if ((trial_order[trialID] === 1)) {
                 sameTrialid += 1;
-                if ((side_same[sameTrialid] === 1)) {
+                if ((side_same === 1)) {
                     xPosition = (- (width4deg * x_scale));
                     sameTrial_left_id += 1;
                     target = paths[trialSame_left[sameTrial_left_id]];
@@ -4323,7 +4043,7 @@ function target_imgRoutineBegin(snapshot) {
                         }
                     }
                 } else {
-                    if ((side_same[sameTrialid] === 0)) {
+                    if ((side_same === 0)) {
                         xPosition = (width4deg * x_scale);
                         sameTrial_right_id += 1;
                         target = paths[trialSame_right[sameTrial_right_id]];
@@ -4340,7 +4060,7 @@ function target_imgRoutineBegin(snapshot) {
             } else {
                 if ((trial_order[trialID] === 0)) {
                     diffTrialid += 1;
-                    if ((side_diff[diffTrialid] === 1)) {
+                    if ((side_diff === 1)) {
                         xPosition = (- (width4deg * x_scale));
                         diffTrial_left_id += 1;
                         img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]];
@@ -4354,7 +4074,7 @@ function target_imgRoutineBegin(snapshot) {
                             }
                         }
                     } else {
-                        if ((side_diff[diffTrialid] === 0)) {
+                        if ((side_diff === 0)) {
                             xPosition = (width4deg * x_scale);
                             diffTrial_right_id += 1;
                             img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]];
@@ -4438,6 +4158,7 @@ function target_imgRoutineBegin(snapshot) {
     thisExp.addData("trial_type1S0D", trial_order[trialID]);
     thisExp.addData("target", target);
     thisExp.addData("probe", probe);
+    thisExp.addData("block_type", Block_type);
     
     text_4.setColor(new util.Color(fix_color));
     target_image.setPos([xPosition, 0]);
@@ -4456,7 +4177,6 @@ function target_imgRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function target_imgRoutineEachFrame(snapshot) {
   return function () {
@@ -4520,7 +4240,6 @@ function target_imgRoutineEachFrame(snapshot) {
   };
 }
 
-
 function target_imgRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'target_img'-------
@@ -4533,8 +4252,6 @@ function target_imgRoutineEnd(snapshot) {
   };
 }
 
-
-var ISI_fixComponents;
 function ISI_fixRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'ISI_fix'-------
@@ -4556,7 +4273,6 @@ function ISI_fixRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function ISI_fixRoutineEachFrame(snapshot) {
   return function () {
@@ -4606,7 +4322,6 @@ function ISI_fixRoutineEachFrame(snapshot) {
   };
 }
 
-
 function ISI_fixRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'ISI_fix'-------
@@ -4619,8 +4334,6 @@ function ISI_fixRoutineEnd(snapshot) {
   };
 }
 
-
-var probe_imgComponents;
 function probe_imgRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'probe_img'-------
@@ -4646,7 +4359,6 @@ function probe_imgRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function probe_imgRoutineEachFrame(snapshot) {
   return function () {
@@ -4710,7 +4422,6 @@ function probe_imgRoutineEachFrame(snapshot) {
   };
 }
 
-
 function probe_imgRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'probe_img'-------
@@ -4723,9 +4434,6 @@ function probe_imgRoutineEnd(snapshot) {
   };
 }
 
-
-var _key_resp_allKeys;
-var trial_respComponents;
 function trial_respRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'trial_resp'-------
@@ -4750,7 +4458,6 @@ function trial_respRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function trial_respRoutineEachFrame(snapshot) {
   return function () {
@@ -4826,7 +4533,6 @@ function trial_respRoutineEachFrame(snapshot) {
   };
 }
 
-
 function trial_respRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'trial_resp'-------
@@ -4859,12 +4565,6 @@ function trial_respRoutineEnd(snapshot) {
   };
 }
 
-
-var a;
-var b;
-var fixDur;
-var _fix_resp_allKeys;
-var ITI_fixComponents;
 function ITI_fixRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'ITI_fix'-------
@@ -4875,11 +4575,16 @@ function ITI_fixRoutineBegin(snapshot) {
     if ((fix_switch[trialID] === 1)) {
         if ((fix_color === "white")) {
             fix_color = fix_color_options[1];
+            corrFix_resp = "space";
+            corrFix_count = (corrFix_count + 1);
         } else {
             fix_color = fix_color_options[0];
+            corrFix_resp = "space";
+            corrFix_count = (corrFix_count + 1);
         }
     } else {
         fix_color = fix_color;
+        corrFix_resp = "";
     }
     a = 1.25;
     b = 1.75;
@@ -4902,7 +4607,6 @@ function ITI_fixRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function ITI_fixRoutineEachFrame(snapshot) {
   return function () {
@@ -4950,6 +4654,12 @@ function ITI_fixRoutineEachFrame(snapshot) {
       if (_fix_resp_allKeys.length > 0) {
         fix_resp.keys = _fix_resp_allKeys[_fix_resp_allKeys.length - 1].name;  // just the last key pressed
         fix_resp.rt = _fix_resp_allKeys[_fix_resp_allKeys.length - 1].rt;
+        // was this correct?
+        if (fix_resp.keys == corrFix_resp) {
+            fix_resp.corr = 1;
+        } else {
+            fix_resp.corr = 0;
+        }
       }
     }
     
@@ -4979,7 +4689,6 @@ function ITI_fixRoutineEachFrame(snapshot) {
   };
 }
 
-
 function ITI_fixRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'ITI_fix'-------
@@ -4988,7 +4697,17 @@ function ITI_fixRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    // was no response the correct answer?!
+    if (fix_resp.keys === undefined) {
+      if (['None','none',undefined].includes(corrFix_resp)) {
+         fix_resp.corr = 1;  // correct non-response
+      } else {
+         fix_resp.corr = 0;  // failed to respond (incorrectly)
+      }
+    }
+    // store data for thisExp (ExperimentHandler)
     psychoJS.experiment.addData('fix_resp.keys', fix_resp.keys);
+    psychoJS.experiment.addData('fix_resp.corr', fix_resp.corr);
     if (typeof fix_resp.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('fix_resp.rt', fix_resp.rt);
         }
@@ -5001,9 +4720,6 @@ function ITI_fixRoutineEnd(snapshot) {
   };
 }
 
-
-var _key_resp_8_allKeys;
-var feedbackComponents;
 function feedbackRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'feedback'-------
@@ -5011,6 +4727,9 @@ function feedbackRoutineBegin(snapshot) {
     feedbackClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    blockMsg = (("You caught" + corrFix_count.toString()) + " of the fix changes, make sure you keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
+    
+    good_job.setText(blockMsg);
     key_resp_8.keys = undefined;
     key_resp_8.rt = undefined;
     _key_resp_8_allKeys = [];
@@ -5027,7 +4746,6 @@ function feedbackRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function feedbackRoutineEachFrame(snapshot) {
   return function () {
@@ -5097,7 +4815,6 @@ function feedbackRoutineEachFrame(snapshot) {
   };
 }
 
-
 function feedbackRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'feedback'-------
@@ -5113,8 +4830,6 @@ function feedbackRoutineEnd(snapshot) {
   };
 }
 
-
-var EndScreenComponents;
 function EndScreenRoutineBegin(snapshot) {
   return function () {
     //------Prepare to start Routine 'EndScreen'-------
@@ -5135,7 +4850,6 @@ function EndScreenRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function EndScreenRoutineEachFrame(snapshot) {
   return function () {
@@ -5185,7 +4899,6 @@ function EndScreenRoutineEachFrame(snapshot) {
   };
 }
 
-
 function EndScreenRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'EndScreen'-------
@@ -5197,7 +4910,6 @@ function EndScreenRoutineEnd(snapshot) {
     return Scheduler.Event.NEXT;
   };
 }
-
 
 function endLoopIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -5221,7 +4933,6 @@ function endLoopIteration(scheduler, snapshot) {
   };
 }
 
-
 function importConditions(currentLoop) {
   return function () {
     psychoJS.importAttributes(currentLoop.getCurrentTrial());
@@ -5229,12 +4940,13 @@ function importConditions(currentLoop) {
     };
 }
 
-
 function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
   
   
   
