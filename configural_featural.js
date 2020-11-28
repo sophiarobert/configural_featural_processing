@@ -5060,7 +5060,7 @@ function feedbackRoutineBegin(snapshot) {
     feedbackClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    blockMsg = (("You missed " + missFix_count.toString()) + " of the fix changes, make sure you keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
+    blockMsg = (("You missed " + missFix_count.toString()) + " of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
     
     good_job.setText(blockMsg);
     key_resp_8.keys = undefined;
