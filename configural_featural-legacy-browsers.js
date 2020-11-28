@@ -4894,7 +4894,6 @@ function trial_respRoutineEnd(snapshot) {
 
 
 var corrFix_resp;
-var corrFix_count;
 var a;
 var b;
 var fixDur;
@@ -4911,15 +4910,13 @@ function ITI_fixRoutineBegin(snapshot) {
         if ((fix_color === "white")) {
             fix_color = fix_color_options[1];
             corrFix_resp = "space";
-            corrFix_count = (corrFix_count + 1);
         } else {
             fix_color = fix_color_options[0];
             corrFix_resp = "space";
-            corrFix_count = (corrFix_count + 1);
         }
     } else {
         fix_color = fix_color;
-        corrFix_resp = "";
+        corrFix_resp = undefined;
     }
     a = 1.25;
     b = 1.75;
@@ -5026,6 +5023,7 @@ function ITI_fixRoutineEachFrame(snapshot) {
 }
 
 
+var corrFix_count;
 function ITI_fixRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'ITI_fix'-------
@@ -5034,6 +5032,14 @@ function ITI_fixRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    if ((fix_switch[trialID] === 1)) {
+        if ((fix_resp.keys === corrFix_resp)) {
+            corrFix_count = (corrFix_count + 1);
+        } else {
+            missFix_count = (missFix_count + 1);
+        }
+    }
+    
     // was no response the correct answer?!
     if (fix_resp.keys === undefined) {
       if (['None','none',undefined].includes(corrFix_resp)) {
@@ -5068,7 +5074,7 @@ function feedbackRoutineBegin(snapshot) {
     feedbackClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    blockMsg = (("You caught" + corrFix_count.toString()) + " of the fix changes, make sure you keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
+    blockMsg = (("You missed " + missFix_count.toString()) + " of the fix changes, make sure you keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
     
     good_job.setText(blockMsg);
     key_resp_8.keys = undefined;
