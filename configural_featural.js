@@ -3980,7 +3980,11 @@ function prac_feedback_fastRoutineBegin(snapshot) {
         } else {
             if ((prac_fix_resp_fast.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                prac_msg = "Oops, your picture response was right but the cross response was wrong.";
+                if ((pFixs[pBlockTrial] === 1)) {
+                    prac_msg = "Oops, your picture response was right but you missed the cross change.";
+                } else {
+                    prac_msg = "Oops, your picture response was right but \nyou pressed space when the cross didn't change.";
+                }
                 numIncorr = (numIncorr + 1);
             }
         }
@@ -3988,7 +3992,11 @@ function prac_feedback_fastRoutineBegin(snapshot) {
         if ((prac_resp2.corr !== 1)) {
             if ((prac_fix_resp_fast.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                prac_msg = "Oops, your cross response was right but the picture response was wrong.";
+                if ((pFixs[pBlockTrial] === 1)) {
+                    prac_msg = "Oops, your cross response was right but the picture response was wrong.";
+                } else {
+                    prac_msg = "Oops, your picture response was wrong.";
+                }
                 numIncorr = (numIncorr + 1);
             } else {
                 if ((prac_fix_resp_fast.corr !== 1)) {
@@ -4105,7 +4113,8 @@ function end_prac_loopRoutineBegin(snapshot) {
     frameN = -1;
     // update component parameters for each repeat
     if ((numIncorr < 5)) {
-        repPracLoop.finished = 1;
+        console.log('Trying to kill loop')
+        repPracLoop.finished = true;
     } else {
         repeatMsg = (("You missed " + numIncorr.toString()) + " of the 16 trials. That's ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!");
     }
