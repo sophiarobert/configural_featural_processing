@@ -340,7 +340,6 @@ function experimentInit() {
   {name: ("Designs/instructions_face_5678.png"), path:("Designs/instructions_face_5678.png")},
   {name: ("Designs/instructions_haus_1234.png"), path:("Designs/instructions_haus_1234.png")},
   {name: ("Designs/instructions_haus_5678.png"), path:("Designs/instructions_haus_5678.png")},
-  {name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   {name: ("Designs/prac_instr2_1234.png"), path:("Designs/prac_instr2_1234.png")},
   {name: ("Designs/prac_instr2_5678.png"), path:("Designs/prac_instr2_5678.png")},
   {name: ("Designs/prac_instr3_corr.png"), path:("Designs/prac_instr3_corr.png")},
@@ -351,7 +350,7 @@ function experimentInit() {
   {name: ("Designs/prac_instr5_5678_corr.png"), path:("Designs/prac_instr5_5678_corr.png")},
   {name: ("Designs/prac_instr5_1234_wrong.png"), path:("Designs/prac_instr5_1234_wrong.png")},
   {name: ("Designs/prac_instr5_5678_wrong.png"), path:("Designs/prac_instr5_5678_wrong.png")}]);
-  
+  //{name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
