@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Dec 11 19:05:34 2020
+    on Sat Dec 12 16:13:08 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -471,10 +471,14 @@ text_14 = visual.TextStim(win=win, name='text_14',
 
 # Initialize components for Routine "end_prac_loop"
 end_prac_loopClock = core.Clock()
-if numIncorr == 0:
-    RepIfNeeded = 1
-else:
-    RepIfNeeded = RepIfNeeded + 1
+text_15 = visual.TextStim(win=win, name='text_15',
+    text='default text',
+    font='Arial',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
+key_resp_3 = keyboard.Keyboard()
 
 # Initialize components for Routine "startInstruct"
 startInstructClock = core.Clock()
@@ -1669,7 +1673,7 @@ RepIfNeeded = 1
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-repPracLoop = data.TrialHandler(nReps=RepIfNeeded, method='sequential', 
+repPracLoop = data.TrialHandler(nReps=5, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='repPracLoop')
@@ -2263,12 +2267,18 @@ for thisRepPracLoop in repPracLoop:
                     prac_msg = 'Well done!'
                 elif prac_fix_resp.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your picture response was right but the cross response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Oops, you missed the cross change.'
+                    else:
+                        prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
                     numIncorr = numIncorr + 1
             elif prac_resp.corr != 1:
                 if prac_fix_resp.corr == 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                    else:
+                        prac_msg = 'Oops, your picture response was wrong.'
                     numIncorr = numIncorr + 1
                 elif prac_fix_resp.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
@@ -2797,12 +2807,18 @@ for thisRepPracLoop in repPracLoop:
                     prac_msg = 'Well done!'
                 elif prac_fix_resp_fast.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your picture response was right but the cross response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Oops, you missed the cross change.'
+                    else:
+                        prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
                     numIncorr = numIncorr + 1
             elif prac_resp2.corr != 1:
                 if prac_fix_resp_fast.corr == 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                    else:
+                        prac_msg = 'Oops, your picture response was wrong.'
                     numIncorr = numIncorr + 1
                 elif prac_fix_resp_fast.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
@@ -2903,8 +2919,16 @@ for thisRepPracLoop in repPracLoop:
     # ------Prepare to start Routine "end_prac_loop"-------
     continueRoutine = True
     # update component parameters for each repeat
+    if numIncorr < 5:
+        repPracLoop.finished = 1
+    else:
+        repeatMsg = 'You missed '+str(numIncorr)+' of the 16 trials. That\'s ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!'
+    text_15.setText(repeatMsg)
+    key_resp_3.keys = []
+    key_resp_3.rt = []
+    _key_resp_3_allKeys = []
     # keep track of which components have finished
-    end_prac_loopComponents = []
+    end_prac_loopComponents = [text_15, key_resp_3]
     for thisComponent in end_prac_loopComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -2927,6 +2951,37 @@ for thisRepPracLoop in repPracLoop:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
+        # *text_15* updates
+        if text_15.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            text_15.frameNStart = frameN  # exact frame index
+            text_15.tStart = t  # local t and not account for scr refresh
+            text_15.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text_15, 'tStartRefresh')  # time at next scr refresh
+            text_15.setAutoDraw(True)
+        
+        # *key_resp_3* updates
+        waitOnFlip = False
+        if key_resp_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            key_resp_3.frameNStart = frameN  # exact frame index
+            key_resp_3.tStart = t  # local t and not account for scr refresh
+            key_resp_3.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(key_resp_3, 'tStartRefresh')  # time at next scr refresh
+            key_resp_3.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(key_resp_3.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(key_resp_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if key_resp_3.status == STARTED and not waitOnFlip:
+            theseKeys = key_resp_3.getKeys(keyList=['space'], waitRelease=False)
+            _key_resp_3_allKeys.extend(theseKeys)
+            if len(_key_resp_3_allKeys):
+                key_resp_3.keys = _key_resp_3_allKeys[-1].name  # just the last key pressed
+                key_resp_3.rt = _key_resp_3_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -2948,9 +3003,15 @@ for thisRepPracLoop in repPracLoop:
     for thisComponent in end_prac_loopComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+    # check responses
+    if key_resp_3.keys in ['', [], None]:  # No response was made
+        key_resp_3.keys = None
+    repPracLoop.addData('key_resp_3.keys',key_resp_3.keys)
+    if key_resp_3.keys != None:  # we had a response
+        repPracLoop.addData('key_resp_3.rt', key_resp_3.rt)
     # the Routine "end_prac_loop" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed RepIfNeeded repeats of 'repPracLoop'
+# completed 5 repeats of 'repPracLoop'
 
 
 # ------Prepare to start Routine "startInstruct"-------
@@ -3348,8 +3409,6 @@ for thisBlock in blocks:
                 if side_diff == 1: #left
                     xPosition = -(width4deg*x_scale)
                     diffTrial_left_id += 1
-                    print(diffTrial_left_id)
-                    print(trialDiff_left[diffTrial_left])
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -3360,8 +3419,6 @@ for thisBlock in blocks:
                 elif side_diff == 0: #right
                     xPosition = width4deg*x_scale
                     diffTrial_right_id += 1
-                    print(diffTrial_right_id)
-                    print(trialDiff_right[diffTrial_right])
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]

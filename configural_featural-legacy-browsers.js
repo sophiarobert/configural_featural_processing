@@ -330,6 +330,7 @@ function experimentInit() {
   {name: ("Designs/instructions_face_5678.png"), path:("Designs/instructions_face_5678.png")},
   {name: ("Designs/instructions_haus_1234.png"), path:("Designs/instructions_haus_1234.png")},
   {name: ("Designs/instructions_haus_5678.png"), path:("Designs/instructions_haus_5678.png")},
+  {name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
   {name: ("Designs/prac_instr2_1234.png"), path:("Designs/prac_instr2_1234.png")},
   {name: ("Designs/prac_instr2_5678.png"), path:("Designs/prac_instr2_5678.png")},
   {name: ("Designs/prac_instr3_corr.png"), path:("Designs/prac_instr3_corr.png")},
@@ -340,7 +341,7 @@ function experimentInit() {
   {name: ("Designs/prac_instr5_5678_corr.png"), path:("Designs/prac_instr5_5678_corr.png")},
   {name: ("Designs/prac_instr5_1234_wrong.png"), path:("Designs/prac_instr5_1234_wrong.png")},
   {name: ("Designs/prac_instr5_5678_wrong.png"), path:("Designs/prac_instr5_5678_wrong.png")}]);
-  //{name: ("Designs/prac_instr1.png"), path:("Designs/prac_instr1.png")},
+  
   expInfo['OS'] = window.navigator.platform;
   expInfo['xResolution'] = screen.width;
   expInfo['yResolution'] = screen.height;
@@ -3351,9 +3352,9 @@ function prac_feedback_slowRoutineBegin(snapshot) {
             if ((prac_fix_resp.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
                 if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, you missed the cross change.";
+                    prac_msg = "Oops, your picture response was right but you missed the cross change.";
                 } else {
-                    prac_msg = "Oops, you pressed space when the cross didn't change.";
+                    prac_msg = "Oops, your picture response was right but \nyou pressed space when the cross didn't change.";
                 }
                 numIncorr = (numIncorr + 1);
             }
@@ -3994,11 +3995,7 @@ function prac_feedback_fastRoutineBegin(snapshot) {
         } else {
             if ((prac_fix_resp_fast.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, you missed the cross change.";
-                } else {
-                    prac_msg = "Oops, you pressed space when the cross didn't change.";
-                }
+                prac_msg = "Oops, your picture response was right but the cross response was wrong.";
                 numIncorr = (numIncorr + 1);
             }
         }
@@ -4006,11 +4003,7 @@ function prac_feedback_fastRoutineBegin(snapshot) {
         if ((prac_resp2.corr !== 1)) {
             if ((prac_fix_resp_fast.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, your cross response was right but the picture response was wrong.";
-                } else {
-                    prac_msg = "Oops, your picture response was wrong.";
-                }
+                prac_msg = "Oops, your cross response was right but the picture response was wrong.";
                 numIncorr = (numIncorr + 1);
             } else {
                 if ((prac_fix_resp_fast.corr !== 1)) {
@@ -4127,10 +4120,8 @@ function end_prac_loopRoutineBegin(snapshot) {
     end_prac_loopClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    console.log(numIncorr)
     if ((numIncorr < 5)) {
-        console.log('Trying to kill loop')
-        repPracLoop.finished = true;
+        repPracLoop.finished = 1;
     } else {
         repeatMsg = (("You missed " + numIncorr.toString()) + " of the 16 trials. That's ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!");
     }
