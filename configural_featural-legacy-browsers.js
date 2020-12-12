@@ -3351,9 +3351,9 @@ function prac_feedback_slowRoutineBegin(snapshot) {
             if ((prac_fix_resp.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
                 if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, your picture response was right but you missed the cross change.";
+                    prac_msg = "Oops, you missed the cross change.";
                 } else {
-                    prac_msg = "Oops, your picture response was right but \nyou pressed space when the cross didn't change.";
+                    prac_msg = "Oops, you pressed space when the cross didn't change.";
                 }
                 numIncorr = (numIncorr + 1);
             }
@@ -3995,9 +3995,9 @@ function prac_feedback_fastRoutineBegin(snapshot) {
             if ((prac_fix_resp_fast.corr !== 1)) {
                 feedIM = "Stimuli/redWrong.png";
                 if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, your picture response was right but you missed the cross change.";
+                    prac_msg = "Oops, you missed the cross change.";
                 } else {
-                    prac_msg = "Oops, your picture response was right but \nyou pressed space when the cross didn't change.";
+                    prac_msg = "Oops, you pressed space when the cross didn't change.";
                 }
                 numIncorr = (numIncorr + 1);
             }
@@ -4127,6 +4127,7 @@ function end_prac_loopRoutineBegin(snapshot) {
     end_prac_loopClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    console.log(numIncorr)
     if ((numIncorr < 5)) {
         console.log('Trying to kill loop')
         repPracLoop.finished = true;
