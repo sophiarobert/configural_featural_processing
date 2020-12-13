@@ -96,8 +96,8 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'},
-    {'name': 'bankcard.png', 'path': 'bankcard.png'},
-    {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'}
+    {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'},
+    {'name': 'bankcard.png', 'path': 'bankcard.png'}
   ]
 });
 
@@ -4103,6 +4103,7 @@ function prac_feedback_fastRoutineEnd(snapshot) {
 }
 
 
+var repeatMsg;
 var _key_resp_3_allKeys;
 var end_prac_loopComponents;
 function end_prac_loopRoutineBegin(snapshot) {
@@ -4112,6 +4113,7 @@ function end_prac_loopRoutineBegin(snapshot) {
     end_prac_loopClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
+    repeatMsg = "";
     console.log(numIncorr);
     if ((numIncorr < 5)) {
         repPracLoop.finished = true;
