@@ -3373,8 +3373,12 @@ function prac_feedback_slowRoutineBegin(snapshot) {
                     feedIM = "Stimuli/redWrong.png";
                     numIncorr = (numIncorr + 1);
                     if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
+                        console.log(prac_resp.keys);
+                        console.log(prac_fix_resp.keys);
                         prac_msg = "Oops, the time is up. That's ok, try again!";
                     } else {
+                        console.log(prac_resp.keys);
+                        console.log(prac_fix_resp.keys);
                         prac_msg = "Oops, both responses were wrong.";
                     }
                 }
