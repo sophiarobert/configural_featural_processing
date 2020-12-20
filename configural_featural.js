@@ -3362,13 +3362,11 @@ function prac_feedback_slowRoutineBegin(snapshot) {
                 if ((prac_fix_resp.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
                     numIncorr = (numIncorr + 1);
+                    console.log(prac_resp.keys);
+                    console.log(prac_fix_resp.keys);
                     if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
-                        console.log(prac_resp.keys);
-                        console.log(prac_fix_resp.keys);
                         prac_msg = "Oops, the time is up. That's ok, try again!";
                     } else {
-                        console.log(prac_resp.keys);
-                        console.log(prac_fix_resp.keys);
                         prac_msg = "Oops, both responses were wrong.";
                     }
                 }
@@ -4010,6 +4008,8 @@ function prac_feedback_fastRoutineBegin(snapshot) {
                 if ((prac_fix_resp_fast.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
                     numIncorr = (numIncorr + 1);
+                    console.log(prac_resp.keys);
+                    console.log(prac_fix_resp.keys);
                     if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
                         prac_msg = "Oops, the time is up. That's ok, try again!";
                     } else {
