@@ -3362,18 +3362,20 @@ function prac_feedback_slowRoutineBegin(snapshot) {
         if ((prac_resp.corr !== 1)) {
             if ((prac_fix_resp.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
+                numIncorr = (numIncorr + 1);
                 if ((pFixs[pBlockTrial] === 1)) {
                     prac_msg = "Good job, you saw the cross change! But the picture response was wrong.";
                 } else {
-                    prac_msg = "Oops, your picture response was wrong.";
+                    if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
+                        prac_msg = "Oops, the time is up. That's ok, try again!";
+                    } else {
+                        prac_msg = "Oops, your picture response was wrong.";
+                    }
                 }
-                numIncorr = (numIncorr + 1);
             } else {
                 if ((prac_fix_resp.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
                     numIncorr = (numIncorr + 1);
-                    console.log(prac_resp.keys);
-                    console.log(prac_fix_resp.keys);
                     if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
                         prac_msg = "Oops, the time is up. That's ok, try again!";
                     } else {
@@ -4012,18 +4014,20 @@ function prac_feedback_fastRoutineBegin(snapshot) {
         if ((prac_resp2.corr !== 1)) {
             if ((prac_fix_resp_fast.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
+                numIncorr = (numIncorr + 1);
                 if ((pFixs[pBlockTrial] === 1)) {
                     prac_msg = "Good job, you saw the cross change! But the picture response was wrong.";
                 } else {
-                    prac_msg = "Oops, your picture response was wrong.";
+                    if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
+                        prac_msg = "Oops, the time is up. That's ok, try again!";
+                    } else {
+                        prac_msg = "Oops, your picture response was wrong.";
+                    }
                 }
-                numIncorr = (numIncorr + 1);
             } else {
                 if ((prac_fix_resp_fast.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
                     numIncorr = (numIncorr + 1);
-                    console.log(prac_resp.keys);
-                    console.log(prac_fix_resp.keys);
                     if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
                         prac_msg = "Oops, the time is up. That's ok, try again!";
                     } else {
@@ -4142,7 +4146,7 @@ function end_prac_loopRoutineBegin(snapshot) {
     // update component parameters for each repeat
     repeatMsg = "";
     console.log(numIncorr);
-    if ((numIncorr < 5)) {
+    if ((numIncorr < 9)) {
         repPracLoop.finished = true;
     } else {
         repeatMsg = (("You missed " + numIncorr.toString()) + " of the 16 trials. That's ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!");
@@ -4244,13 +4248,6 @@ function end_prac_loopRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
-    psychoJS.experiment.addData('key_resp_3.keys', key_resp_3.keys);
-    if (typeof key_resp_3.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_3.rt', key_resp_3.rt);
-        routineTimer.reset();
-        }
-    
-    key_resp_3.stop();
     // the Routine "end_prac_loop" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
