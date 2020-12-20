@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Fri Dec 11 21:22:40 2020
+    on Sun Dec 20 15:50:44 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2268,22 +2268,26 @@ for thisRepPracLoop in repPracLoop:
                 elif prac_fix_resp.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
                     if pFixs[pBlockTrial] == 1:
-                        prac_msg = 'Oops, your picture response was right but you missed the cross change.'
+                        prac_msg = 'Oops, you missed the cross change.'
                     else:
-                        prac_msg = 'Oops, your picture response was right but \nyou pressed space when the cross didn\'t change.'
+                        prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
                     numIncorr = numIncorr + 1
             elif prac_resp.corr != 1:
                 if prac_fix_resp.corr == 1:
                     feedIM = 'Stimuli/redWrong.png'
                     if pFixs[pBlockTrial] == 1:
-                        prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                        prac_msg = 'Good job, you saw the cross change! But the picture response was wrong.'
                     else:
                         prac_msg = 'Oops, your picture response was wrong.'
                     numIncorr = numIncorr + 1
                 elif prac_fix_resp.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, both responses were wrong.'
                     numIncorr = numIncorr + 1
+                    if prac_resp.keys == undefined and prac_fix_resp.keys == undefined:
+                        prac_msg = 'Oops, the time is up. That\'s ok, try again!'
+                    else:
+                        prac_msg = 'Oops, both responses were wrong.'
+            
             image_3.setImage(feedIM)
             feedback_msg.setText(prac_msg)
             # keep track of which components have finished
@@ -2807,17 +2811,27 @@ for thisRepPracLoop in repPracLoop:
                     prac_msg = 'Well done!'
                 elif prac_fix_resp_fast.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your picture response was right but the cross response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Oops, you missed the cross change.'
+                    else:
+                        prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
                     numIncorr = numIncorr + 1
             elif prac_resp2.corr != 1:
                 if prac_fix_resp_fast.corr == 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                    if pFixs[pBlockTrial] == 1:
+                        prac_msg = 'Good job, you saw the cross change! But the picture response was wrong.'
+                    else:
+                        prac_msg = 'Oops, your picture response was wrong.'
                     numIncorr = numIncorr + 1
                 elif prac_fix_resp_fast.corr != 1:
                     feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, both responses were wrong.'
                     numIncorr = numIncorr + 1
+                    if prac_resp2.keys == undefined and prac_fix_resp_fast.keys == undefined:
+                        prac_msg = 'Oops, the time is up. That\'s ok, try again!'
+                    else:
+                        prac_msg = 'Oops, both responses were wrong.'
+            
             image_12.setImage(feedIM)
             text_14.setText(prac_msg)
             # keep track of which components have finished
@@ -2913,8 +2927,11 @@ for thisRepPracLoop in repPracLoop:
     # ------Prepare to start Routine "end_prac_loop"-------
     continueRoutine = True
     # update component parameters for each repeat
+    repeatMsg = ''
+    print(numIncorr)
+    
     if numIncorr < 5:
-        repPracLoop.finished = 1
+        repPracLoop.finished = true
     else:
         repeatMsg = 'You missed '+str(numIncorr)+' of the 16 trials. That\'s ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!'
     text_15.setText(repeatMsg)

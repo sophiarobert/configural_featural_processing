@@ -3361,8 +3361,12 @@ function prac_feedback_slowRoutineBegin(snapshot) {
             } else {
                 if ((prac_fix_resp.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
-                    prac_msg = "Oops, both responses were wrong.";
                     numIncorr = (numIncorr + 1);
+                    if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
+                        prac_msg = "Oops, the time is up. That's ok, try again!";
+                    } else {
+                        prac_msg = "Oops, both responses were wrong.";
+                    }
                 }
             }
         }
@@ -4001,8 +4005,12 @@ function prac_feedback_fastRoutineBegin(snapshot) {
             } else {
                 if ((prac_fix_resp_fast.corr !== 1)) {
                     feedIM = "Stimuli/redWrong.png";
-                    prac_msg = "Oops, both responses were wrong.";
                     numIncorr = (numIncorr + 1);
+                    if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
+                        prac_msg = "Oops, the time is up. That's ok, try again!";
+                    } else {
+                        prac_msg = "Oops, both responses were wrong.";
+                    }
                 }
             }
         }
