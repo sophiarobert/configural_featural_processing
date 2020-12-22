@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Sat Dec 12 16:13:08 2020
+    on Mon Dec 21 18:31:43 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1701,7 +1701,10 @@ for thisRepPracLoop in repPracLoop:
     diffpTrials=''
     numPTrials_slow=''
     
-    numIncorr = 0
+    numIncorr_fix = 0
+    numIncorr_img = 0
+    numIncorr_miss = 0
+    
     pTrial = 0
     pfix_color_options = ['white','black']
     sameCount = 0
@@ -2265,25 +2268,36 @@ for thisRepPracLoop in repPracLoop:
                 if prac_fix_resp.corr == 1:
                     feedIM = 'Stimuli/greenCheck.png'
                     prac_msg = 'Well done!'
-                elif prac_fix_resp.corr != 1:
+                else:
+                    numIncorr_fix = numIncorr_fix + 1
                     feedIM = 'Stimuli/redWrong.png'
                     if pFixs[pBlockTrial] == 1:
                         prac_msg = 'Oops, you missed the cross change.'
                     else:
                         prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
-                    numIncorr = numIncorr + 1
-            elif prac_resp.corr != 1:
-                if prac_fix_resp.corr == 1:
+            else:
+                if prac_resp.keys == None:
                     feedIM = 'Stimuli/redWrong.png'
+                    numIncorr_miss = numIncorr_miss + 1
                     if pFixs[pBlockTrial] == 1:
-                        prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                        numIncorr_fix = numIncorr_fix + 1
+                    prac_msg = 'Oops, time ran out. That\'s ok, try again!' 
+                else:
+                    if prac_fix_resp.corr == 1:
+                        feedIM = 'Stimuli/redWrong.png'
+                        numIncorr_img = numIncorr_img + 1
+                        if pFixs[pBlockTrial] == 1:
+                            prac_msg = 'Good job! You got pressed space when the cross changed! But the picture response was wrong.'
+                        else:
+                            prac_msg = 'Oops, the picture response was wrong.'
                     else:
-                        prac_msg = 'Oops, your picture response was wrong.'
-                    numIncorr = numIncorr + 1
-                elif prac_fix_resp.corr != 1:
-                    feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, both responses were wrong.'
-                    numIncorr = numIncorr + 1
+                        numIncorr_img = numIncorr_img + 1
+                        numIncorr_fix = numIncorr_fix + 1
+                        feedIM = 'Stimuli/redWrong.png'
+                        if pFixs[pBlockTrial] == 1:
+                            prac_msg = 'Oops, you missed the cross change and the picture response was wrong.'
+                        else:
+                            prac_msg = 'Oops, you press space when the cross didn\'t change and the picture response was wrong.'
             image_3.setImage(feedIM)
             feedback_msg.setText(prac_msg)
             # keep track of which components have finished
@@ -2805,25 +2819,36 @@ for thisRepPracLoop in repPracLoop:
                 if prac_fix_resp_fast.corr == 1:
                     feedIM = 'Stimuli/greenCheck.png'
                     prac_msg = 'Well done!'
-                elif prac_fix_resp_fast.corr != 1:
+                else:
+                    numIncorr_fix = numIncorr_fix + 1
                     feedIM = 'Stimuli/redWrong.png'
                     if pFixs[pBlockTrial] == 1:
                         prac_msg = 'Oops, you missed the cross change.'
                     else:
                         prac_msg = 'Oops, you pressed space when the cross didn\'t change.'
-                    numIncorr = numIncorr + 1
-            elif prac_resp2.corr != 1:
-                if prac_fix_resp_fast.corr == 1:
+            else:
+                if prac_resp2.keys == None:
                     feedIM = 'Stimuli/redWrong.png'
+                    numIncorr_miss = numIncorr_miss + 1
                     if pFixs[pBlockTrial] == 1:
-                        prac_msg = 'Oops, your cross response was right but the picture response was wrong.'
+                        numIncorr_fix = numIncorr_fix + 1
+                    prac_msg = 'Oops, time ran out. That\'s ok, try again!' 
+                else:
+                    if prac_fix_resp_fast.corr == 1:
+                        feedIM = 'Stimuli/redWrong.png'
+                        numIncorr_img = numIncorr_img + 1
+                        if pFixs[pBlockTrial] == 1:
+                            prac_msg = 'Good job! You got pressed space when the cross changed! But the picture response was wrong.'
+                        else:
+                            prac_msg = 'Oops, the picture response was wrong.'
                     else:
-                        prac_msg = 'Oops, your picture response was wrong.'
-                    numIncorr = numIncorr + 1
-                elif prac_fix_resp_fast.corr != 1:
-                    feedIM = 'Stimuli/redWrong.png'
-                    prac_msg = 'Oops, both responses were wrong.'
-                    numIncorr = numIncorr + 1
+                        numIncorr_img = numIncorr_img + 1
+                        numIncorr_fix = numIncorr_fix + 1
+                        feedIM = 'Stimuli/redWrong.png'
+                        if pFixs[pBlockTrial] == 1:
+                            prac_msg = 'Oops, you missed the cross change and the picture response was wrong.'
+                        else:
+                            prac_msg = 'Oops, you press space when the cross didn\'t change and the picture response was wrong.'
             image_12.setImage(feedIM)
             text_14.setText(prac_msg)
             # keep track of which components have finished
@@ -2919,10 +2944,20 @@ for thisRepPracLoop in repPracLoop:
     # ------Prepare to start Routine "end_prac_loop"-------
     continueRoutine = True
     # update component parameters for each repeat
-    if numIncorr < 5:
-        repPracLoop.finished = 1
+    repeatMsg = ''
+     
+    if (numIncorr_miss + numIncorr_img) < 9 and (numIncorr_fix < 3):
+        repeatMsg = 'Great job! \n\n Completed trials = ' + str(16 - numIncorr_miss) + ' out of 16. \n Correct picture responses = ' + str(16 - numIncorr_img) + ' out of 16. \n Correct + responses = ' + str(4-numIncorr_fix) + ' out of 4. \n\nYou are now ready for the real game. \nPress Space to see the instructions again.'
+        repPracLoop.finished = True
     else:
-        repeatMsg = 'You missed '+str(numIncorr)+' of the 16 trials. That\'s ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!'
+        if numIncorr_fix > 2 and numIncorr_img < 7 and numIncorr_miss < 4:
+            repeatMsg = 'Good job! \n\n Completed trials = ' + str(16 - numIncorr_miss) + ' out of 16. \n Correct picture responses = ' + str(16 - numIncorr_img) + ' out of 16. \n Correct + responses = ' + str(4-numIncorr_fix) + ' out of 4. \n\nYou did great with the pictures! \n You missed ' + str(numIncorr_fix) + ' of the 4 cross changes. \n In the real game, make sure you press Space as soon as you see it change!\n\n Let\'s try some more practice. \n Press Space to start.'
+        elif numIncorr_fix < 3 and numIncorr_img > 6 and numIncorr_miss < 4:
+            repeatMsg = 'Good job! \n\n Completed trials = ' + str(16 - numIncorr_miss) + ' out of 16. \n Correct picture responses = ' + str(16 - numIncorr_img) + ' out of 16. \n Correct + responses = ' + str(4-numIncorr_fix) + ' out of 4. \n\nYou did , you got ' + str(2-numIncorr_fix) + ' of the 4 cross changes! \nYou missed ' + str(numIncorr_img) + ' of the pictures. \n Sometimes the faces and houses look almost the same, so try your best. \nMake sure you focus on the game and press the right keys! \n\nLet\'s try some more practice. \n Press Space to start.'
+        elif numIncorr_fix < 3 and numIncorr_img < 7 and numIncorr_miss > 3:
+            repeatMsg = 'Good job! \n\n Completed trials = ' + str(16 - numIncorr_miss) + ' out of 16. \n Correct picture responses = ' + str(16 - numIncorr_img) + ' out of 16. \n Correct + responses = ' + str(4-numIncorr_fix) + ' out of 4. \n\nYou missed ' + str(numIncorr_miss) + ' of the trials because the time was up. That\'s ok, the real game will wait for you to respond, but try to go as fast as you can. \n\n Press Space to practice more.'
+        else:
+            repeatMsg = 'Nice try! \n\n Completed trials = ' + str(16 - numIncorr_miss) + ' out of 16. \n Correct picture responses = ' + str(16 - numIncorr_img) + ' out of 16. \n Correct + responses = ' + str(4-numIncorr_fix) + ' out of 4. \n\nYou missed ' + str(numIncorr_img) + ' of the picture responses, ' + str(numIncorr_fix) + ' of the 4 cross changes, and ' + str(numIncorr_miss) + ' trials went by too fast. \n\nLet\'s try another round of practice. \nPress Space to start.'
     text_15.setText(repeatMsg)
     key_resp_3.keys = []
     key_resp_3.rt = []
@@ -3003,12 +3038,6 @@ for thisRepPracLoop in repPracLoop:
     for thisComponent in end_prac_loopComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_resp_3.keys in ['', [], None]:  # No response was made
-        key_resp_3.keys = None
-    repPracLoop.addData('key_resp_3.keys',key_resp_3.keys)
-    if key_resp_3.keys != None:  # we had a response
-        repPracLoop.addData('key_resp_3.rt', key_resp_3.rt)
     # the Routine "end_prac_loop" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 # completed 5 repeats of 'repPracLoop'
@@ -3409,6 +3438,8 @@ for thisBlock in blocks:
                 if side_diff == 1: #left
                     xPosition = -(width4deg*x_scale)
                     diffTrial_left_id += 1
+                    print(diffTrial_left_id)
+                    print(trialDiff_left[diffTrial_left])
                     img_pair = trialDiff_left[diffTrial_left[diffTrial_left_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -3419,6 +3450,8 @@ for thisBlock in blocks:
                 elif side_diff == 0: #right
                     xPosition = width4deg*x_scale
                     diffTrial_right_id += 1
+                    print(diffTrial_right_id)
+                    print(trialDiff_right[diffTrial_right])
                     img_pair = trialDiff_right[diffTrial_right[diffTrial_right_id]]
                     target = paths[img_pair[0]]
                     probe = paths[img_pair[1]]
@@ -3964,7 +3997,7 @@ for thisBlock in blocks:
     continueRoutine = True
     # update component parameters for each repeat
     
-    blockMsg = 'You missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
+    blockMsg = 'Good job! You have ' + str(8-block_count) + ' rounds left. \n\nYou missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
     good_job.setText(blockMsg)
     key_resp_8.keys = []
     key_resp_8.rt = []

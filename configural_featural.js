@@ -95,8 +95,8 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'},
     {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'},
+    {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'},
     {'name': 'bankcard.png', 'path': 'bankcard.png'}
   ]
 });
@@ -2617,7 +2617,9 @@ function blocksLoopEnd() {
 
 var pracCorr;
 var corrFix;
-var numIncorr;
+var numIncorr_fix;
+var numIncorr_img;
+var numIncorr_miss;
 var pTrial;
 var pfix_color_options;
 var prac_paths;
@@ -2661,7 +2663,11 @@ function prac_instructionsRoutineBegin(snapshot) {
     corrFix = "";
     
     
-    numIncorr = 0;
+    numIncorr_fix = 0;
+    numIncorr_img = 0;
+    numIncorr_miss = 0;
+    
+    
     pTrial = 0;
     pfix_color_options = ["white", "black"];
     prac_paths = "";
@@ -3338,39 +3344,39 @@ function prac_feedback_slowRoutineBegin(snapshot) {
             feedIM = "Stimuli/greenCheck.png";
             prac_msg = "Well done!";
         } else {
-            if ((prac_fix_resp.corr !== 1)) {
-                feedIM = "Stimuli/redWrong.png";
-                if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, you missed the cross change.";
-                } else {
-                    prac_msg = "Oops, you pressed space when the cross didn't change.";
-                }
-                numIncorr = (numIncorr + 1);
+            numIncorr_fix = (numIncorr_fix + 1);
+            feedIM = "Stimuli/redWrong.png";
+            if ((pFixs[pBlockTrial] === 1)) {
+                prac_msg = "Oops, you missed the cross change.";
+            } else {
+                prac_msg = "Oops, you pressed space when the cross didn't change.";
             }
         }
     } else {
-        if ((prac_resp.corr !== 1)) {
+        if ((prac_resp.keys === undefined)) {
+            feedIM = "Stimuli/redWrong.png";
+            numIncorr_miss = (numIncorr_miss + 1);
+            if ((pFixs[pBlockTrial] === 1)) {
+                numIncorr_fix = (numIncorr_fix + 1);
+            }
+            prac_msg = "Oops, time ran out. That's ok, try again!";
+        } else {
             if ((prac_fix_resp.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                numIncorr = (numIncorr + 1);
+                numIncorr_img = (numIncorr_img + 1);
                 if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Good job, you saw the cross change! But the picture response was wrong.";
+                    prac_msg = "Good job! You got pressed space when the cross changed! But the picture response was wrong.";
                 } else {
-                    if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
-                        prac_msg = "Oops, the time is up. That's ok, try again!";
-                    } else {
-                        prac_msg = "Oops, your picture response was wrong.";
-                    }
+                    prac_msg = "Oops, the picture response was wrong.";
                 }
             } else {
-                if ((prac_fix_resp.corr !== 1)) {
-                    feedIM = "Stimuli/redWrong.png";
-                    numIncorr = (numIncorr + 1);
-                    if (((prac_resp.keys === undefined) && (prac_fix_resp.keys === undefined))) {
-                        prac_msg = "Oops, the time is up. That's ok, try again!";
-                    } else {
-                        prac_msg = "Oops, both responses were wrong.";
-                    }
+                numIncorr_img = (numIncorr_img + 1);
+                numIncorr_fix = (numIncorr_fix + 1);
+                feedIM = "Stimuli/redWrong.png";
+                if ((pFixs[pBlockTrial] === 1)) {
+                    prac_msg = "Oops, you missed the cross change and the picture response was wrong.";
+                } else {
+                    prac_msg = "Oops, you press space when the cross didn't change and the picture response was wrong.";
                 }
             }
         }
@@ -3986,39 +3992,39 @@ function prac_feedback_fastRoutineBegin(snapshot) {
             feedIM = "Stimuli/greenCheck.png";
             prac_msg = "Well done!";
         } else {
-            if ((prac_fix_resp_fast.corr !== 1)) {
-                feedIM = "Stimuli/redWrong.png";
-                if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Oops, you missed the cross change.";
-                } else {
-                    prac_msg = "Oops, you pressed space when the cross didn't change.";
-                }
-                numIncorr = (numIncorr + 1);
+            numIncorr_fix = (numIncorr_fix + 1);
+            feedIM = "Stimuli/redWrong.png";
+            if ((pFixs[pBlockTrial] === 1)) {
+                prac_msg = "Oops, you missed the cross change.";
+            } else {
+                prac_msg = "Oops, you pressed space when the cross didn't change.";
             }
         }
     } else {
-        if ((prac_resp2.corr !== 1)) {
+        if ((prac_resp2.keys === undefined)) {
+            feedIM = "Stimuli/redWrong.png";
+            numIncorr_miss = (numIncorr_miss + 1);
+            if ((pFixs[pBlockTrial] === 1)) {
+                numIncorr_fix = (numIncorr_fix + 1);
+            }
+            prac_msg = "Oops, time ran out. That's ok, try again!";
+        } else {
             if ((prac_fix_resp_fast.corr === 1)) {
                 feedIM = "Stimuli/redWrong.png";
-                numIncorr = (numIncorr + 1);
+                numIncorr_img = (numIncorr_img + 1);
                 if ((pFixs[pBlockTrial] === 1)) {
-                    prac_msg = "Good job, you saw the cross change! But the picture response was wrong.";
+                    prac_msg = "Good job! You got pressed space when the cross changed! But the picture response was wrong.";
                 } else {
-                    if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
-                        prac_msg = "Oops, the time is up. That's ok, try again!";
-                    } else {
-                        prac_msg = "Oops, your picture response was wrong.";
-                    }
+                    prac_msg = "Oops, the picture response was wrong.";
                 }
             } else {
-                if ((prac_fix_resp_fast.corr !== 1)) {
-                    feedIM = "Stimuli/redWrong.png";
-                    numIncorr = (numIncorr + 1);
-                    if (((prac_resp2.keys === undefined) && (prac_fix_resp_fast.keys === undefined))) {
-                        prac_msg = "Oops, the time is up. That's ok, try again!";
-                    } else {
-                        prac_msg = "Oops, both responses were wrong.";
-                    }
+                numIncorr_img = (numIncorr_img + 1);
+                numIncorr_fix = (numIncorr_fix + 1);
+                feedIM = "Stimuli/redWrong.png";
+                if ((pFixs[pBlockTrial] === 1)) {
+                    prac_msg = "Oops, you missed the cross change and the picture response was wrong.";
+                } else {
+                    prac_msg = "Oops, you press space when the cross didn't change and the picture response was wrong.";
                 }
             }
         }
@@ -4130,11 +4136,23 @@ function end_prac_loopRoutineBegin(snapshot) {
     frameN = -1;
     // update component parameters for each repeat
     repeatMsg = "";
-    console.log(numIncorr);
-    if ((numIncorr < 9)) {
+    if ((((numIncorr_miss + numIncorr_img) < 9) && (numIncorr_fix < 3))) {
+        repeatMsg = (((((("Great job! \n\n Completed trials = " + (16 - numIncorr_miss).toString()) + " out of 16. \n Correct picture responses = ") + (16 - numIncorr_img).toString()) + " out of 16. \n Correct + responses = ") + (4 - numIncorr_fix).toString()) + " out of 4. \n\nYou are now ready for the real game. \nPress Space to see the instructions again.");
         repPracLoop.finished = true;
     } else {
-        repeatMsg = (("You missed " + numIncorr.toString()) + " of the 16 trials. That's ok! \n\nPress <SPACE> to try some more practice! \nKeep your eyes in the middle!");
+        if ((((numIncorr_fix > 2) && (numIncorr_img < 7)) && (numIncorr_miss < 4))) {
+            repeatMsg = (((((((("Good job! \n\n Completed trials = " + (16 - numIncorr_miss).toString()) + " out of 16. \n Correct picture responses = ") + (16 - numIncorr_img).toString()) + " out of 16. \n Correct + responses = ") + (4 - numIncorr_fix).toString()) + " out of 4. \n\nYou did great with the pictures! \n You missed ") + numIncorr_fix.toString()) + " of the 4 cross changes. \n In the real game, make sure you press Space as soon as you see it change!\n\n Let's try some more practice. \n Press Space to start.");
+        } else {
+            if ((((numIncorr_fix < 3) && (numIncorr_img > 6)) && (numIncorr_miss < 4))) {
+                repeatMsg = (((((((((("Good job! \n\n Completed trials = " + (16 - numIncorr_miss).toString()) + " out of 16. \n Correct picture responses = ") + (16 - numIncorr_img).toString()) + " out of 16. \n Correct + responses = ") + (4 - numIncorr_fix).toString()) + " out of 4. \n\nYou did , you got ") + (2 - numIncorr_fix).toString()) + " of the 4 cross changes! \nYou missed ") + numIncorr_img.toString()) + " of the pictures. \n Sometimes the faces and houses look almost the same, so try your best. \nMake sure you focus on the game and press the right keys! \n\nLet's try some more practice. \n Press Space to start.");
+            } else {
+                if ((((numIncorr_fix < 3) && (numIncorr_img < 7)) && (numIncorr_miss > 3))) {
+                    repeatMsg = (((((((("Good job! \n\n Completed trials = " + (16 - numIncorr_miss).toString()) + " out of 16. \n Correct picture responses = ") + (16 - numIncorr_img).toString()) + " out of 16. \n Correct + responses = ") + (4 - numIncorr_fix).toString()) + " out of 4. \n\nYou missed ") + numIncorr_miss.toString()) + " of the trials because the time was up. That's ok, the real game will wait for you to respond, but try to go as fast as you can. \n\n Press Space to practice more.");
+                } else {
+                    repeatMsg = (((((((((((("Nice try! \n\n Completed trials = " + (16 - numIncorr_miss).toString()) + " out of 16. \n Correct picture responses = ") + (16 - numIncorr_img).toString()) + " out of 16. \n Correct + responses = ") + (4 - numIncorr_fix).toString()) + " out of 4. \n\nYou missed ") + numIncorr_img.toString()) + " of the picture responses, ") + numIncorr_fix.toString()) + " of the 4 cross changes, and ") + numIncorr_miss.toString()) + " trials went by too fast. \n\nLet's try another round of practice. \nPress Space to start.");
+                }
+            }
+        }
     }
     
     text_15.setText(repeatMsg);
@@ -5404,7 +5422,7 @@ function feedbackRoutineBegin(snapshot) {
     feedbackClock.reset(); // clock
     frameN = -1;
     // update component parameters for each repeat
-    blockMsg = (("You missed " + missFix_count.toString()) + " of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
+    blockMsg = (((("Good job! You have " + (8 - block_count).toString()) + " rounds left. \n\nYou missed ") + missFix_count.toString()) + " of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!");
     
     good_job.setText(blockMsg);
     key_resp_8.keys = undefined;
