@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Thu Jan  7 12:23:43 2021
+    on Thu Jan  7 14:06:16 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -3997,7 +3997,7 @@ for thisBlock in blocks:
     continueRoutine = True
     # update component parameters for each repeat
     
-    blockMsg = 'Good job! You have ' + str(8-block_count) + ' rounds left. \n\nYou missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
+    blockMsg = 'Good job! You have ' + str(7-block_count) + ' rounds left. \n\nYou missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
     good_job.setText(blockMsg)
     key_resp_8.keys = []
     key_resp_8.rt = []

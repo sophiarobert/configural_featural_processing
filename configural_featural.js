@@ -4521,7 +4521,7 @@ function instrBlockRoutineBegin(snapshot) {
                 side_diff = 1;
             }
         } else {
-            if ((block_count < 5)) {
+            if ((block_count < 4)) {
                 if ((start_side === 0)) {
                     side_same = 0;
                     side_diff = 0;
