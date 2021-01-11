@@ -4446,6 +4446,7 @@ function instrBlockRoutineBegin(snapshot) {
     
     img_size="";
     block_count = block_count + 1;
+    console.log(block_count)
     corrFix_count = 0;
     missFix_count = 0;
     if ((Block_type === "conf_face")) {
@@ -4512,7 +4513,7 @@ function instrBlockRoutineBegin(snapshot) {
         trialDiff_right = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2], [0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [1, 0], [2, 3], [2, 0], [2, 1], [3, 0], [3, 1], [3, 2]];
         diffTrial_right = shuffle_array(list([...Array(24).keys()]));
         fix_switch = [[0,0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),shuffle_array([1,0,0]),[0],shuffle_array([1,0,0]),[0,0]].flat();
-        if ((block_count === 0)) {
+        if ((block_count < 4)) {
             if ((start_side === 0)) {
                 side_same = 0;
                 side_diff = 0;
@@ -4521,22 +4522,12 @@ function instrBlockRoutineBegin(snapshot) {
                 side_diff = 1;
             }
         } else {
-            if ((block_count < 4)) {
-                if ((start_side === 0)) {
-                    side_same = 0;
-                    side_diff = 0;
-                } else {
-                    side_same = 1;
-                    side_diff = 1;
-                }
+            if ((start_side === 0)) {
+                side_same = 1;
+                side_diff = 1;
             } else {
-                if ((start_side === 0)) {
-                    side_same = 1;
-                    side_diff = 1;
-                } else {
-                    side_same = 0;
-                    side_diff = 0;
-                }
+                side_same = 0;
+                side_diff = 0;
             }
         }
     } else {

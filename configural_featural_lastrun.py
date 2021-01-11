@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on Mon Dec 21 18:38:01 2020
+    on Mon Jan 11 16:07:47 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -3231,7 +3231,7 @@ for thisBlock in blocks:
         shuffle(fxs_11)
         shuffle(fxs_12)
         fix_switch = [0,0]+fxs_1+[0]+fxs_2+[0]+fxs_3+[0]+fxs_4+[0]+fxs_5+[0]+fxs_6+fxs_7+[0]+fxs_8+fxs_9+[0]+fxs_10+fxs_11+[0]+fxs_12+[0,0]
-        if block_count == 0:
+        if block_count < 4:
             if start_side == 0:
                 side_same = 0
                 side_diff = 0
@@ -3239,20 +3239,12 @@ for thisBlock in blocks:
                 side_same = 1
                 side_diff = 1
         else:
-            if block_count < 5:
-                if start_side == 0:
-                    side_same = 0
-                    side_diff = 0
-                else:
-                    side_same = 1
-                    side_diff = 1
+            if start_side == 0:
+                side_same = 1
+                side_diff = 1
             else:
-                if start_side == 0:
-                    side_same = 1
-                    side_diff = 1
-                else:
-                    side_same = 0
-                    side_diff = 0
+                side_same = 0
+                side_diff = 0
     elif int(expInfo['position']) == 1:
         trial_order = np.concatenate((permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6]),permutation([1, 2, 3, 4, 5, 6])))
         trial_order = np.round(trial_order / 6 - 0.1)
@@ -3997,7 +3989,7 @@ for thisBlock in blocks:
     continueRoutine = True
     # update component parameters for each repeat
     
-    blockMsg = 'Good job! You have ' + str(8-block_count) + ' rounds left. \n\nYou missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
+    blockMsg = 'Good job! You have ' + str(7-block_count) + ' rounds left. \n\nYou missed '+str(missFix_count)+' of the fix changes. Keep your eyes in the middle! \n\nPress <SPACE> to keep going!'
     good_job.setText(blockMsg)
     key_resp_8.keys = []
     key_resp_8.rt = []
