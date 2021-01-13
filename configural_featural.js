@@ -95,9 +95,9 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
+    {'name': 'bankcard.png', 'path': 'bankcard.png'},
     {'name': 'Designs/smith_sisters.png', 'path': 'Designs/smith_sisters.png'},
-    {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'},
-    {'name': 'bankcard.png', 'path': 'bankcard.png'}
+    {'name': 'Designs/smith_houses.png', 'path': 'Designs/smith_houses.png'}
   ]
 });
 
@@ -4446,7 +4446,6 @@ function instrBlockRoutineBegin(snapshot) {
     
     img_size="";
     block_count = block_count + 1;
-    console.log(block_count)
     corrFix_count = 0;
     missFix_count = 0;
     if ((Block_type === "conf_face")) {
